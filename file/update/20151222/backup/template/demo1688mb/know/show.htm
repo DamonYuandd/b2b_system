@@ -1,0 +1,260 @@
+{php $CSS = array('know');}
+{template 'header'}
+<div id="content" class="w980">
+
+<div class="layout-p24a30">
+	<div class="grid-30">
+		<ul class="module mod-breadcrumb"><li class="first-col"><a href="{$MODULE[1][linkurl]}">首页</a></li><li><a href="{$MOD[linkurl]}">{$MOD[name]}</a></li><li>{cat_pos($CAT, '<li></li>')}</li><li>{$title}</li></ul>
+	</div>
+</div>
+<div class="layout-p24a30">
+	<div class="grid-23">
+				
+<div class="module mod-smartask">
+	<div class="top-round"><b></b><i></i></div>
+	<div class="cell-bd">
+				<form action="{$MODULE[2][linkurl]}{$DT[file_my]}" id="ask_form">
+				<input type="hidden" name="mid" value="{$moduleid}"/>
+				<input type="hidden" name="cid" value="{$catid}"/>
+				<input type="hidden" name="action" value="add"/>
+				<input type="hidden" name="kw" value="" id="ask_kw"/>
+				</form>
+				<form action="{$MOD[linkurl]}search.php" onsubmit="return know_sch_check();">
+				<input type="hidden" name="typeid" value="99" id="know_typeid"/>
+			<fieldset>
+				<div class="smartask-tiny"></div>
+				<div class="smartask-inputwarp"><input name="kw" id="know_kw" class="smartask-input" type="text" maxlength="50" value="请在这里输入您的问题，尽量详细，以便得到更专业、更详尽的解答" onfocus="if(this.value=='请在这里输入您的问题，尽量详细，以便得到更专业、更详尽的解答')this.value='';"/></div>
+				<div class="smartask-btnwrap"><button class="smartask-submit" type="button" onclick="if(know_sch_check()){Dd('ask_kw').value=Dd('know_kw').value;Dd('ask_form').submit();}">提问</button></div>
+				<div id="smartask-count" class="smartask-countwrap"></div>
+			</fieldset>
+		</form>
+				<script type="text/javascript">
+					function know_sch_check() {
+						if(Dd('know_kw').value == '请在这里输入您的问题，尽量详细，以便得到更专业、更详尽的解答' || Dd('know_kw').value.length < 1) {
+							alert('请在这里输入您的问题，尽量详细，以便得到更专业、更详尽的解答');
+							Dd('know_kw').focus();
+							return false;
+						}
+						return true;
+					}
+				</script>
+	</div>
+	<div class="bottom-round"><b></b><i></i></div>
+</div>
+
+<div class="module mod-question">
+			<div class="top-round"><b></b><i></i></div>
+			<div class="cell-hd">
+				   <span style="font-size:16px;font-weight:bold;float:left;display:inline;"><img src="{DT_SKIN}images/know/know_{$process}.gif" align="absmiddle" alt="{$PROCESS[$process]}问题"/> {$PROCESS[$process]}问题</span>
+                   <span class="fd-right">
+		{if $process == 1 || $process == 2}
+		离问题过期还有：<em>    {secondstodate($totime-$DT_TIME)}</em>
+		{elseif $process == 3}
+		解决时间<em> {timetodate($updatetime, 5)}</em>
+		{else}
+		提问时间<em> {timetodate($addtime, 5)}</em>
+		{/if}
+                   </span>
+			</div>
+
+			<div class="cell-bd">
+				<div class="fd-clr">
+					<div class="question-user"></div>
+					<div class="question-details wrp">
+						 <div class="fd-clr"><h1 style="float: left; margin-right: 4px;">{$title}</h1> </div>
+						 <p class="question-data fd-clr">
+                               <span class="sign-wealth" title="悬赏分"></span><span class="fc-orange">悬赏分：{$credit}</span>
+                               <span>提问者：
+		{if $item[hidden]}
+		匿名
+		{else}
+			{if $item[username]}
+			<a href="{userurl($item[username])}" target="_blank">{$item[username]}</a>
+			{else}
+			{hide_ip($item[ip])}
+			{/if}
+		{/if}
+                               </span>
+                               <span id="hits">浏览次数：{$hits}</span>
+                               <span>提问时间：{timetodate($addtime, 5)}</span>
+						</p>
+						<p id="question-cont" class="question-cont">{$content}
+		{if $addition}
+		<div class="know_additionnew">
+		<strong>问题补充：</strong><br/>
+		{nl2br($addition)}
+		</div>
+		{/if}
+                        </p>
+					</div>
+				</div>
+				<div class="question-operation fd-clr">{if $process == 1}<a href="#answer"><img src="{DT_SKIN}image/btn_answer.gif" width="90" height="23" alt="我来回答" id="answer_btn" style="display:none;"/></a>{/if}
+				</div>
+				</div>
+			<div class="bottom-round"><b></b><q></q><i></i></div>
+		</div>
+    
+		{if $aid && $best}
+	   <div id="mod-bestanswer" class="module mod-bestanswer">
+			<div class="top-round"><b></b><i></i></div>
+			<div class="cell-hd">
+				<span class="icn-bestanswer"></span>
+				<h2 style="color:#FF7300;font-size:16px;font-weight: bold;margin-top:8px;padding-left:48px;">最满意答案</h2>
+				<span class="fd-right">
+			<span id="v_msg"></span>&nbsp;
+			<a href="javascript:" onclick="V(1, {$agree});">支持</a>(<span id="v_{$itemid}_1">{$agree}</span>)&nbsp; | &nbsp;
+			<a href="javascript:" onclick="V(0, {$against});">反对</a>(<span id="v_{$itemid}_0">{$against}</span>)
+                </span>
+			</div>
+			<div class="cell-bd">
+				<div class="entry">
+					<div class="article">
+						<p class="article-flag fd-clr">&nbsp;</p>
+						<div class="preview">
+							 <div class="p2 fd-clr" id="content">{template 'content', 'chip'}</div>
+						</div>
+						<p class="article-info">
+                        <span><span>最新回答：</span><span>{timetodate($best[addtime], 5)}</span></span>&nbsp;
+            <span>回答者：
+			{if $best[hidden]}
+			匿名
+			{else}
+				{if $best[username]}
+				<a href="{userurl($best[username])}" target="_blank">{$best[username]}</a>
+				{else}
+				{hide_ip($best[ip])}
+				{/if}
+			{/if}</span>
+                        <span>
+			{if in_array($moduleid, explode(',', $EXT[comment_module]))}
+			<a href="{$EXT[comment_url]}{rewrite('index.php?mid='.$moduleid.'&itemid='.$itemid)}">[我来评论]</a>
+			{/if}
+                        </span>
+                        </p>
+					</div>
+			{if $comment}
+            <div class="details">
+			<strong>提问者对答案的评价：</strong><br/>
+			{nl2br($comment)}
+            </div>
+			{/if}
+					<div class="edge-line"><div class="edge"></div></div>
+				</div>
+			</div>
+			<div class="bottom-round"><b></b><i></i></div>
+		</div>
+		<script style="text/javascript">
+		var v_op = 1;
+		var v_nm = 0;
+		function V(op, nm) {
+			v_op = op;
+			v_nm = nm;
+			if(get_cookie('best_answer_{$itemid}')) {
+				Inner('v_msg', '您已经对最佳答案表过态了');
+				return;
+			}
+			makeRequest('action=best&itemid={$itemid}&op='+op, '{$MOD[linkurl]}answer.php', '_V');
+		}
+		function _V() {
+			if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+				if(xmlHttp.responseText == -1) {
+					Inner('v_msg', '您已经对最佳答案表过态了');
+				} else if (xmlHttp.responseText == 0) {
+					Inner('v_msg', '参数错误，如有疑问请联系管理员');
+				} else if (xmlHttp.responseText == 1) {
+					if(v_op == 1) {
+						Inner('v_{$itemid}_1', ++v_nm);
+					} else {
+						Inner('v_{$itemid}_0', ++v_nm);
+					}
+					Inner('v_msg', '感谢参与');
+				}
+			}
+		}
+		</script>
+		{/if}
+      <a name="answer"></a>
+		<script type="text/javascript">show_answer({$itemid});</script>
+
+<div class="module mod-relatedbaike mod-graybox" style="margin-top:10px;">
+	<div class="top-round"><b></b><i></i></div>
+	<div class="cell-hd">
+		<h2 style="color:#666666;font-size:14px;font-weight:bold;">相关问题</h2>
+	</div>
+	<div class="cell-bd">
+		<ul class="list-square wrp">
+        
+               <!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and process=3&catid=$catid&areaid=$cityid&order=updatetime desc&template=null");}-->
+                      {loop $tags $i $t}
+           <li{if $i=0} class="first-col"{/if}><span class="tags f_r">[{timetodate($t[edittime], 3)}]</span><a class="txt" href="{$t[linkurl]}" title="{$t[alt]}" target="">{$t[title]}</a> <img src="{DT_SKIN}image/know_{$t[process]}.gif" title="{$PROCESS[$t[process]]}" align="absbottom"/></li>
+                      {/loop}                                
+				</ul>
+	</div>
+	<div class="bottom-round"><b></b><i></i></div>
+</div>
+
+		</div>
+	<div class="grid-7 grid-fixed">
+
+			<div class="module mod-guessinterest mod-indigobox mod-segment">
+			<div class="top-round"><b></b><i></i></div>
+			<div class="cell-hd">
+				<h3> 该类目最受欢迎问题</h3>
+			</div>
+			<div class="cell-bd">
+				<ul id="list-guessinterest" class="list-square wrp">
+                <!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and process=3&catid=$catid&order=hits desc&areaid=$cityid&pagesize=10&template=null");}-->
+                      {loop $tags $i $t}
+					  <li><a class="txt" href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+                      {/loop}                                
+				</ul>
+			</div>
+			<div class="bottom-round"><b></b><i></i></div>
+		</div>
+
+			<div class="module mod-guessinterest mod-indigobox mod-segment">
+			<div class="top-round"><b></b><i></i></div>
+			<div class="cell-hd">
+				<h3> 等待您来回答</h3>
+			</div>
+			<div class="cell-bd">
+				<ul id="list-guessinterest" class="list-square wrp">
+                <!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and process=1&catid=$catid&areaid=$cityid&order=addtime desc&pagesize=10&template=null");}-->
+                      {loop $tags $i $t}
+					  <li><a class="txt" href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+                      {/loop}                                
+				</ul>
+			</div>
+			<div class="bottom-round"><b></b><i></i></div>
+		</div>
+
+    		 <div class="module mod-standard-2 mod-standard-top">
+<div class="top-round"><b></b><i></i></div>
+<div class="cell-hd"><h3>精彩推荐</h3><a href="{$MODULE[21][linkurl]}" class="fd-right font-song" title="更多">更多&nbsp;&gt;
+</a> 
+</div>
+<div class="cell-hd">
+<!--{php $tags=tag("moduleid=21&condition=status=3 and thumb<>''&areaid=$cityid&order=addtime desc&pagesize=2&template=null");}-->
+{loop $tags $i $t}
+<div class="cell-banner-1 fd-clr"> <a class="banner-lnk" href="{$t[linkurl]}" title="{$t[alt]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}"/></a> </div>
+{/loop}
+  </div>
+  </div>
+<div class="module mod-standard-2 mod-standard-middle">
+  <div class="cell-hd">
+    <h3>商业资讯</h3>
+    </div>
+  <div class="cell-bd">
+    <ul class="list-point wrp">
+<!--{php $tags=tag("moduleid=21&condition=status=3 and level=1&areaid=$cityid&order=addtime desc&pagesize=5&template=null");}-->
+{loop $tags $i $t}
+      <li><a href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a></li>
+{/loop}
+    </ul>
+  </div>
+</div>
+</div>
+			</div>
+</div>
+{template 'zoom', 'chip'}
+{template 'footer'}

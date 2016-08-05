@@ -1,0 +1,249 @@
+{template 'mall_header'}
+<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+<div class="m">
+<div class="left_box">		
+		<div class="pos">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')} &raquo;</div>
+		<div class="b10 c_b"></div>
+<div class="mallshow_main">
+	<div class="mallshow_main_left">
+			<span colspan="3"><h1 class="title_trade" id="title">{$title}</h1></span>
+	    <div class="mallshow_main_leftshow">
+			<div id="mid_pos"></div>
+			<div id="mid_div" onmouseover="SAlbum();" onmouseout="HAlbum();" onclick="PAlbum(Dd('mid_pic'));">
+				<img src="{$albums[0]}" width="280" height="280" id="mid_pic"/><span id="zoomer"></span>
+			</div>
+			<div class="b5"></div>
+			<div class="mall_min_img">
+			{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');" class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}
+			</div>
+				<!--<div class="b5"></div>
+				<div onclick="PAlbum(Dd('mid_pic'));" class="c_b t_c c_p"><img src="{DT_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> 点击图片查看原图</div>-->
+			</div>
+		<div class="mallshow_main_centre">
+			<div id="big_div" style="display:none;"><img src="" id="big_pic"/></div>
+				{if $a2}
+			<div class="step_price">
+				<ul>
+                
+                <li>
+				<p>价格</p>
+				<p class="step_price_pd015 f_price">{$DT[money_sign]}<span class="px18">{$p1}</span></p>
+				{if $a3}
+				<p class="step_price_pd015 f_price">{$DT[money_sign]}<span class="px18">{$p2}</span></p>
+				<p class="step_price_pd015 f_price">{$DT[money_sign]}<span class="px18">{$p3}</span></p>
+				{else}
+				<p class="step_price_pd015 f_price">{$DT[money_sign]}<span class="px18">{$p2}</span></p>
+				{/if}
+				</li>
+				<li>
+				<p>起批</p>
+				<p class="step_price_pd025">{$a1}-{$a2}{$unit}</p>
+				{if $a3}
+				<p class="step_price_pd025">{$a2+1}-{$a3}{$unit}</p>
+				<p class="step_price_pd025">{$a3}{$unit}以上</p>
+				{else}
+				<p class="step_price_pd025">{$a2+1}{$unit}以上</p>
+				{/if}
+				</li>
+				
+				</ul>
+				</div>
+				{/if}
+			<div class="sell_price">
+				{if !$a2}
+				<li>
+				<p>单价：</p>
+				<p class="f_price">{$DT[money_sign]}<span class="px16">{$price}</span></p>
+				</li>
+				{/if}
+				{if $express_name_1 == '包邮'}
+				<li>
+				<p>物流：</p>
+				<p>
+				{if $fee_start_1>0}
+				{if $fee_start_2>0} {$express_name_2}:{$fee_start_2}&nbsp;&nbsp;{/if}
+				{if $fee_start_3>0} {$express_name_3}:{$fee_start_3}&nbsp;&nbsp;{/if}
+				满{$fee_start_1}包邮
+				{else}
+				包邮
+				{/if}</p>
+				</li>
+				{elseif $fee_start_1>0 || $fee_start_2>0 || $fee_start_3>0}
+				<li>
+				<p>物流：</p>
+				<p class="f_gray">
+				{if $fee_start_1>0} {$express_name_1}:{$fee_start_1}&nbsp;&nbsp;{/if}
+				{if $fee_start_2>0} {$express_name_2}:{$fee_start_2}&nbsp;&nbsp;{/if}
+				{if $fee_start_3>0} {$express_name_3}:{$fee_start_3}&nbsp;&nbsp;{/if}
+				</p>
+				</li>
+				{/if}
+				{if $cod}
+				<li>
+				<p>到付：</p>
+				<p>支持货到付款</p>
+				</li>
+				{/if}
+				<li>
+				<p>品牌：</p>
+				<p>{if $brand}<a href="{$MOD[linkurl]}search.php?fields=4&kw={urlencode($brand)}" target="_blank" class="b" rel="nofollow">{$brand}</a>{else}未填写{/if}</p>
+				</li>
+				<li>
+				<p>销量：</p>
+				<p><a href="#order" onclick="Mshow('order');" class="b">累计出售 <span class="f_orange">{$sales}</span> {$unit}</a></p>
+				</li>
+				<li>
+				<p>评价：</p>
+				<p><a href="#comment" onclick="Mshow('comment');" class="b">已有 <span class="f_orange">{$comments}</span> 条评价</a></p>
+				</li>
+				<li>
+				<p>人气：</p>
+				<p>已有 <span class="f_orange"><span id="hits">{$hits}</span></span> 人关注</p>
+				</li>
+				<li>
+				<p>更新：</p>
+				<p>{$editdate}</p>
+				</li>
+				{if $RL}
+				<li>
+				<p>{$relate_name}：</p>
+				<p>
+				{loop $RL $v}
+				<div class="relate_{if $itemid==$v[itemid]}2{else}1{/if}">{if $itemid==$v[itemid]}<em></em>{/if}<a href="{$v[linkurl]}"><img src="{$v[thumb]}" alt="" title="{$v[relate_title]}"/></a></div>
+				{/loop}				
+				</p>
+				</li>
+				{/if}
+				{if $P1}
+				<li>
+				<p>{$n1}：</p>
+				<p id="p1">
+				<ul>
+				{loop $P1 $i $v}
+				<li class="nv_{if $i==0}2{else}1{/if}">{$v}</li>
+				{/loop}
+				</ul>
+				</p>
+				</li>
+				{/if}
+				{if $P2}
+				<li>
+				<p>{$n2}：</p>
+				<p id="p2">
+				<ul>
+				{loop $P2 $i $v}
+				<li class="nv_{if $i==0}2{else}1{/if}">{$v}</li>
+				{/loop}
+				</ul>
+				</p>
+				</li>
+				{/if}
+				{if $P3}
+				<li>
+				<p>{$n3}：</p>
+				<p id="p3">
+				<ul>
+				{loop $P3 $i $v}
+				<li class="nv_{if $i==0}2{else}1{/if}">{$v}</li>
+				{/loop}
+				</ul>
+				</p>
+				</li>
+				{/if}
+				{if $status == 3 && $amount > 0}
+				<li>
+				<p>数量：</p>
+				<p><img src="{DT_SKIN}image/arrow_l.gif" width="16" height="8" alt="减少" class="c_p" onclick="Malter('-', {$a1}, {$amount});"/> <input type="text" value="{$a1}" size="6" class="cc_inp" id="amount" onkeyup="Malter('', {$a1}, {$amount});"/> <img src="{DT_SKIN}image/arrow_r.gif" width="16" height="8" alt="增加" class="c_p" onclick="Malter('+', {$a1}, {$amount});"/></p>
+				</li>
+				<li>
+				<p colspan="2">
+				<img src="{DT_SKIN}image/btn_tobuy.gif" alt="立即购买" class="c_p" onclick="BuyNow();"/>
+				&nbsp;
+				<img src="{DT_SKIN}image/btn_addcart.gif" alt="加入购物车" class="c_p" onclick="AddCart();"/>
+				</p>
+				</li>
+				{else}
+				<li>
+				<p></p>
+				<p><strong class="f_red">该商品已下架</strong></p>
+				</li>				
+				{/if}
+				</div>
+			</div>
+		</div>
+		<div class="mallshow_main_right">		
+			<div class="contact_head">公司基本资料信息</div>
+			<div class="contact_body" id="contact">{template 'contact', 'chip'}</div>
+			{if !$username}
+			<br/>
+			&nbsp;<strong class="f_red">注意</strong>:发布人未在本站注册，建议优先选择<a href="{$MODULE[2][linkurl]}grade.php"><strong>{VIP}会员</strong></a>
+			{/if}
+			</div>
+		</div>
+		</div>
+		<div class="b10">&nbsp;</div>
+</div>
+</div>
+
+<div class="m">
+	<div class="b10">&nbsp;</div>
+	<div class="mall_tab">
+		<ul>
+		<li class="mall_tab_2" id="t_detail"><a href="#detail" onclick="Mshow('detail');">商品详情</a></li>
+		<li class="mall_tab_1" id="t_comment"><a href="#comment" onclick="Mshow('comment');">评价详情({$comments})</a></li>
+		<li class="mall_tab_1" id="t_order"><a href="#order" onclick="Mshow('order');">交易记录({$orders})</a></li>
+		</ul>
+	</div>
+	<div class="mall_c" style="display:;" id="c_detail">
+		{if $CP}{template 'property', 'chip'}{/if}
+		<div class="content c_b" id="content">{$content}</div>
+	</div>
+	<div class="mall_c" style="display:none;" id="c_comment">
+		<center>正在载入评论详细...</center>
+	</div>
+	<div class="mall_c" style="display:none;" id="c_order">
+		<center>正在载入交易记录...</center>
+	</div>
+</div>
+
+<div class="m">
+	<br/>
+	<center>
+	[ <a href="{$MOD[linkurl]}search.php">商品搜索</a> ]&nbsp;
+	[ <a href="javascript:SendFav();">加入收藏</a> ]&nbsp;
+	[ <a href="javascript:SendPage();">告诉好友</a> ]&nbsp;
+	[ <a href="javascript:Print();">打印本文</a> ]&nbsp;
+	[ <a href="javascript:SendReport();">违规举报</a> ]&nbsp;
+	[ <a href="javascript:window.close()">关闭窗口</a> ]
+	</center>
+	<br/>
+</div>
+<script type="text/javascript" src="{DT_STATIC}file/script/album.js"></script>
+{if $content}<script type="text/javascript" src="{DT_STATIC}file/script/content.js"></script>{/if}
+<script type="text/javascript">
+var mallurl = '{$MOD[linkurl]}';
+var mallid = {$itemid};
+var n_c = {$comments};
+var n_o = {$orders};
+var c_c = Dd('c_comment').innerHTML;
+var c_o = Dd('c_order').innerHTML;
+var s_s = {'1':0,'2':0,'3':0};
+var m_l = {
+	no_comment:'暂无评论',
+	no_order:'暂无交易',
+	no_goods:'商品不存在或已下架',
+	no_self:'不能添加自己的商品',
+	lastone:''
+};
+</script>
+<script type="text/javascript" src="{DT_STATIC}file/script/mall.js"></script>
+<script type="text/javascript">
+{if $P1}addE(1);{/if}
+{if $P2}addE(2);{/if}
+{if $P3}addE(3);{/if}
+if(window.location.href.indexOf('#') != -1) {
+	var t = window.location.href.split('#');
+	try {Mshow(t[1]);} catch(e) {}
+}
+</script>
+{template 'footer'}

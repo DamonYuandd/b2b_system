@@ -1,0 +1,1 @@
+document.write('<img src="http://www.isuyou.com/file/upload/201510/22/095854811.jpg" width="300" height="250" alt=""/>');

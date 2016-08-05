@@ -1,0 +1,1 @@
+document.write('<img src="http://localhost.b2b.com/file/upload/201511/14/164409881.jpg" width="391" height="80" alt="是男人就来一发"/>');

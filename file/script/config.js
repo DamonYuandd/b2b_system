@@ -1,0 +1,1 @@
+var DTPath = "http://localhost.b2b.com/";var SKPath = "http://localhost.b2b.com/skin/demo1688/";var MEPath = "http://localhost.b2b.com/member/";var DTEditor = "fckeditor";var CKDomain = "";var CKPath = "/";var CKPrex = "caw_";

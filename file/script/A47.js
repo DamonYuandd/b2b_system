@@ -1,0 +1,1 @@
+document.write('<img src="http://localhost.b2b.com/file/upload/201512/25/134759351.png" width="100" height="100" alt="扫一扫手机打开"/>');
