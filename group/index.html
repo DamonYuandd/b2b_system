@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<title>团购 - 新速优1688_演示</title>
+<link rel="shortcut icon" type="image/x-icon" href="http://www.hyuan123.net/favicon.ico"/>
+<link rel="bookmark" type="image/x-icon" href="http://www.hyuan123.net/favicon.ico"/>
+<link rel="canonical" href="http://www.hyuan123.net/group/"/>
+<link rel="stylesheet" type="text/css" href="http://www.hyuan123.net/skin/demo1688/style.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.hyuan123.net/skin/demo1688/group.css"/><link rel="stylesheet" type="text/css" href="http://www.hyuan123.net/skin/demo1688/css/style.css"/>
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="http://www.hyuan123.net/skin/demo1688/ie6.css"/>
+<![endif]-->
+<script type="text/javascript">window.onerror=function(){return true;}</script>
+<script type="text/javascript" src="http://www.hyuan123.net/lang/zh-cn/lang.js"></script>
+<script type="text/javascript" src="http://www.hyuan123.net/file/script/config.js"></script>
+<script type="text/javascript" src="http://www.hyuan123.net/file/script/common.js"></script>
+<script type="text/javascript" src="http://www.hyuan123.net/file/script/page.js"></script>
+<script type="text/javascript" src="http://www.hyuan123.net/file/script/jquery.js"></script>
+<script type="text/javascript" src="http://www.hyuan123.net/file/script/jquery.lazyload.js"></script><script type="text/javascript">
+GoMobile('http://www.hyuan123.net/mobile/');
+var searchid = 5;
+function setModule(i, o) {
+Dd('destoon_moduleid').value = i;
+searchid = i;
+var lis = Dd('search_module').getElementsByTagName('li');
+for(var i=0;i<lis.length;i++) {
+lis[i].className = lis[i] == o ? 'head_search_on' : '';
+}
+}
+</script>
+</head>
+<body>
+<div id="top-banner-layout" style="background:#FF0334">
+  <!--<div id="top-banner"><img src="http://www.hyuan123.net/skin/demo1688/images/topad.jpg" width="990" height="32"/></div>-->
+  
+  <!--<div id="top-notice"><span id="top-notice-close"></span>
+    <div class="text">尊敬的用户<span>:&nbsp;2012年9月13日3:00-3:30，网站升级维护，届时中国站涉及资金的相关操作（如付款、退款等）将暂停使用，敬请谅解！</span></div>
+  </div>-->
+</div>   
+<div class="mod-b">
+    <div id="alibar" class="mod-alibar fd-clr">
+    <div id="alibar-v4">
+        <div class="alibar-container">
+            <div class="account-sign-status" id="destoon_member"><ul></ul></div>
+            <div class="topnav">
+                <ul>
+                    <li class="topnav-myali extra list-first">
+                        <div class="nav-title"><a rel="nofollow" class="nav-arrow" href="http://www.hyuan123.net/member/" title="商务中心">商务中心</a></div>
+                        <div class="nav-content">
+                            <dl>
+                                <dt>采购</dt>
+                                <dd><a rel="nofollow" href="http://www.hyuan123.net/member/trade.php?action=order" title="发出的订单">发出的订单</a></dd>
+                                <dd><a rel="nofollow" href="http://www.hyuan123.net/member/my.php?mid=6&action=add" title="发布询价单">发布询价单</a></dd>
+                                <dd><a rel="nofollow" href="http://www.hyuan123.net/member/my.php?mid=6" title="管理询价单">管理询价单</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>销售</dt>
+                                <dd><a rel="nofollow" href="http://www.hyuan123.net/member/trade.php" title="已卖出货品">已卖出货品</a></dd>
+                                <dd><a rel="nofollow" href="http://www.hyuan123.net/member/my.php?mid=5&action=add" title="发布供应产品">发布供应产品</a></dd>
+                                <dd><a rel="nofollow" href="http://www.hyuan123.net/member/my.php?mid=5" title="管理供应产品">管理供应产品</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>工具</dt>
+                                <dd><a rel="nofollow" href="http://www.hyuan123.net/member/home.php" title="管理旺铺">管理旺铺</a></dd>
+                                <dd><a rel="nofollow" href="http://www.hyuan123.net/member/favorite.php" title="商机收藏">商机收藏</a></dd>
+                                <dd><a rel="nofollow" href="http://www.hyuan123.net/member/spread.php" title="排名推广">排名推广</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li class="topnav-tp extra">
+                        <div class="nav-title"><a rel="nofollow" class="nav-arrow" href="http://www.hyuan123.net/member/grade.php" title="VIP服务">VIP服务</a></div>
+                        <div class="nav-content">
+                            <dl>
+                                <dd><a rel="nofollow" class="contact-us" href="http://www.hyuan123.net/guestbook/"title="立即留言我们">立即留言我们</a></dd>
+                                <dd><a rel="nofollow" class="renewal-online" href="http://www.hyuan123.net/member/grade.php" title="在线办理服务">在线办理服务</a></dd>
+                                <!--<dd><a rel="nofollow" class="apply-form" href="" title="免费填写申请表">免费填写申请表</a></dd>-->
+                                <!--<dd><a rel="nofollow" class="join-promotion" href="" title="参加优惠活动">参加优惠活动</a></dd>-->
+                            </dl>
+                        </div>
+                    </li>
+                    <!--<li><div class="nav-title"><a rel="nofollow" href="http://www.hyuan123.net/extend/shortcut.php">加入桌面</a></div></li>-->
+                    <li><div class="nav-title"><a rel="nofollow" href="http://www.hyuan123.net/member/ask.php" title="客服中心">客服中心</a></div></li>
+                    <li class="topnav-sitemap extra">
+                        <div class="nav-title"><a class="nav-arrow" href="http://www.hyuan123.net/sitemap"title="网站导航">网站导航</a></div>
+                        <div class="nav-content">
+                            <dl>
+                                <dt>安全交易</dt>
+                                <dd><a rel="nofollow" href="#" title="买家保障">买家保障</a></dd>
+                                <dd><a rel="nofollow" href="#" title="商家认证">商家认证</a></dd>
+                                <dd><a rel="nofollow" href="#" title="支付宝" >支付宝</a></dd>
+                                <dd><a rel="nofollow" href="#"title="投诉举报">投诉举报</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>常用工具</dt>
+                                <dd><a rel="nofollow" href="#" title="商机助理">商机助理</a></dd>
+                                <dd><a rel="nofollow" href="#" title="商机快递">商机快递</a></dd>
+                                <dd><a rel="nofollow" href="#" title="在线洽谈">在线洽谈</a></dd>
+                                <dd><a rel="nofollow" href="#" title="手机企商">手机企商</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>资讯社区</dt>
+                                <dd><a rel="nofollow" href="#" title="商业资讯">商业资讯</a></dd>
+                                <dd><a rel="nofollow" href="#" title="论坛">论坛</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="博客">博客</a></dd>
+                                <dd><a rel="nofollow" href="#" title="商友圈">商友圈</a></dd>
+                                <dd><a rel="nofollow" href="#" title="生意经">生意经</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>商机市场</dt>
+                                <dd><a rel="nofollow" href="#" title="原材料">原材料</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="工业品">工业品</a></dd>
+                                <dd><a rel="nofollow" href="#" title="服装服饰">服装服饰</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="家居百货">家居百货</a></dd>
+                                <dd><a rel="nofollow" href="#" title="小商品">小商品</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="农食">农食</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="代理">代理</a></dd>
+                                <dd><a rel="nofollow" href="#" title="VIP批发">VIP批发</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="样品中心">样品中心</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+<div class="m"><div id="search_tips" style="display:none;"></div></div>
+<div class="mod-b">
+    <div id="header" class="mod-masthead">
+  <div class="header-container layout">
+    <div id="masthead-v5" class="fd-clr">
+      <div class="ali-logo-v5"><a title="新速优1688_演示" href="http://www.hyuan123.net/" class="main-logo-v5"><img alt="新速优1688_演示" src="http://hyuan123.net/file/upload/201511/24/170307131.png"></a></div>
+      <div class="masthead-right">
+        <div class="ali-search-v5">
+<script type="text/javascript">var searchid = 17;</script>
+          <form id="destoon_search" action="http://www.hyuan123.net/search.php" onSubmit="return Dsearch();">
+          <input type="hidden" name="moduleid" value="17" id="destoon_moduleid"/>
+          <input type="hidden" name="spread" value="0" id="destoon_spread"/>
+            <fieldset>
+              <legend>阿里巴巴搜索</legend>
+              <ul id="search_module" class="alisearch-type-v5 fd-clr">
+                                <li onclick="setModule(5, this);"><a title="供应信息">供应信息</a></li>                                <li onclick="setModule(6, this);"><a title="求购">求购</a></li>                                <li onclick="setModule(4, this);"><a title="公司黄页">公司黄页</a></li>                                <li onclick="setModule(21, this);"><a title="资讯">资讯</a></li>                                <li onclick="setModule(22, this);"><a title="招商加盟">招商加盟</a></li>                                                                <li class="head_search_on" onclick="setModule(17, this);"><a title="团购">团购</a></li>                              </ul>
+              <div class="alisearch-container-v5">
+                <div class="alisearch-keywords-v5">
+                  <input name="kw" id="destoon_kw" type="text" class="empty" maxlength="50" value="请输入关键词" onFocus="if(this.value=='请输入关键词') this.value='';" onKeyUp="STip(this.value);" autocomplete="off"/>
+                </div>
+                <div class="alisearch-action-v5">
+                  <button type="submit" class="alisearch-textbotton">搜索</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+       <!-- <div class="alisearch-top">
+        <p><a href="" onClick="Dsearch_adv();return false;" class="head_search_adv_1">高级搜索</a></p>
+        <p><a href="" onClick="Dsearch_top();return false;" class="head_search_adv_2">标王直达</a></p>
+        </div>-->
+        <div class="hot-keyword">
+         <div class="fd-clr hot-keyword-success">
+            <ul class="hot-keyword-list fd-left fd-clr">
+                                <li><a class="more-search" >搜索排行榜</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+<div class="head_sousuo_right"><img src="http://www.isuyou.com/file/upload/201510/27/192439561.png" width="100" height="100" alt="扫一扫手机打开"/></div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="header-wrap">
+<div class="navwrap">
+<div id="nav">
+<div style="position:relative" class="ali-nav2 w990 mod-nav">
+        <ul style="position:relative" class="ali-nav-main fd-clr">
+        <li><a href="http://www.hyuan123.net/" title="首页">首页</a></li>
+        <li><a href="http://www.hyuan123.net/sell/" title="供应信息">供应信息</a></li><li><a href="http://www.hyuan123.net/buy/" title="求购">求购</a></li><li><a href="http://www.hyuan123.net/company/" title="公司黄页">公司黄页</a></li><li class="ali-nav-current"><a href="http://www.hyuan123.net/group/" title="团购">团购</a></li><li><a href="http://www.hyuan123.net/news/" title="资讯">资讯</a></li><li><a href="http://www.hyuan123.net/invest/" title="招商加盟">招商加盟</a></li><li><a href="http://www.hyuan123.net/brand/" title="品牌">品牌</a></li><li><a href="http://www.hyuan123.net/mall/" title="商城">商城</a></li>          <li class="last caigou-img"><a href="http://www.hyuan123.net/member/" title="免费发布信息" target="_blank">免费发布</a></li>
+        </ul>
+    </div>
+   
+<div class="pros subpage">
+<h2>全部行业分类</h2>
+<ul class="prosul clearfix" id="proinfo">
+                                
+<li><i>&gt;</i><a class="ti" href="http://www.hyuan123.net/sell/list.php?catid=91392" target="_blank">建筑/建材/化工</a>
+<div class="prosmore hide">
+                                                            <span><a href="http://www.hyuan123.net/sell/list.php?catid=8" target="_blank"><strong>化工/原料</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=76" target="_blank">无机盐类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=79" target="_blank">醇类化工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=82" target="_blank">合成树脂</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=85" target="_blank">化工中间</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=88" target="_blank">烃类化工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=91" target="_blank">羧酸衍生</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=94" target="_blank">海绵制品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=97" target="_blank">无机碱类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=100" target="_blank">实验器皿</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=103" target="_blank">胺类化工</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=9" target="_blank"><strong>涂料/化学</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=114" target="_blank">化肥原料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=126" target="_blank">化学试剂</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=137" target="_blank">食品添加</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=140" target="_blank">香料香精</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=143" target="_blank">活性剂类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=146" target="_blank">吸附剂类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=149" target="_blank">金属助剂</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=155" target="_blank">催化剂类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=156" target="_blank">合成胶剂</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=158" target="_blank">涂料油漆</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=10" target="_blank"><strong>橡胶/塑料</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=185" target="_blank">通用塑料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=188" target="_blank">塑料管类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=191" target="_blank">再生塑料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=192" target="_blank">塑料薄膜</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=194" target="_blank">工业橡胶</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=195" target="_blank">塑料加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=196" target="_blank">电子塑胶</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=197" target="_blank">橡胶制品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=198" target="_blank">工农塑料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=199" target="_blank">电子电工</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=13" target="_blank"><strong>纸业/印刷</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=317" target="_blank">印刷用纸</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=318" target="_blank">废纸加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=321" target="_blank">纸品加盟</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=325" target="_blank">纸浆加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=328" target="_blank">纸品加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=331" target="_blank">纸加工类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=332" target="_blank">生活用纸</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=335" target="_blank">包装用纸</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=336" target="_blank">其他用纸</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=338" target="_blank">工业用纸</A></em>
+                                                                                                                                                                    </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=14" target="_blank"><strong>医药/保养</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=152" target="_blank">畜用药类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=176" target="_blank">原料药类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=262" target="_blank">医用塑胶</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=343" target="_blank">保健用品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=345" target="_blank">保健加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=346" target="_blank">植物原药</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=348" target="_blank">消毒防腐</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=349" target="_blank">医疗设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=351" target="_blank">医疗器具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=352" target="_blank">医用材料</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=27" target="_blank"><strong>建筑/建材</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=49" target="_blank">管件分类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=75" target="_blank">卫浴五金</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=135" target="_blank">砌筑材料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=231" target="_blank">塑料建材</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=333" target="_blank">墙纸壁纸</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=387" target="_blank">装饰灯具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=477" target="_blank">库存建材</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=496" target="_blank">常规照明</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=584" target="_blank">室内门类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=587" target="_blank">功能材料</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   </ul>
+                          </span>
+                                  </div>
+</li>
+                    
+                                
+<li><i>&gt;</i><a class="ti" href="http://www.hyuan123.net/sell/list.php?catid=91393" target="_blank">五金/设备/农副</a>
+<div class="prosmore hide">
+                                                            <span><a href="http://www.hyuan123.net/sell/list.php?catid=4" target="_blank"><strong>机械/设备</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=11" target="_blank">商务服务</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=12" target="_blank">印刷工业</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=19" target="_blank">交通运输</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=66" target="_blank">电焊切割</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=112" target="_blank">玻璃设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=125" target="_blank">环保设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=304" target="_blank">包装设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=441" target="_blank">农业机械</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=488" target="_blank">机床附件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=783" target="_blank">纺织设备</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=5" target="_blank"><strong>五金/工具</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=44" target="_blank">组合工具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=45" target="_blank">通用配件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=46" target="_blank">服饰箱包</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=47" target="_blank">手动工具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=48" target="_blank">办公文教</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=50" target="_blank">门窗五金</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=51" target="_blank">船用配件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=52" target="_blank">工具箱类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=53" target="_blank">水暖五金</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=54" target="_blank">测量工具</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=17" target="_blank"><strong>安全/防护</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=377" target="_blank">防护装备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=383" target="_blank">安防监控</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=386" target="_blank">智能交通</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=389" target="_blank">防盗报警</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=392" target="_blank">门禁考勤</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=395" target="_blank">消防设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=398" target="_blank">军需用品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=401" target="_blank">安检排爆</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=403" target="_blank">雷电设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=404" target="_blank">救生器材</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=21" target="_blank"><strong>照明/灯具</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=453" target="_blank">库存照明</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=469" target="_blank">室外照明</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=472" target="_blank">气体电灯</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=475" target="_blank">白炽灯类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=478" target="_blank">指示灯具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=481" target="_blank">电光材料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=484" target="_blank">照明加盟</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=485" target="_blank">专门灯具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=487" target="_blank">冷光源类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=490" target="_blank">照明加工</A></em>
+                                                                                                                                                                    </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=33" target="_blank"><strong>农业/畜牧</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=375" target="_blank">植物提取</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=462" target="_blank">库存产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=661" target="_blank">生皮毛皮</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=738" target="_blank">禽类产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=746" target="_blank">粮食产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=753" target="_blank">生鲜水果</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=756" target="_blank">食用菌类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=763" target="_blank">鲜活水产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=765" target="_blank">盆景提取</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=766" target="_blank">新鲜蔬菜</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 </ul>
+                          </span>
+                                  </div>
+</li>
+                    
+                                
+<li><i>&gt;</i><a class="ti" href="http://www.hyuan123.net/sell/list.php?catid=91394" target="_blank">服饰/纺织/食品</a>
+<div class="prosmore hide">
+                                                            <span><a href="http://www.hyuan123.net/sell/list.php?catid=6" target="_blank"><strong>服装/制服</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=471" target="_blank">库存服装</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=877" target="_blank">服装加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1029" target="_blank">女装加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1032" target="_blank">男装加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1035" target="_blank">童装幼儿</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1038" target="_blank">内衣加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1041" target="_blank">运动服类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1044" target="_blank">情侣亲子</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1047" target="_blank">制服工作</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1050" target="_blank">外贸服装</A></em>
+                                                                                                                                                                                                                           </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=7" target="_blank"><strong>服饰/鞋帽</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=468" target="_blank">库存服饰</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=871" target="_blank">鞋件加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=874" target="_blank">成鞋加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=880" target="_blank">服饰加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1031" target="_blank">吊裤背带</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1033" target="_blank">箱包加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1034" target="_blank">围脖加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1036" target="_blank">披肩加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1037" target="_blank">鞋加工类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1039" target="_blank">丝巾针织</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=29" target="_blank"><strong>纺织/皮革</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=123" target="_blank">化学纤维</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=463" target="_blank">库存纺织</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=466" target="_blank">库存皮革</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=635" target="_blank">服装辅料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=638" target="_blank">纺织辅料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=641" target="_blank">针织面料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=642" target="_blank">纱线辅料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=643" target="_blank">化纤里料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=644" target="_blank">纺织加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=645" target="_blank">工业用布</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=32" target="_blank"><strong>食品/饮料</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=353" target="_blank">软饮料类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=357" target="_blank">酒类加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=367" target="_blank">茶叶加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=465" target="_blank">库存食品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=730" target="_blank">肉类食品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=731" target="_blank">休闲食品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=733" target="_blank">粗加工水</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=734" target="_blank">食品加盟</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=735" target="_blank">方便食品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=736" target="_blank">调味品类</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
+                          </span>
+                                  </div>
+</li>
+                    
+                                
+<li><i>&gt;</i><a class="ti" href="http://www.hyuan123.net/sell/list.php?catid=91395" target="_blank">家居/家电/玩具</a>
+<div class="prosmore hide">
+                                                            <span><a href="http://www.hyuan123.net/sell/list.php?catid=26" target="_blank"><strong>礼品/工艺</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=576" target="_blank">手机饰品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=656" target="_blank">工艺品类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=855" target="_blank">节庆用品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=883" target="_blank">工艺加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=887" target="_blank">饰品加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1060" target="_blank">家居日用</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1062" target="_blank">库存饰品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1063" target="_blank">电子数码</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1064" target="_blank">首饰饰品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1065" target="_blank">饰品加盟</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=28" target="_blank"><strong>家居/家装</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=393" target="_blank">卫浴洗漱</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=464" target="_blank">库存家居</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=611" target="_blank">布艺软装</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=882" target="_blank">家居加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1121" target="_blank">防暑用具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1122" target="_blank">布艺软装</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1124" target="_blank">女性护理</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1125" target="_blank">母婴用品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1127" target="_blank">USB奇特</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1128" target="_blank">护肤品类</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=35" target="_blank"><strong>运动/休闲</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=364" target="_blank">保健器具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=380" target="_blank">运动护具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=433" target="_blank">球类用品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=434" target="_blank">轮滑滑板</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=470" target="_blank">体育运动</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=473" target="_blank">娱乐产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=890" target="_blank">运动产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=895" target="_blank">娱乐休闲</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1070" target="_blank">户外用品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1074" target="_blank">垂钓用具</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=37" target="_blank"><strong>玩具/魔术</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=467" target="_blank">库存玩具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=893" target="_blank">玩具设计</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1152" target="_blank">充气玩具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1155" target="_blank">动漫影视</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1158" target="_blank">玩具娃娃</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1161" target="_blank">玩具珠球</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1164" target="_blank">运动休闲</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1167" target="_blank">游戏配件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1168" target="_blank">毛绒玩具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1170" target="_blank">益智玩具</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </ul>
+                          </span>
+                                  </div>
+</li>
+                    
+                                
+<li><i>&gt;</i><a class="ti" href="http://www.hyuan123.net/sell/list.php?catid=91396" target="_blank">网络/传媒/汽摩</a>
+<div class="prosmore hide">
+                                                            <span><a href="http://www.hyuan123.net/sell/list.php?catid=15" target="_blank"><strong>汽摩/配件</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=89" target="_blank">维修养护</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=438" target="_blank">摩托配件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=452" target="_blank">设备设施</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=460" target="_blank">汽车配件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=476" target="_blank">库存其他</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=498" target="_blank">汽车养护</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=884" target="_blank">汽摩配件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=968" target="_blank">维修养护</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1082" target="_blank">汽车用品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1120" target="_blank">汽车零件</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                       </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=25" target="_blank"><strong>数码/电脑</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=489" target="_blank">二手电脑</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=564" target="_blank">手机通讯</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=573" target="_blank">手机配件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=579" target="_blank">数码产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=583" target="_blank">数码配件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=585" target="_blank">电脑配件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=586" target="_blank">电脑维修</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=588" target="_blank">电脑用品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=591" target="_blank">耗材制品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=594" target="_blank">软件用品</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                       </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=36" target="_blank"><strong>手机/通讯</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=483" target="_blank">库存通讯</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=486" target="_blank">通信器材</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=558" target="_blank">天线设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=567" target="_blank">固定电话</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=570" target="_blank">对讲机类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=827" target="_blank">短信系统</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=830" target="_blank">电话配件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=831" target="_blank">布线产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=834" target="_blank">接续设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=837" target="_blank">通信线缆</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=39" target="_blank"><strong>传媒/广电</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=413" target="_blank">广播系统</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=721" target="_blank">摄影器材</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=724" target="_blank">摄像器材</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=858" target="_blank">专业音响</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=859" target="_blank">IP设备类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=861" target="_blank">前端设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=862" target="_blank">其他传媒</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=864" target="_blank">舞台设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=867" target="_blank">电影放映</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=870" target="_blank">有线光缆</A></em>
+                                                                                                                                                                                                                                                                                                                                         </ul>
+                          </span>
+                                  </div>
+</li>
+                    
+                                
+<li><i>&gt;</i><a class="ti" href="http://www.hyuan123.net/sell/list.php?catid=91397" target="_blank">能源/矿产/石油</a>
+<div class="prosmore hide">
+                                                            <span><a href="http://www.hyuan123.net/sell/list.php?catid=18" target="_blank"><strong>能源/原料</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=406" target="_blank">石油燃料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=409" target="_blank">太阳设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=411" target="_blank">风能设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=412" target="_blank">生物能源</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=414" target="_blank">煤矿设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=415" target="_blank">煤制品类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=417" target="_blank">能源产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=418" target="_blank">溶剂油类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=421" target="_blank">沥青加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=423" target="_blank">废油提炼</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                       </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=34" target="_blank"><strong>冶金/矿产</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=124" target="_blank">非金属矿</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=327" target="_blank">涂镀产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=474" target="_blank">库存金属</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=546" target="_blank">磁性材料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=796" target="_blank">板材卷材</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=797" target="_blank">黑色金属</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=799" target="_blank">低合金板</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=800" target="_blank">金属丝绳</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=802" target="_blank">带钢金属</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=803" target="_blank">金属网类</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=38" target="_blank"><strong>环保/节能</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=851" target="_blank">环保设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=853" target="_blank">公共设施</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=854" target="_blank">节能环保</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=857" target="_blank">空气处理</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=860" target="_blank">电子电器</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=863" target="_blank">环保加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=866" target="_blank">其他设备</A></em>
+                                                                                                             </ul>
+                          </span>
+                                  </div>
+</li>
+                    
+                                
+<li><i>&gt;</i><a class="ti" href="http://www.hyuan123.net/sell/list.php?catid=91398" target="_blank">电子/电气/仪器</a>
+<div class="prosmore hide">
+                                                            <span><a href="http://www.hyuan123.net/sell/list.php?catid=16" target="_blank"><strong>家电/电器</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=376" target="_blank">卫浴家电</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=379" target="_blank">家电附件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=382" target="_blank">娱乐视听</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=384" target="_blank">生活家电</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=385" target="_blank">家用电器</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=388" target="_blank">视听产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=390" target="_blank">厨房家电</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=391" target="_blank">碟机家电</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=394" target="_blank">库存电器</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=396" target="_blank">音响产品</A></em>
+                                                                                                                                                                                                                           </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=22" target="_blank"><strong>仪器/仪表</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=73" target="_blank">量具设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=132" target="_blank">专用仪器</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=148" target="_blank">生物仪器</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=250" target="_blank">橡塑仪表</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=494" target="_blank">变送器类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=497" target="_blank">包装测试</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=499" target="_blank">环境检测</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=500" target="_blank">车用仪表</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=502" target="_blank">计量标准</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=503" target="_blank">电工仪器</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=23" target="_blank"><strong>电子/元器</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=57" target="_blank">电子材料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=408" target="_blank">电感器类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=428" target="_blank">变压器类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=450" target="_blank">库存电子</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=501" target="_blank">电子加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=513" target="_blank">光电器件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=519" target="_blank">传感器类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=529" target="_blank">二极管类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=532" target="_blank">LED产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=535" target="_blank">电阻器类</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=24" target="_blank"><strong>电工/电气</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=416" target="_blank">防静电类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=431" target="_blank">电池加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=480" target="_blank">电工电气</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=492" target="_blank">插头产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=493" target="_blank">绝缘材料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=495" target="_blank">插座加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=560" target="_blank">电线电缆</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=561" target="_blank">太阳能类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=563" target="_blank">电源产品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=566" target="_blank">充电器类</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </ul>
+                          </span>
+                                  </div>
+</li>
+                    
+                                
+<li><i>&gt;</i><a class="ti" href="http://www.hyuan123.net/sell/list.php?catid=91399" target="_blank">加工/合作/其他</a>
+<div class="prosmore hide">
+                                                            <span><a href="http://www.hyuan123.net/sell/list.php?catid=20" target="_blank"><strong>库存/积压</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=1205" target="_blank">库存五金</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1206" target="_blank">电子元器</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1207" target="_blank">化工设备</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1208" target="_blank">照明器材</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1209" target="_blank">音像制品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1210" target="_blank">库存图书</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1211" target="_blank">农产品类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1212" target="_blank">食品饮料</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1213" target="_blank">纺织品类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1214" target="_blank">皮革制品</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=30" target="_blank"><strong>包装/制作</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=78" target="_blank">行业包装</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=248" target="_blank">塑料包装</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=670" target="_blank">纸类包装</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=671" target="_blank">环保包装</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=673" target="_blank">标签标牌</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=674" target="_blank">胶带打包</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=675" target="_blank">包装制品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=676" target="_blank">塑料包装</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=677" target="_blank">包装辅助</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=678" target="_blank">陶瓷包装</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=31" target="_blank"><strong>办公/文教</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=307" target="_blank">装订用品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=334" target="_blank">胶片胶卷</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=456" target="_blank">库存音像</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=459" target="_blank">库存图书</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=479" target="_blank">库存办公</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=582" target="_blank">复读机类</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=684" target="_blank">笔类用品</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=687" target="_blank">眼镜配件</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=690" target="_blank">学习文具</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=692" target="_blank">簿本册类</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=40" target="_blank"><strong>代理/加盟</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=1267" target="_blank">区域代理</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1268" target="_blank">特许经营</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1269" target="_blank">产品代理</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1270" target="_blank">其他代理</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1271" target="_blank">橡塑代理</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1272" target="_blank">仪器代理</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1273" target="_blank">服装代理</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1274" target="_blank">服饰代理</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1275" target="_blank">鞋件代理</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1276" target="_blank">纺织代理</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=41" target="_blank"><strong>加工/代工</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=865" target="_blank">喷涂加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=868" target="_blank">美容加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1237" target="_blank">卡类印刷</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1238" target="_blank">特种印刷</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1239" target="_blank">生活印刷</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1240" target="_blank">产品印刷</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1241" target="_blank">鞋件加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1242" target="_blank">纺织加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1243" target="_blank">电子加工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=1244" target="_blank">塑料加工</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </ul>
+                          </span>
+                                                                     <span><a href="http://www.hyuan123.net/sell/list.php?catid=42" target="_blank"><strong>项目/合作</strong></a>
+                           <ul>
+                                                                                                              <em><A href="http://www.hyuan123.net/sell/list.php?catid=90" target="_blank">五金合作</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=116" target="_blank">化工项目</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=174" target="_blank">精细化工</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=283" target="_blank">转让项目</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=289" target="_blank">租赁服务</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=326" target="_blank">印刷项目</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=344" target="_blank">纸品项目</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=363" target="_blank">医药项目</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=370" target="_blank">保健项目</A></em>
+                                                                                                               <em><A href="http://www.hyuan123.net/sell/list.php?catid=402" target="_blank">家电项目</A></em>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+                          </span>
+                                                    </div>
+</li>
+                    
+                </ul>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+(function(){
+
+var $subblock = $(".subpage"), $head=$subblock.find('h2'), $ul = $("#proinfo"), $lis = $ul.find("li"), inter=false;
+
+$head.click(function(e){
+e.stopPropagation();
+if(!inter){
+$ul.show();
+}else{
+$ul.hide();
+}
+inter=!inter;
+});
+
+$ul.click(function(event){
+event.stopPropagation();
+});
+
+$(document).click(function(){
+$ul.hide();
+inter=!inter;
+});
+$lis.hover(function(){
+if(!$(this).hasClass('nochild')){
+$(this).addClass("prosahover");
+$(this).find(".prosmore").removeClass('hide');
+}
+},function(){
+if(!$(this).hasClass('nochild')){
+if($(this).hasClass("prosahover")){
+$(this).removeClass("prosahover");
+}
+$(this).find(".prosmore").addClass('hide');
+}
+});
+
+})();
+</script>
+<div class="m">
+<div class="postit">当前位置: <a href="http://www.hyuan123.net/">首页</a> &gt; <a href="http://www.hyuan123.net/group/">团购</a></div>
+<div class="left_box">
+<div class="category">
+<p><img src="http://www.hyuan123.net/skin/demo1688/image/arrow.gif" width="17" height="12" alt=""/> <strong>按分类浏览</strong></p>
+<div>
+<table width="100%" cellpadding="3">
+</table>
+</div>
+</div><div class="list_group">
+</div>
+</div>
+</div>
+<div class="m b10">&nbsp;</div>
+<div class="m m_foot">
+  <div id="footer-v1" class="mod-footer">
+   <div class="footer-container">
+     <div class="footer-ali-pages">
+       <ul>
+<li><a href="http://www.hyuan123.net/">网站首页</a> | </li>
+<li><a href="http://www.hyuan123.net/sitemap/">网站地图</a> | </li>
+<li><a href="http://www.hyuan123.net/guestbook/">网站留言</a> | </li><li><a href="http://www.hyuan123.net/ad/">广告服务</a> | </li><li><a href="http://www.hyuan123.net/gift/">积分换礼</a> | </li><li><a href="http://www.hyuan123.net/feed/">RSS订阅</a> | </li><li><a href="http://www.miibeian.gov.cn" target="_blank">苏ICP备13053988号-2</a></li> 
+      </ul>
+    </div>
+    <div class="footer-ali-copyright">
+      <p>(c)2010-2016 ISUYOU B2B SYSTEM All Rights Reserved</p>
+    </div>
+    <div class="footer-ali-certs">
+      <div class="certs-icons">
+        <img src="http://www.hyuan123.net/skin/demo1688/images/454620_1451252140.png" alt="许可证" usemap="#certs-icons-img" />
+        <map name="certs-icons-img">
+          <area shape=rect coords="0,0,125,57" href="http://www.cyberpolice.cn/wfjb/html/index.shtml" title="网络警察" target="_blank">
+          <area shape=rect coords="136,0,290,57" href="#" title="网警备案" target="_blank">
+          <area shape=rect coords="290,0,425,57" href="#" title="网络工商" target="_blank">
+          <area shape=rect coords="425,0,555,57" href="#" title="江苏省网站信用联盟" target="_blank">
+          <area shape=rect coords="555,0,708,57" href="#" title="可信网站" target="_blank">
+        </map>
+      </div>
+    </div><br />
+  </div>
+</div>
+</div>
+<div id="back2top" class="back2top"><a href="javascript:void(0);" title="返回顶部">&nbsp;</a></div>
+<script type="text/javascript">
+show_task('moduleid=17&html=index');
+$(function(){$("img").lazyload();});$('#back2top').click(function() {
+$("html, body").animate({scrollTop:0}, 200);
+});
+</script>
+</body>
+</html>
