@@ -1,0 +1,22 @@
+{php $child = get_maincat(0, $mid, 2);}
+{loop $child $i $c}
+{if $i%2==0}<div class="article-left cell-article{if $i==0} first{elseif $i==4} last{else}{/if}">{/if}
+  <div class="cell">
+    <div class="img-hold">
+	 <!--{php $tags=tag("moduleid=21&condition=status=3 and level=5&catid=".$c[catid]."&areaid=$cityid&order=addtime desc&pagesize=1&template=null");}-->
+         {loop $tags $k $t}
+         <a href="{$t[linkurl]}" title="{$t[alt]}" class="a-mix" target="_blank"><img alt="{$t[alt]}" width="275" height="auto" src="{imgurl($t[thumb], 1)}">
+         <div class="description"></div>
+         <span class="text">{dsubstr($t[alt], 40)}</span></a>
+         {/loop}
+    </div>
+      <ul class="club-link">
+	 <!--{php $tags=tag("moduleid=21&condition=status=3 and level=1&length=30&catid=".$c[catid]."&areaid=$cityid&order=addtime desc&pagesize=2&template=null");}-->
+         {loop $tags $k $t}
+        <li><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[alt]}</a></li>
+         {/loop}
+      </ul>
+  </div>
+{if $i%2==0}<div class="spacing"></div>{/if}
+{if $i%2==(2-1)}</div>{/if}    
+{/loop}

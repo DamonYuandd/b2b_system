@@ -1,0 +1,118 @@
+
+
+<!--分类开始-->
+{php $numa = 36;$numb = 0;$numc = 0;}
+{php $mid = $moduleid;}
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+{if $i<10 && $c[child]}
+{php $sub = get_maincat($c[catid], $mid, 1);}
+
+<div class="mod-a">
+ <div class="center_header">
+      <ul class="fd-right">
+        <li class="first-col"><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" target="_blank">更多...</a></li></ul>
+      <h2 class="center_titleindex">{set_style($c[catname], $c[style])}</h2>
+ </div>
+     <div class="region-industry mod-smart">
+            <div class="mod_body">
+  <div class="mod-industry obj-category"> 
+    <div class="contentindex_center">
+                         {loop $sub $j $s}
+				         {if $j<4}
+                          <li>
+                           <div>
+                             <a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank"><strong>{set_style($s[catname], $s[style])}</strong></a>
+                           </div>  
+                           <span>
+                           {if $s[child]}{php $sub = get_maincat($s[catid], $mid, 1);}
+                           {loop $sub $k $t}
+                            {if $k<4}
+                            <em><A href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank">{set_style($t[catname], $t[style])}</A></em>
+                            {/if}
+                           {/loop}
+                           {/if}
+                           </span>
+                          </li>
+                         {/if}
+				         {/loop}
+
+    </div>
+    <!--{php $tags=tag("moduleid=$moduleid&condition=level=1 and thumb<>''&catid=".$c[catid]."&pagesize=1&template=null");}-->
+                 {loop $tags $z $v} 
+                 <div class="comad">              
+                 <p  style="text-align:center; overflow:hidden">
+                    <img src="{$v[thumb]}" alt="{$v[company]}"></p>
+                <ul class="company-name">
+                    <li class="f14"><a href="/com/{$v[username]}" hidefocus="" target="_blank">{$v[company]}</a></li>
+                </ul>
+                <p class="explain blue">
+                    <a href="/com/{$v[username]}" hidefocus="" target="_blank">公司主站</a>  
+                    <a href="/com/{$v[username]}/contact" hidefocus="" target="_blank">联系方式</a>
+                </p>
+                </div>
+                {/loop}
+
+  </div>
+  
+  <div class="mod-industry obj-info">
+    <div id="hot-news-1" class="hot-news cell-hot-market">
+          <ul class="hot-img2">
+<!--{php $tags=tag("moduleid=5&condition=status=3 and level=1 and thumb<>''&catid=".$c[catid]."&areaid=$cityid&order=addtime desc&pagesize=4&template=null");}-->
+      {loop $tags $i $t}
+		  <li><a class="img" title="{$t[alt]}" href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="130" height="130"></a>
+          <p class="f-tab-text"><a title="{$t[alt]}" href="{$t[linkurl]}" target="_blank">{$t[title]}</a></p>
+          <p class="f-tab-text f_price">价格：￥{$t[price]}</p>
+          <!--<p class="f-tab-text">{$t[keyword]}</p>-->
+          <p class="f-tab-text f_huise">{$t[company]}</p>
+          </li>
+      {/loop}
+          </ul>
+          
+      </div>
+
+    <div class="content_tuijian_left">
+<!--{php $tags=tag("moduleid=5&condition=status=3 and level=1&catid=".$c[catid]."&pagesize=2&template=null");}-->
+    {loop $tags $n $m} 
+    <div>
+       <li class="f_b t_c" style="padding:3px 0 5px 0;"><a class="px18 f_orange" href="/com/{$m[username]}" target="_blank">{$m[company]}</a></li> 
+       <li></li>
+       <li>主营项目：{dsubstr($m[keyword], 36)}</li>
+       <li>联系电话：{$m[telephone]}</li>
+       <li>公司地址： {$m[address]}</li>
+    </div>   
+    {/loop}
+         
+    </div>
+    <div class="contentindex_right">
+      <ul class="cell-rank-list">
+<!--{php $tags=tag("moduleid=5&condition=status=3 and level=2&catid=".$c[catid]."&length=30&areaid=$cityid&order=hits desc&pagesize=10&template=null");}-->
+      {loop $tags $i $t}
+       <li class="rank<?php echo $i+1;$i++?>"><span class="count">{$t[hits]}次</span><a title="{$t[alt]}" href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+      {/loop}
+      </ul>
+      
+      
+    </div>
+  </div>
+  
+            </div>
+  <div class="obj-event">
+    <div class="contentindex_left">
+<!--{php $tags=tag("moduleid=5&condition=status=3 and level=2&catid=".$c[catid]."&areaid=$cityid&order=hits desc&pagesize=5&template=null");}-->    
+    {loop $tags $k $t}
+      <li>
+       <p class="SampleTitle"><a href="/com/{$t[username]}" target="_blank">{$t[company]}</a></p>
+       <p>主营：{dsubstr($t[keyword], 20)}</p>
+       <p>电话：{$t[telephone]}</p>
+       <p>地址：{$t[address]}</p>
+      </li>
+    {/loop}   
+    </div>  
+  </div>
+  
+            </div>
+            </div>
+{php $numb = 0;}
+{/if}
+{/loop}

@@ -1,0 +1,48 @@
+{php $CSS = array('exhibit');}
+{template 'header'}
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
+<div class="advlist"><p>您当前的位置：<a href="{$MODULE[1][linkurl]}">首页</a><b>&gt;</b><a href="{$MOD[linkurl]}">{$MOD[name]}</a><b>&gt;</b>{cat_pos($CAT, '<b>&gt;</b>')}</p></div>
+<div class="contentex">
+  <div class="con-left fl">
+		{if $CP}
+		{loop $PPT $p}
+		<div class="ppt">
+			<table cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td class="ppt_l" valign="top">按{$p[name]}</td>
+			<td class="ppt_r" valign="top">
+			{loop $p[options] $o}
+			<a href="###" onclick="Go(sh+'&ppt_{$p[oid]}={urlencode($o)}');">{$o}</a>&nbsp;|&nbsp;
+			{/loop}
+			</td>
+			</tr>
+			</table>
+		</div>
+		{/loop}
+		{/if}
+		<div class="b10">&nbsp;</div>
+		{if $tags}{template 'newlist-'.$module, 'tag'}{/if}
+  </div>
+  <div class="con-right fr">
+    <div class="banner-r"><img src="{DT_SKIN}images/260x180.gif" alt="2013第三届中国（长治）国际煤炭工业装备与新能源产业展"/></div>
+   <div class="this-month">
+       <h2 class="show-title-h2"><strong>本月关注排行</strong></h2>
+		<div class="rank_list">
+			<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status>2 and updatetime>$today_endtime-86400*30&pagesize=10&order=month_search desc&key=month_search&template=list-search_rank", -2)}-->
+		</div>		
+   </div>
+   <div class="b10">&nbsp;</div>
+   <div class="this-month">
+       <h2 class="show-title-h2">
+        <strong>热门展会</strong>
+       </h2>
+       <ul class="month-list">
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3&length=36&showcat=1&condition=status=3&pagesize=8&order=hits desc&template=null");}-->
+{loop $tags $i $t}
+              <li><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+{/loop}            
+       </ul>
+   </div>
+  </div>
+</div>
+{template 'footer'}

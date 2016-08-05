@@ -1,0 +1,47 @@
+{loop $tags $k $t}
+	<li class="sw-mod-offerImg" id="item_{$t[itemid]}">
+	   <ul class="fd-clr">
+    		<li class="sw-mod-offer-block">
+    		    <div class="sw-ui-photo100">
+       		       <a class="sw-ui-photo100-box" href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="150" height="150"border="0" alt="{$t[alt]}" onmouseover="img_tip(this, this.src);" onmouseout="img_tip(this, '');"></a>
+                   <a class="corner-mark-100x100" href="{$t[linkurl]}"></a>
+    		    </div>
+			</li>
+			<li class="sw-mod-offer-block sw-block-description">
+    		    <h2 class="sw-mod-offerImg-title">
+                <input type="checkbox" id="check_{$t[itemid]}" name="itemid[]" value="{$t[itemid]}" onclick="sell_tip(this, {$t[itemid]});"/>
+       		       <a class="sw-ui-font-title14" href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a>
+       		       {if $t[vip]}<a rel="nofollow" class="sw-ui-icon-king" target="_blank" href="{$MODULE[2][linkurl]}grade.php"></a>{/if}                   
+    		    </h2>
+    		    <div class="sw-mod-offerImg-des">
+    		      <p><span>{$t[introduce]}</span></p>
+    		    </div>
+			</li>
+			<li class="sw-mod-offer-block sw-block-price">
+    		    {if $t[unit] && $t[price]>0}<p><span class="sw-ui-font-priceIcon">{$t[price]}/<span class="priceUnit">{$t[unit]}</span></span></p>
+                {else}
+    		    <p><span class="sw-ui-font-priceIcon">面议</span></p>
+    		    {/if}
+                
+    		   <p class="sw-mod-offerImg-attribute-p2">浏览 {$t[hits]} 次</p>
+    		     <p>{$t[minamount]} {$t[unit]} 起订</p> 
+			</li>
+			<li class="sw-mod-offer-block sw-block-company">
+    		    <p><a href="{userurl($t[username])}" class="sw-mod-previewCompanyInfo" target="_blank" >{$t[company]}</a></p>
+    		    <p class="sw-mod-offerImg-attribute-p2"><span class="sw-mod-offerImg-company-place"> {area_pos($t[areaid], '')}</span></p>	
+    		    <p class="sw-mod-offerImg-summary sw-fn-clear">
+                {if $t[vip]}<a rel="nofollow" class="sw-ui-icon-mincxt-v" href="{$MODULE[2][linkurl]}grade.php" target="_blank" title="建议您优先选择{VIP}会员">第<em>{vip_year($member[fromtime])}</em>年</a><i>|</i>{/if}
+                {if $t[validated]}<a rel="nofollow" class="sw-ui-icon-trueLocation" href="#" target="_blank" title="该企业已核实"></a>{else}<span class="sw-ui-font-unIdentify">公司未认证</span>{/if}
+                </p>	
+			</li>
+			<li class="sw-mod-offer-block sw-block-feedback">
+			{if $t[username] && $DT[im_web]}<p>{im_web($t[username].'&mid='.$moduleid.'&itemid='.$t[itemid])}</p>{/if}
+			{if $t[qq] && $DT[im_qq]}<p>{im_qq($t[qq])}</p>{/if}
+			{if $t[ali] && $DT[im_ali]}<p>{im_ali($t[ali])}</p>{/if}
+			{if $t[msn] && $DT[im_msn]}<p>{im_msn($t[msn])}</p>{/if}
+			{if $t[skype] && $DT[im_skype]}<p>{im_skype($t[skype])}</p>{/if}
+			</li>
+	   </ul>
+	</li>
+{/loop}		
+

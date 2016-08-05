@@ -1,0 +1,102 @@
+{php $CSS = array('exhibit');}
+{template 'header'}
+<div class="advshow"><p>您当前的位置：<a href="{$MODULE[1][linkurl]}">首页</a><b>&gt;</b><a href="{$MOD[linkurl]}">{$MOD[name]}</a><b>&gt;</b>{cat_pos($CAT, '<b>&gt;</b>')}<b>&gt;</b><strong class="cor-blue">{$title}</strong></p></div>
+<div class="contentshow">
+ <div class="con-left fl">
+   <div class="con-left1">
+       <h3>{$title}</h3>
+      <div class="show-new-list">
+        <span class="f_r"><img src="{DT_SKIN}image/zoomin.gif" width="16" height="16" alt="放大字体" class="c_p" onclick="fontZoom('+');"/>&nbsp;&nbsp;<img src="{DT_SKIN}image/zoomout.gif" width="16" height="16"  alt="缩小字体" class="c_p" onclick="fontZoom('-');"/></span>
+		发布日期：{$adddate}
+		&nbsp;&nbsp;浏览次数：<span id="hits">{$hits}</span>
+		&nbsp;&nbsp;状态：<img src="{DT_PATH}file/image/process_{$process}.gif" id="process" alt="状态" align="absmiddle"/>
+      </div>
+		<div class="b10 c_b">&nbsp;</div>
+			<table cellspacing="1" cellpadding="10" width="100%" class="ctb">
+			<tr>
+			<td class="ltd">展会日期</td>
+			<td class="rtd">{$fromtime} 至 {$totime}</td>
+			</tr>
+			<tr>
+			<td class="ltd">展出城市</td>
+			<td class="rtd">{$city}</td>
+			</tr>
+			<tr>
+			<td class="ltd">展出地址</td>
+			<td class="rtd">{$address}</td>
+			</tr>
+			<tr>
+			<td class="ltd">展馆名称</td>
+			<td class="rtd">{$hallname}</td>
+			</tr>
+			<tr>
+			<td class="ltd">主办单位</td>
+			<td class="rtd">{$sponsor}</td>
+			</tr>
+			{if $undertaker}
+			<tr>
+			<td class="ltd">承办单位</td>
+			<td class="rtd">{$undertaker}</td>
+			</tr>
+			{/if}
+			</table>
+      <div class="show-intro">
+        <h4 class="show-introh">展会说明</h4>
+        <div id="content">{template 'content', 'chip'}</div>
+      </div>
+			{if $remark}
+      <div class="show-intro">
+        <h4 class="show-introh">展会备注</h4>
+        <div class="lh18 px13">{nl2br($remark)}</div>
+      </div>
+			{/if}
+   </div>
+		{if $CP}{template 'property', 'chip'}{/if}
+   <p class="release-unit">
+		<center>
+		[ <a href="{$MOD[linkurl]}search.php">{$MOD[name]}搜索</a> ]&nbsp;
+		[ <script type="text/javascript">addFav('加入收藏');</script> ]&nbsp;
+		[ <a href="javascript:Dd('sendmail').submit();void(0);">告诉好友</a> ]&nbsp;
+		[ <a href="javascript:Print();">打印本文</a> ]&nbsp;
+		[ <a href="javascript:window.close()">关闭窗口</a> ]
+		</center>
+   </p>  
+		{template 'comment', 'chip'}
+ </div>
+  <div class="con-right fr">
+    <div class="banner-r"><img src="{DT_SKIN}images/260x180.gif" alt="2013第三届中国（长治）国际煤炭工业装备与新能源产业展"/></div>
+   <div class="this-month">
+       <h2 class="show-title-h2"><strong>本月关注排行</strong></h2>
+		<div class="rank_list">
+			<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status>2 and updatetime>$today_endtime-86400*30&pagesize=10&order=month_search desc&key=month_search&template=list-search_rank", -2)}-->
+		</div>		
+   </div>
+<div class="b10">&nbsp;</div>   
+   <div class="this-month">
+       <h2 class="show-title-h2">
+        <strong>最新{$MOD[name]}</strong>
+       </h2>
+       <ul class="month-list">
+<!--{php $tags=tag("moduleid=$moduleid&condition=status>2&areaid=$cityid&order=".$MOD[order]."&pagesize=10&template=null");}-->
+{loop $tags $i $t}
+              <li><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+{/loop}            
+       </ul>
+   </div>
+<div class="b10">&nbsp;</div>   
+   <div class="this-month">
+       <h2 class="show-title-h2">
+        <strong>热门展会</strong>
+       </h2>
+       <ul class="month-list">
+       
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3&length=36&showcat=1&condition=status=3&pagesize=8&order=hits desc&template=null");}-->
+{loop $tags $i $t}
+              <li><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+{/loop}            
+       </ul>
+   </div>
+  </div>
+{template 'zoom', 'chip'}
+</div>
+{template 'footer'}

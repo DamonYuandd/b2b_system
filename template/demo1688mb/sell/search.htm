@@ -1,0 +1,227 @@
+{php $CSS = array('selllist');}
+{template 'header'}
+
+<div class="sw-layout-w990">
+<div class="sw-mod-navigatebar selloffer fd-clr">
+	<ul>
+    	 <li class="wholeCat"><a href="{$MODULE[1][linkurl]}" target="_self" title="首页">首页</a></li>
+    	 <li><a href="{$MOD[linkurl]}" target="_self" title="{$MOD[name]}">{$MOD[name]}</a></li>
+    	 <li><a href="{$MOD[linkurl]}search.php">搜索结果</a></li>
+    	 <li id="breadCrumbText" class="result">共找到<em>{$items}</em>条产品信息</li>
+    	 <li class="activityLogo"><a href="#"><span style="display:none;">true</span></a></li>
+    </ul>
+    <div class="header-splitLine"></div>
+</div>
+	<div id="doc" class="sw-layout-doc"> 
+	  <div id="content" class="sw-layout-content">
+		<div id="sw_mod_sn" class="sw-mod-sn sw-layout-mod">
+			
+		</div>
+        {if $kw}
+        <div class="sw-mod-related sw-layout-mod" trace="recwords">
+              <strong>您是不是在找：</strong>	
+              {if $page==1 && $kw}
+		{ad($moduleid,$catid,$kw,6)}
+		{load('m'.$moduleid.'_k'.urlencode($kw).'.htm')}
+		{/if}
+        </div>
+        {/if}
+		{if $tags}
+		<form method="post">
+		<div class="sell_tip" id="sell_tip" style="display:none;" title="双击关闭" ondblclick="Dh(this.id);">
+			<div>
+				<p>您可以</p>
+				<input type="submit" value="对比选中" onclick="this.form.action='{$MOD[linkurl]}compare.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/> 或 
+				<input type="submit" value="批量询价" onclick="this.form.action='{$MOD[linkurl]}inquiry.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>
+			</div>
+		</div>
+		<div class="img_tip" id="img_tip" style="display:none; left:389px !important;">&nbsp;</div>
+
+    <div class="sw-ui-tab selltab">
+		<ul>
+		   	 <li class="sellimg">图片</li>
+		   	 <li class="sellinfo">供应信息</li>
+		   	 <li class="sellprice">价格</li>
+		   	 <li class="sellcom">公司信息</li>
+		</ul>
+		<div class="mode">
+			{if $list == 1}
+			 <a rel="nofollow" class="selected-window " title="以图片列表方式展示"></a>
+			{else}
+			 <a rel="nofollow" class="select-window " onclick="Dd('list').value=1;Dd('fsearch').submit();" title="以图片列表方式展示"></a>
+			{/if}
+			{if $list == 0}
+			<a rel="nofollow" class="selected-img selected-position-right" title="以图文列表方式显示"></a>
+			{else}
+			<a rel="nofollow" class="select-img selected-position-right" onclick="Dd('list').value=0;Dd('fsearch').submit();" title="以图文列表方式显示"></a>
+			{/if}
+		</div>
+    </div>
+<div class="sw-mod-filter sw-layout-mod" id="sw_mod_filter" trace="filtbar">
+<div class="filter-bottom-wrap">
+  <div id="filter_bottom" class="filter-bottom">
+		<ul>
+              <li class="sw-ui-select"><input type="checkbox" onclick="checkall(this.form);"/></li>
+              <li class="sw-ui-select"><input type="submit" value="对比选中" onclick="this.form.action='{$MOD[linkurl]}compare.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/></li>
+              <li class="sw-ui-select"><input type="submit" value="批量询价" onclick="this.form.action='{$MOD[linkurl]}inquiry.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/></li>
+              <li class="sw-ui-select">
+			      <select onchange="Go(sh+'&areaid='+this.value)">
+			      <option value="0">按地区选择</option>
+			      {php $mainarea = get_mainarea(0)}
+			      {loop $mainarea $k $v}
+			      <option value="{$v[areaid]}">{$v[areaname]}</option>
+			      {/loop}
+			      </select>
+              </li>
+              <li class="sw-ui-select">
+			<select onchange="Go(sh+'&day='+this.value)" class="select-province">
+			<option value="0">更新时间</option>
+			<option value="1">1天内</option>
+			<option value="3">3天内</option>
+			<option value="7">7天内</option>
+			<option value="15">15天内</option>
+			<option value="30">30天内</option>
+			</select>
+            </li> 
+              <li class="sw-ui-select">
+			<select onchange="Go(sh+'&order='+this.value)">
+			<option value="0">显示顺序</option>
+			<option value="2">价格由高到低</option>
+			<option value="3">价格由低到高</option>
+			<option value="4">{VIP}级别由高到低</option>
+			<option value="5">{VIP}级别由低到高</option>
+			<option value="6">供货量由高到低</option>
+			<option value="7">供货量由低到高</option>
+			<option value="8">起订量由高到低</option>
+			<option value="9">起订量由低到高</option>
+			</select>
+            </li> 
+		</ul>
+  </div>
+</div>
+</div>    
+		<div id="sw_mod_mainblock" class="sw-mod-mainblock sw-layout-mod">
+		{if $list==1}
+    <div id="main-search-content" class="main-search-content">
+<table cellpadding="5" cellspacing="5" width="100%">
+{loop $tags $k $t}
+{if $k%4==0}<tr>{/if}
+<td valign="top" width="20%" id="item_{$t[itemid]}">
+	<table cellpadding="3" cellspacing="3" width="100%">
+	<tr align="center">
+	<td class="thumb"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="170" height="170" alt="" onmouseover="img_tip(this, this.src);" onmouseout="img_tip(this, '');" class="bd"/></a></td>
+	</tr>
+	<tr align="center">
+	<td class="thumb">
+	<ul>
+	<li><input type="checkbox" id="check_{$t[itemid]}" name="itemid[]" value="{$t[itemid]}" onclick="sell_tip(this, {$t[itemid]});"/> <a href="{$t[linkurl]}" target="_blank" class="px13 f_n">{$t[title]}</a></li>
+	</ul>
+	<div style="padding:5px 0 0 0;">
+		{if $t[unit] && $t[price]>0}
+			<span class="f_red"><strong class="px14">{$t[price]}</strong>/{$t[unit]}</span><br/>
+		{else}
+		<span class="f_gray">面议</span><br/>
+		{/if}
+		<a href="{$path}{rewrite('inquiry.php?itemid='.$t['itemid'])}" class="l"><img src="{DT_SKIN}image/inquiry.gif" title="询价" style="border:none;"/></a>
+	</div>
+	<ul>
+	<li>{if $t[vip]}<img src="{DT_SKIN}image/vip.gif" alt="级别：{$t[vip]}" style="border:none;" align="absmiddle"/>&nbsp;{/if}<a href="{userurl($t[username])}" target="_blank">{$t[company]}</a></li>
+	</ul>
+	</td>
+	</tr>
+	<tr align="center">
+	<td>
+	{if $t[username] && $DT[im_web]}{im_web($t[username].'&mid='.$moduleid.'&itemid='.$t[itemid])}&nbsp;{/if}
+	{if $t[qq] && $DT[im_qq]}{im_qq($t[qq])}&nbsp;{/if}
+	{if $t[ali] && $DT[im_ali]}{im_ali($t[ali])}&nbsp;{/if}
+	{if $t[msn] && $DT[im_msn]}{im_msn($t[msn])}&nbsp;{/if}
+	{if $t[skype] && $DT[im_skype]}{im_skype($t[skype])}</a>&nbsp;{/if}
+	</td>
+	</tr>
+	</table>
+</td>
+{if $k%4==3}</tr>{/if}
+{/loop}
+</table>
+{if $pages}<div class="pages">{$pages}</div>{/if}
+    </div>		
+		{else}
+        
+    <div id="main-search-content" class="main-search-content">
+    	<div class="purchase-list">
+    		<ul>
+		
+					{template 'newlist-'.$module, 'tag'}
+    		</ul>
+    	</div> 
+    </div>		
+		{/if}
+
+<div class="sw-layout-sub">
+	<div class="delayshow">	
+		<div class="sw-mod-whitegold">
+   			 <div class="expo-hd" title="黄金展位企业——实力铸就品牌"> <a href="{$EXT[ad_url]}" target="_blank" class="expo-title"><span>黄金展位供应商</span></a></div> 
+			<div class="sw-mod-gold">
+                {ad($moduleid,$catid,$kw,7)}
+                <div class="hzBox">
+                    <div class="showImg"><a href="#" target="_blank"><img src="{DT_SKIN}images/sell/zzs.jpg" title="黄金展位企业——实力铸就品牌"></a></div>
+                    <div class="companyname"><a href="#"  target="_blank" class="hzCompName" title="苏州市某某科技有限公司">苏州市某某科技有限公司</a></div>
+                    <div class="contphone"><a href="#" target="_blank" title="0512-88888888">电话：0512-88888888</a></div>
+                </div>
+			</div>
+		</div>
+        <div class="rightp4pHead">热门推荐</div>
+        <div class="sw-mod-rightp4p">
+            <div class="rightp4p">
+                 <ul>
+          <!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>'' and level=1 and addtime>$today_endtime-90*86400&catid=$catid&pagesize=4&areaid=$cityid&order=addtime desc&template=null");}-->
+            {loop $tags $i $t}
+                   <li class="p4poffer top">
+                        <div class="p4pImg"><a class="tag" href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{$t[thumb]}" width="148"></a></div>
+                        <p class="adtitle"><a href="{$t[linkurl]}" target="_blank" class="aTitle tag" title="{$t[alt]}">{$t[title]}</a></p>
+                        <p class="bold"><span class="rmb">{if $t[unit] && $t[price]>0} {$t[price]} / {$t[unit]} {else} 面议 {/if}</span></p>
+                   </li>
+            {/loop}
+
+                 </ul>
+            </div>
+        </div>
+ <div class="sw-mod-keywordHotTop sw-layout-mod">
+	<h3><a href="#" target="_blank">搜索热门榜</a></h3>
+	<div class="sw-mod-keywordHotTop-words">
+    <!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3&pagesize=10&order=week_search desc&key=week_search&template=newlist-search_rank", -2)}-->
+    </div>
+</div>
+		</div>
+</div>
+			</div>
+</form>
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+
+<div class="sw-mod-moreInfo sw-layout-mod">没有找到适合的<strong></strong>供应商？<a rel="nofollow" class="sw-ui-btn-g20" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6&action=add" target="_blank"><span>马上发布询价单</span></a><!--<a href="{DT_PATH}top" target="_blank"><i></i>查看搜索排行榜</a>--><a rel="nofollow" class="slashend" href="{$MODULE[10][linkurl]}" target="_blank">去生意经求助</a></div>
+       {template 'ad_listtuijian', 'chip'}
+    	<div id="sw_mod_bank" class="sw-mod-bank sw-layout-mod">
+         	<h3>免责声明： 以上所展示的信息由企业自行提供，内容的真实性、准确性和合法性由发布企业负责。本站对此不承担任何责任！</h3>
+    	</div>
+<div  class="sw-mod-bottomsearch sw-layout-mod">
+  <div class="bottom-search-content fd-clr">
+        <ul class="bottom-search-tabs fd-clr" trace="productlinetabs">
+			 <li class="no_ml"><span class="b">供应</span></li>
+			 <li><a href="{$MODULE[6][linkurl]}search.php">求购</a></li>
+			 <li><a href="{$MODULE[4][linkurl]}search.php">公司</a></li>
+        </ul>
+        <div class="bottom-seach-input fd-clr">
+            <form action="{$MOD[linkurl]}search.php" id="fsearch">
+                <input type="text" maxLength="54" name="kw" value="" class="s_key"/>
+                <input type="submit" value="搜索" class="b ml7px butheight" />
+            </form>
+        </div>
+    </div>
+</div>
+    	</div>
+   </div>
+   </div>
+<script type="text/javascript" src="{DT_SKIN}js/cat.js"></script>
+{template 'footer'}

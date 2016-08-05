@@ -1,0 +1,5 @@
+{php global $PROCESS;}
+{loop $tags $i $t}
+<li{if $i==0} class="first-col"{/if}><span class="f_r">{$t[answer]}回答</span><a class="tags" href="{$t[caturl]}" title='阿里助手'>[{$t[catname]}]</a> <a class="txt" href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a></li>
+{/loop}		
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

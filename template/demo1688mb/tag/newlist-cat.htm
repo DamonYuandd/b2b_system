@@ -1,0 +1,15 @@
+<div class="unv-list">
+<ul>
+{loop $tags $i $t}
+<li>
+<div>
+<a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><strong>{$t[title]}</strong><br></a>
+<p>{$t[introduce]}</p>
+<span><span>{timetodate($t[addtime], 3)} 更新</span>  <label>栏目：</label><em>{$catname} {$t[tag]}</em></span>
+</div>
+<i></i>
+</li>
+{/loop}
+</ul>
+</div>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

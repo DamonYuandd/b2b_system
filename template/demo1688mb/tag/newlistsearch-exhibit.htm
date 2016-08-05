@@ -1,0 +1,12 @@
+{loop $tags $i $t}
+	 <div class="offer-content">
+				 <div class="offerdetail">
+				     <h3 class="titlesearch"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a> <img src="{DT_PATH}file/image/process_{get_process($t[fromtime], $t[totime])}.gif" align="absbottom"/></h3>
+				     <p class="param-group">地址：{$t[address]}</p>
+				     <p class="mark"> 展出城市：{$t[city]} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;展会时间：{timetodate($t[fromtime], 3)} ~ {timetodate($t[totime], 3)} </p>
+				 </div>
+			<div class="Clear"></div>
+	 </div>
+{/loop}
+
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

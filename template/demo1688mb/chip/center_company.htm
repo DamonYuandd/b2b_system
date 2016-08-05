@@ -1,0 +1,79 @@
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}css/css/all.css"/>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}css/css/company.css"/>
+<!--分类1开始-->
+{php $mid = $moduleid;}
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+{if $i<10 && $c[child]}
+{php $sub = get_maincat($c[catid], $mid, 1);}
+    <div class="wrapper">
+        <div class="leftbar mt15">
+            <div class="comad">
+                <p class="comtitle"><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" target="_blank">{set_style($c[catname], $c[style])}</a></p> 
+                
+<!--{php $tags=tag("moduleid=$moduleid&condition=level=1 and thumb<>''&catid=".$c[catid]."&pagesize=1&template=null");}-->
+                 {loop $tags $z $v} 
+                 <div>              
+                 <p class="mt15" style="text-align:center; overflow:hidden">
+                    <img src="{$v[thumb]}" alt="{$v[company]}"></p>
+                <ul class="company-name">
+                    <li class="f14"><a href="{$v[linkurl]}" hidefocus="" target="_blank">{$v[company]}</a></li>
+                    <li class="gray">主营项目：<span class="mr10">{dsubstr($v[business], 22)}</span></li>
+                </ul>
+                <p class="explain blue">
+                    <a href="{$v[linkurl]}" hidefocus="" target="_blank">公司主站</a>  
+                    <a href="{$v[linkurl]}contact" hidefocus="" target="_blank">联系方式</a>
+                </p>
+                </div>
+                {/loop}
+            </div>
+            <div class="comshow">
+                <div class="comtitle1">
+                    <span class="fl f14">优选企业</span> 
+                    <span class="hot orange fr">
+        {loop $sub $j $s}
+		{if $j<6}
+        <li>
+            <h6 class="fd-left"><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank">{set_style($s[catname], $s[style])}</a></h6>
+        </li>
+       {/if} 
+       {/loop}
+                   </span>
+                </div>
+                <div class="compic">
+<!--{php $tags=tag("moduleid=$moduleid&condition=level=2 and thumb<>''&catid=".$c[catid]."&pagesize=4&template=null");}--> 
+                   {loop $tags $k $t}                  
+                    <dl>
+                        <dt><a href="{$t[linkurl]}" hidefocus="" target="_blank">
+                            <img src="{$t[thumb]}" alt="{$t[company]}"></a></dt>
+                        <dd class="f14">
+                            <a href="{$t[linkurl]}" hidefocus="" target="_blank">{$t[company]}</a></dd>
+                        <dd class="black mt10">
+                            主营项目：{dsubstr($t[business], 22)}</dd>
+                        <dd class="black">
+                            公司地址：{$t[address]}</dd>
+                    </dl>
+                   {/loop}
+                </div>
+            </div>
+        </div>
+        <div class="rightbar">
+            <div class="join mt15">
+                <p class="rtit">
+                    <span class="fl f14">最新加入企业</span></p>
+                
+    <ul>
+<!--{php $tags=tag("moduleid=$moduleid&catid=".$c[catid]."&pagesize=9&order=hits desc&template=null");}-->
+         {loop $tags $n $m}
+          <li><a href="{$m[linkurl]}" target="_blank">{$m[company]}</a></li>
+         {/loop}
+    </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+{/if}
+{/loop} 
+<!--分类1结束-->
+

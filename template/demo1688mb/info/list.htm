@@ -1,0 +1,78 @@
+{php $CSS = array('info');}
+{template 'header'}
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
+<div class="m">
+   <div class="w990"><div class="guide"><h1 class="tit">{$catname}</h1><span class="fl"><a href="{$MODULE[1][linkurl]}" class="en">首页</a>&nbsp;&gt;&nbsp;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&nbsp;&gt;&nbsp;{cat_pos($CAT, '&nbsp;&gt;&nbsp;')}</span></div></div>
+   
+    <div class="grid-m630s300 layout"> 
+		<div class="category">
+			<p><strong>按分类浏览</strong></p>
+			<div>
+			<table width="100%" cellpadding="3">
+			{loop $maincat $k $v}
+			{if $k%$MOD[page_subcat]==0}<tr>{/if}
+			<td{if $v[catid]==$catid} class="f_b"{/if}><a href="{$MOD[linkurl]}{$v[linkurl]}">{set_style($v[catname],$v[style])}</a> <span class="f_gray px10">({$v[item]})</span></td>
+			{if $k%$MOD[page_subcat]==($MOD[page_subcat]-1)}</tr>{/if}
+			{/loop}
+			</table>
+			</div>
+		</div>
+		{if $CP}
+		{loop $PPT $p}
+		<div class="ppt">
+			<table cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td class="ppt_l" valign="top">按{$p[name]}</td>
+			<td class="ppt_r" valign="top">
+			{loop $p[options] $o}
+			<a href="###" onclick="Go(sh+'&ppt_{$p[oid]}={urlencode($o)}');">{$o}</a>&nbsp;|&nbsp;
+			{/loop}
+			</td>
+			</tr>
+			</table>
+		</div>
+		{/loop}
+		{/if}
+      <div class="col-infomain">
+        <div class="main-wrap">
+          <div class="expPicF">{if $tags}{template 'newlist-'.$module, 'tag'}{/if}</div>
+        </div>
+      </div>
+      <div class="col-infosub f2">
+      <div class="dBoxA channelRecom">
+      <div class="thA"><strong class="mark">推荐{$catname}</strong></div>
+           <div class="tbA picLi">
+      <ul class="clearfix">
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and thumb<>'' and level>0&areaid=$cityid&order=addtime desc&pagesize=8&template=null");}-->
+            {loop $tags $i $t}
+               <li><div class="imgCon"><div class="img"><a target="_blank" title="{$t[alt]}" href="{$t[linkurl]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}" width="130" height="81" /></a></div><p class="box"><a target="_blank" title="{$t[alt]}" href="{$t[linkurl]}">{$t[title]}</a></p></div></li>
+            {/loop}               
+            </ul>
+      </div>
+      </div>
+    <div class="dBoxA channelRecom f1">
+       <div class="thA"><strong class="mark">热门{$catname}</strong></div>
+       <ul class="lst mod-lst">
+  <!--{php $tags=tag("moduleid=$moduleid&condition=status=3&areaid=$cityid&order=hits desc&pagesize=16&template=null");}-->
+            {loop $tags $i $t}
+          <li><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></li>
+            {/loop}               
+       </ul>
+    </div>
+    <div class="dBoxA channelRecom f1">
+       <div class="thA"><strong class="mark">按地区浏览</strong></div>
+       <div style="padding:10px 0 10px 20px;">
+		{php $mainarea = get_mainarea(0)}
+		<table width="100%" cellpadding="3">
+		{loop $mainarea $k $v}
+		{if $k%5==0}<tr>{/if}
+		<td><a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$v['areaid'])}">{$v[areaname]}</a></td>
+		{if $k%5==4}</tr>{/if}
+		{/loop}
+		</table>
+       </div>
+    </div>
+      </div>
+    </div>
+ </div>
+{template 'footer'}

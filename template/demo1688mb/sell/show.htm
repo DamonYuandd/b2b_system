@@ -1,0 +1,317 @@
+{php $CSS = array('sell_show');}
+{template 'header'}
+<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+<div class="m sell-head">
+<div class="mod-detail-crumb">
+	     <ul class="de-crumbs clr">
+		     <li><a href="{$MODULE[1][linkurl]}">首页</a></li><li class="de-st">&gt; </li><li><a href="{$MOD[linkurl]}">{$MOD[name]}</a></li><li class="de-st">&gt; </li><li class="de-st">{cat_pos($CAT, ' &gt; ')}</li><li><a href="{DT_PATH}feed/rss.php?mid=5&catid={$catid}" target="_blank" class="de-bookcrumb" title="订阅当前分类信息">订阅</a></li>
+	     </ul>
+	     <p class="de-remind">快捷方式：<a rel="nofollow" target="_blank" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid={$moduleid}&action=add&catid={$catid}">发布信息</a><span class="de-spacer">|</span> <a rel="nofollow" href="{$MODULE[2][linkurl]}favorite.php?action=add&title={urlencode($member[company])}&url={urlencode($member[linkurl])}">收藏公司</a></p>
+  </div>
+<div class="inBg">
+<div class="sell_content">
+<div class="d-summary clearfix">
+					 <div class="d-property">
+					<div class="d-wrap">
+                    <div class="mod-detail-hd"><h1>{$title}</h1></div>
+<div class="mod-detail-price" id="mod-detail-price">
+<div id="imgshow" style="display:none;"></div>
+	<table>
+		<thead class="de-price-hd">
+			<tr>
+				<th>产品/服务：</th>
+				<th>{$tag}</th>
+			</tr>
+		</thead>
+		<tbody>	  
+				{if $brand}
+				<tr>
+				<td class=bot>品 牌：</td>
+				<td class=bot>{$brand}</td>
+				</tr>
+				{/if}
+				{if $model}
+				<tr>
+				<td class=bot>型 号：</td>
+				<td class=bot>{$model}</td>
+				</tr>
+				{/if}
+				{if $standard}
+				<tr>
+				<td class=bot>规 格：</td>
+				<td class=bot>{$standard}</td>
+				</tr>
+				{/if}
+				<tr>
+				<td class=bot>有效期至：</td>
+				<td class=bot>{if $todate}{$todate}{else}长期有效{/if}{if $expired} <span class="f_red">[已过期]</span>{/if}</td>
+				</tr>
+				<tr>
+				<td class=bot>最后更新：</td>
+				<td class=bot>{$editdate}</td>
+				</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="mod-order clearfix">
+	<div class="d-skin">
+		<dl class="amount clearfix">
+			<dd class="fbold">单价：</dd>
+			<dd >{if $price>0} <em style="color:#F00; font-weight:bold; font-size:24px;">{$price}</em>{$DT[money_unit]}/ {$unit}{else} 面议{/if} </dd><dd class="dd_w"></dd>
+            {if $minamount}<dd class="fbold">最小起订量：</dd><dd>{$minamount} {$unit}</dd>{/if}<dd class="dd_w"></dd>
+            {if $amount}<dd class="fbold">供货总量：</dd><dd>{$amount} {$unit}</dd>{/if}
+        </dl>
+	<div class="d-action clearfix">
+            
+            <table>
+                {if $username && !$expired}
+				<tr>
+				<td colspan="2">
+				{if SELL_ORDER && $price>0 && $minamount>0 && $amount>0 && $unit}
+				<dd class="d-btn-add"><a alt="购买" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('buy.php?itemid='.$itemid)}');"/>立即购买</a></dd>
+				{else}
+				<dd class="d-btn-add-no"><a alt="询价" class="c_p" onclick="Go('{$MOD[linkurl]}{rewrite('inquiry.php?itemid='.$itemid)}');"/>立即询价</a></dd>
+				{/if}
+				</td>
+				</tr>
+				{/if}
+                </table>
+			<p class="d-sold-out clearfix">(发货期限：自买家付款之日起  <em>{if $days}{$days}{/if}</em> 天内发货)</p>
+		</div>	
+	</div>
+</div>
+</div>
+</div>
+			<div class="d-gallery">
+					<div class="mod-detail-picvessel">
+	               	<div class="de-pic de-pic-main de-310pic">
+				<div class="album">
+					<table width="100%" cellpadding="0" cellspacing="0">
+					<tr align="center">
+					<td width="270" height="270" valign="top"><div id="mid_div" onmouseover="SAlbum();" onmouseout="HAlbum();" onclick="PAlbum(Dd('mid_pic'));">
+				<img src="{$albums[0]}" width="350" height="350" id="mid_pic"/><span id="jqzoom"></span>
+			</div></td>
+					</tr>
+					<tr align="center">
+					<td>
+					{loop $thumbs $k $v}<img src="{$v}" width="60" height="60" onmouseover="if(this.src.indexOf('nopic60.gif')==-1)Album({$k}, '{$albums[$k]}');" class="{if $k}ab_im{else}ab_on{/if}" id="t_{$k}"/>{/loop}</td>
+					</tr>
+					<tr align="center">
+					<!--<td height="30" onclick="PAlbum(Dd('DIMG'));"><img src="{DT_SKIN}image/ico_zoom.gif" width="16" height="16" align="absmiddle"/> 点击图片查看原图</td>-->
+					</tr>
+					</table>
+				</div>
+	               	</div>
+	               	<div class="de-favorite">
+	               	<form method="post" action="{$MODULE[2][linkurl]}favorite.php">
+	               	<input type="hidden" name="action" value="add"/>
+	               	<input type="hidden" name="title" value="{$title}"/>
+	               	<input type="hidden" name="url" value="{$linkurl}"/>
+	               	<input type="image" src="{DT_SKIN}image/btn_fav.gif" class="c_p" style="margin:20px 0 0 20px;"/>
+	               	</form>
+	               	</div>
+	               	</div>
+		</div>
+	  </div>
+<div class="inte-module ">
+{if $user_status == 3}
+{if $member}
+        <div class="m-t float-clr">
+            <span class="cxt-kind">
+			 <a href="{$MODULE[2][linkurl]}grade.php" target="_blank">{if $groupid == 7}<img id="tpLogo" src="{DT_SKIN}images/sellshow/a_xl_qy.gif"/>{elseif $groupid == 6}<img id="tpLogo" src="{DT_SKIN}images/sellshow/a_xl_gr.gif"/>{elseif $groupid == 5}<img id="tpLogo" src="{DT_SKIN}images/sellshow/a_pj_gr.gif"/>{/if}</a>
+			</span> 
+			<span class="time-point-{vip_year($member[fromtime])}"></span> 
+        </div>
+{else}
+      <div class="m-t float-clr"><h2 class="title">供应商信息</h2></div>
+{/if}
+{/if}
+      <div class="m-c">
+{if $user_status == 3}
+{if $member}
+			 <ul class="namewrap">
+			               	<li><a href="{$member[linkurl]}" target="_blank" title="{$member[company]}&#10;{$member[mode]}" class="blue f14x">{$member[company]}</a></li>
+			               	<li><a class="blue">{$member[truename]}</a>({gender($member[gender])})</li>
+                            
+                            <li>[{if online($member[userid])==1}<font class="f_red">当前在线</font>{else}<font class="f_gray">当前离线</font>{/if}]<a href="{$MODULE[2][linkurl]}friend.php?action=add&username={$member[username]}">[加为商友]</a><a href="{$MODULE[2][linkurl]}message.php?action=send&touser={$member[username]}">[发送留言]</a> 
+                            </li>
+          </ul>
+			            <ul class="certifywrap">
+			               	<li>{VIP}指数:&nbsp;&nbsp;&nbsp;&nbsp;<a class="blue draft_no_link" href='{$MODULE[2][linkurl]}grade.php' target="_blank">{$member[vip]} [第{vip_year($member[fromtime])}年] </a></li>
+			               	<li>认证信息:
+	{if $member[vcompany]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_company.gif" width="16" height="16" align="absmiddle" title="通过工商认证"/>{/if}
+	{if $member[vtruename]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_truename.gif" width="16" height="16" align="absmiddle" title="通过实名认证"/>{/if}
+	{if $member[vbank]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_bank.gif" width="16" height="16" align="absmiddle" title="通过银行帐号认证"/>{/if}
+	{if $member[vmobile]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_mobile.gif" width="16" height="16" align="absmiddle" title="通过手机认证"/>{/if}
+	{if $member[vemail]}&nbsp;<img src="{$MODULE[2][linkurl]}image/v_email.gif" width="16" height="16" align="absmiddle" title="通过邮件认证"/>{/if}
+                            </li>
+	{if $member[validated]}<li>{if $member[validated]}&nbsp;<img src="{DT_SKIN}image/check_right.gif" align="absmiddle"/> 通过{$member[validator]}认证{/if}</li>{/if}
+			            </ul>
+			            <ul class="featurewrap"><li>所在地区：{area_pos($member[areaid], '-')}</li></ul>
+                        <li style="text-align: center;width: 242px;padding: 20px 0;">
+	{if $member[username] && $DT[im_web]}{im_web($member[username].'&mid='.$moduleid.'&itemid='.$itemid)}&nbsp;{/if}
+	{if $member[qq] && $DT[im_qq]}{im_qq($member[qq])}&nbsp;{/if}
+<!--	{if $member[ali] && $DT[im_ali]}{im_ali($member[ali])}&nbsp;{/if}
+	{if $member[msn] && $DT[im_msn]}{im_msn($member[msn])}&nbsp;{/if}
+	{if $member[skype] && $DT[im_skype]}{im_skype($member[skype])}&nbsp;{/if}-->
+                            </li>
+			            <div class="pagecollectwrap float-clr">
+                           <a class="pagecollect draft_no_link" href="{$MODULE[2][linkurl]}favorite.php?action=add&title={urlencode($member[company])}&url={urlencode($member[linkurl])}" target="_blank"><img src="{DT_SKIN}images/sellshow/pagecollect.gif" alt="收藏本公司" /></a>
+                           <span class="hotextence">人气：<span id="hits">{$hits}</span></span>
+			            </div>                        
+{else}
+			            <ul class="namewrap">
+			               	<li><a href="{userurl('')}" target="_blank" title="{$member[company]}&#10;{$member[mode]}" class="blue f14x">{$item[company]}</a></li>
+			               	<li><a class="blue">{$item[truename]}</a> <strong class="f_red"> ( 未注册 )</strong>&nbsp;
+	{if $member[username] && $DT[im_web]}{im_web($member[username].'&mid='.$moduleid.'&itemid='.$itemid)}&nbsp;{/if}
+	{if $member[qq] && $DT[im_qq]}{im_qq($member[qq])}&nbsp;{/if}
+	{if $member[ali] && $DT[im_ali]}{im_ali($member[ali])}&nbsp;{/if}
+	{if $member[msn] && $DT[im_msn]}{im_msn($member[msn])}&nbsp;{/if}
+	{if $member[skype] && $DT[im_skype]}{im_skype($member[skype])}&nbsp;{/if}
+                            </li>
+			            </ul>
+			            <ul class="featurewrap"><li>所在地区：{area_pos($item[areaid], '&nbsp;')}</li></ul>
+			            <div class="pagecollectwrap float-clr"><span class="hotextence">人气：<span id="hits">{$hits}</span></span></div>
+{/if}
+{/if}
+        </div>
+        <div class="m-btm"></div>
+    </div>
+</div>	 
+
+<div id="content2" class="bodyRight filterDom"> 
+<div id="J_DetailInside" class="detail-inside">
+	<div class="mod-detail">
+
+		<div class="mod-detail-bd clearfix">
+			
+		<div class="mod-detail-otabs">
+               <ul>
+                  <li class="currentBtn_2" id="cpbig_t_1" onmouseover="Tb(1, 3, 'cpbig', 'currentBtn');"><span>详细说明</span></li>
+                  <li class="currentBtn_1" id="cpbig_t_2" onmouseover="Tb(2, 3, 'cpbig', 'currentBtn');"><span>规格参数</span></li>
+                  <li class="currentBtn_1" id="cpbig_t_3" onmouseover="Tb(3, 3, 'cpbig', 'currentBtn');"><span>联系方式</span></li>
+               </ul>
+		</div>
+       <div class="mod-detail-description" id="cpbig_c_1"><div class="de-description-detail" id="content">{$content}</div></div>
+       <div class="mod-detail-wholesale" id="cpbig_c_2" style="display:none">
+           <div class="de-blockhd"><h2>规格参数</h2></div>
+           <div class="de-blockbd clr"><div class="mod-detail-attributes">
+            <table>
+                <tbody>
+
+                 {if $brand}
+				<tr>
+				<td class="f_dblue">品牌：</td>
+				<td>{$brand}</td>
+				</tr>
+				{/if}
+				{if $n1 && $v1}
+				<tr>
+				<td class="f_dblue">{$n1}：</td>
+				<td>{$v1}</td>
+				</tr>
+				{/if}
+				{if $n2 && $v2}
+				<tr>
+				<td class="f_dblue">{$n2}：</td>
+				<td>{$v2}</td>
+				</tr>
+				{/if}
+				{if $n3 && $v3}
+				<tr>
+				<td class="f_dblue">{$n3}：</td>
+				<td>{$v3}</td>
+				</tr>
+				{/if}
+                </tbody>
+			</table>
+</div></div>
+       </div>
+       <div class="mod-detail-contact" id="cpbig_c_3" style="display:none">
+           <div class="de-blockhd"><h2>联系方式</h2></div>
+           <div class="de-blockbd clr"><div class="contact_body" id="contact">{template 'contact', 'chip'}</div></div>
+       </div>
+<script type="text/javascript" src="{DT_SKIN}js/sell-show.js"></script>        
+
+<div class="mod-detail-othsupplyinfo">
+    <div class="de-blockhd"><h2>同类产品推荐</h2><a href="{$MOD[linkurl]}{$CAT[linkurl]}" target="_blank" class="de-more">查看更多同类{$MOD[name]}产品</a></div>
+    <div class="de-blockbd clr">
+		<div class="suggest-offers">
+			<a id="scrollArrLeft4"  class="sug-btn sug-pre dmtrack" target="_self" href="javascript:;"><span>上一组</span></a>
+			<a id="scrollArrRight4" class="sug-btn sug-next dmtrack" target="_self" href="javascript:;"><span>下一组</span></a>
+			<div class="suggest-offers-wrap" id="scrollCont4">
+            <ul>
+          <!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and thumb<>''&length=25&catid=$catid&areaid=$cityid&pagesize=15&order=edittime desc&template=null");}-->
+                      {loop $tags $i $t}
+         <li><div class="iphoto"><a href="{$t[linkurl]}" title="{$t[alt]}"><img src="{$t[thumb]}" alt="{$t[alt]}" width="100"></a></div><h4><a href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a></h4><p><em>{if $t[unit] && $t[price]>0}￥ {$t[price]} {else} 面议 {/if}</em><br></p></li>
+                      {/loop}
+            </ul>
+            </div>
+		</div>
+    </div>
+</div>
+
+
+
+<p style="margin-top:10px;">{template 'comment_sell', 'chip'}</p>
+
+    <div class="mod-detail-crumbsets">
+        <h2>您可以通过以下类目找到类似信息：</h2>
+		<div class="de-spaceholder">&nbsp;</div>
+		<ul class="de-crumbs clr"><li><a href="{$MODULE[1][linkurl]}">首页</a></li><li class="de-st">&gt; </li><li><a href="{$MOD[linkurl]}">{$MOD[name]}</a></li><li class="de-st">&gt; </li><li class="de-st">{cat_pos($CAT, ' &gt; ')}</li></ul>
+    </div>
+    <div id="mod-detail-exemption" class="mod-detail-exemption">
+		<p class="de-speaker">免责声明：以上所展示的信息由会员自行提供，内容的真实性、准确性和合法性由发布会员负责。{$DT[sitename]}对此不承担任何责任。</p>
+		<p>友情提醒：为规避购买风险，建议您在购买相关产品前务必确认供应商资质及产品质量！</p>
+    </div>
+		</div>
+    </div>		
+</div>
+</div>     
+     
+<div id="content1" class="bodyLeft filter"> 
+    
+
+{if $username}
+	<div id="advertisement_side" class="bodyCont mainTextColor no-winport" style="margin-bottom:7px;">
+       <div class="clr"></div>
+       <div class="bodyContTitle"><span class="fl b titleLinkColor titleName"><a href="{userurl($username, 'file=sell')}" target="_blank">供应商的其他相关信息</a></span></div>
+       <div class="bodyContContent">
+       <ul>
+				<!--{php $tags=tag("moduleid=$moduleid&length=44&condition=status=3 and thumb<>'' and username='$username'&pagesize=10&order=edittime&template=null");}-->
+            {loop $tags $i $t}
+       <li> <div class="image"><a href="{$t[linkurl]}" class="draft_no_link" title="{$t[alt]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="64" alt="{$t[alt]}"></a></div> <div class="titleqs"><a href="{$t[linkurl]}" class="topicLink draft_no_link" target="_blank">{$t[title]}</a></div> <div class="price"><em>{if $t[unit] && $t[price]>0}￥ {$t[price]} {else} 面议 {/if}</em></div> </li>
+            {/loop}
+       </ul>
+       </div>
+    </div>
+{/if}
+
+    </div> 
+
+  </div>
+</div>
+<script type="text/javascript" src="{DT_STATIC}file/script/album.js"></script>
+{if $content}<script type="text/javascript" src="{DT_STATIC}file/script/content.js"></script>{/if}
+<script language="javascript" type="text/javascript">
+//鼠标经过预览图片函数
+function preview(img){
+	$("#mid_div .jqzoom img").attr("src",$(img).attr("src"));
+	$("#mid_div .jqzoom img").attr("jqimg",$(img).attr("bimg"));
+}
+//结束
+var scrollPic_04 = new ScrollPic();
+scrollPic_04.scrollContId   = "scrollCont4"; //内容容器ID
+scrollPic_04.arrLeftId      = "scrollArrLeft4";//左箭头ID
+scrollPic_04.arrRightId     = "scrollArrRight4"; //右箭头ID
+scrollPic_04.frameWidth     = 670;//显示框宽度
+scrollPic_04.pageWidth      = 134; //翻页宽度
+scrollPic_04.speed          = 10; //移动速度(单位毫秒，越小越快)
+scrollPic_04.space          = 10; //每次移动像素(单位px，越大越快)
+scrollPic_04.autoPlay       = true; //自动播放
+scrollPic_04.autoPlayTime   = 5; //自动播放间隔时间(秒)
+scrollPic_04.initialize(); //初始化
+</script>
+
+{template 'footer'}

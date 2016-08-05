@@ -1,0 +1,184 @@
+{php $CSS = array('selllist');}
+{template 'header'}
+<script type="text/javascript" src="{DT_SKIN}js/cn.js"></script>
+<div class="sw-layout-w990">
+<div class="sw-mod-navigatebar selloffer fd-clr">
+	<ul>
+    	 <li class="wholeCat"><a href="{$MODULE[1][linkurl]}" target="_self" title="首页">首页</a></li>
+    	 <li><a href="{$MOD[linkurl]}" target="_self" title="{$MOD[name]}">{$MOD[name]}</a></li>
+    	 <li>{cat_pos($CAT, ' > ')}</li>
+    	 <li id="breadCrumbText" class="result">共找到<em>{$items}</em>条产品信息</li>
+    	 <li class="activityLogo"><a href="#"><span style="display:none;">true</span></a></li>
+    </ul>
+    <div class="header-splitLine"></div>
+</div>
+	<div id="doc" class="sw-layout-doc"> 
+	  <div id="content" class="sw-layout-content">
+		<div id="sw_mod_sn" class="sw-mod-sn sw-layout-mod">
+			<form action="{$MOD[linkurl]}search.php" id="fsearch">
+		{if $CP}
+		{loop $PPT $p}
+    	    	<div class="sw-mod-sn-catelist sw-mod-nb fd-clr">
+	    	    		<div class="sw-mod-sn-catelist-title">{$p[name]}：
+                        </div>
+	    	    		<div class="sw-mod-sn-list-body">
+		    	    		<ul class="sw-mod-sn-list-items fd-clr">
+		      	    	  	<input type="hidden" name="ppt_{$p[oid]}" id="ppt_{$p[oid]}" value="{$p[select]}"/>
+		      	    	  	<li><a href="###" onclick="Dd('ppt_{$p[oid]}').value='';Dd('fsearch').submit();">{if $p[select]==''}<span>全部</span>{else}全部{/if}</a></li>
+		      	    	  	{loop $p[options] $o}
+			    	    		 <li><a href="###" onclick="Dd('ppt_{$p[oid]}').value='{$o}';Dd('fsearch').submit();">{if $p[select]==$o}<span>{$o}</span>{else}{$o}{/if}</a></li>
+		      	    	  	{/loop}
+		    	    		</ul>
+	    	    		</div>
+
+    	    	</div>
+		{/loop}
+		{/if}
+    	    	<div class="sw-mod-sn-catelist fd-clr">
+			<table cellpadding="5" cellspacing="3">
+			<tr>
+			<td width="80" align="right">关 键 词：</td>
+			<td colspan="3">
+			<input type="text" size="60" name="kw" value="{$kw}" class="pd3"/>
+			</td>
+			</tr>
+			<tr>
+			<td></td>
+			<td colspan="3">
+			{loop $sfields $k $v}
+			<input type="radio" name="fields" value="{$k}" id="fd_{$k}"{if $fields==$k} checked{/if}/><label for="fd_{$k}"> {$v}</label>&nbsp;
+			{/loop}			
+			</td>
+			</tr>
+			<tr>
+			<td align="right">更新日期：</td>
+			<td>{dcalendar('fromdate', $fromdate, '')} 至 {dcalendar('todate', $todate, '')}</td>
+			<td align="right">所属行业：</td>
+			<td>{$category_select}</td>
+			</tr>
+			<tr>
+			<td align="right">信息类型：</td>
+			<td>			
+			{$type_select} 
+			<input type="checkbox" name="thumb" id="thumb" value="1"{if $thumb} checked{/if}/> 图片
+			<input type="checkbox" name="vip" id="vip" value="1"{if $vip} checked{/if}/> {VIP}
+			</td>
+			<td align="right">所在地区：</td>
+			<td>{$area_select}</td>
+			</tr>
+			<tr>
+			<td></td>
+			<td colspan="3">
+			<input type="image" src="{DT_SKIN}image/btn_search.gif"/>&nbsp;&nbsp;
+			<a href="{$MOD[linkurl]}search.php"><img src="{DT_SKIN}image/btn_reset_search.gif"/></a>	
+			</td>
+			</tr>
+			</table>
+    	    	</div>
+		</form>
+		</div>
+<div class="sw-mod-related sw-layout-mod" trace="recwords">
+      <strong>您是不是在找：</strong>	
+{if $kw}
+<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and word!='$kw' and keyword like '%$keyword%'&pagesize=30&order=total_search desc&template=list-search_relate-sh", -2)}-->
+{/if}
+	    		</div>
+		{if $tags}
+		<form method="post">
+		<div class="sell_tip" id="sell_tip" style="display:none;" title="双击关闭" ondblclick="Dh(this.id);">
+			<div>
+				<p>您可以</p>
+				<input type="submit" value="对比选中" onclick="this.form.action='{$MOD[linkurl]}compare.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/> 或 
+				<input type="submit" value="批量询价" onclick="this.form.action='{$MOD[linkurl]}inquiry.php';" class="btn_1" onmouseover="this.className='btn_2'" onmouseout="this.className='btn_1'"/>
+			</div>
+		</div>
+		<div class="img_tip" id="img_tip" style="display:none;">&nbsp;</div>
+    <div class="sw-ui-tab">
+		<ul class="Tab">
+		   	 <li class="cur"><b class="Corner-left"></b><b class="Corner-right"></b><a href="{$MOD[linkurl]}{$linkurl}">全部</a></li>
+		   	 {loop $TYPE $k $v}
+		   	 <li><b class="Corner-right"></b><a href="javascript:Go('{$MOD[linkurl]}{rewrite('index.php?typeid='.$k.'&catid='.$catid)}');">{$v}</a></li>
+		   	 {/loop}
+		</ul>
+    </div>
+		<div id="sw_mod_mainblock" class="sw-mod-mainblock sw-layout-mod">
+    <div id="main-search-content" class="main-search-content">
+    	<div class="purchase-list">
+    		<ul>
+		{if $page==1 && $kw}
+		{ad($moduleid,$catid,$kw,6)}
+		{load('m'.$moduleid.'_k'.urlencode($kw).'.htm')}
+		{/if}
+					{template 'newlist-'.$module, 'tag'}
+    		</ul>
+    	</div> 
+    </div>		
+
+<div class="sw-layout-sub">
+	<div class="delayshow">	
+		<div class="sw-mod-whitegold">
+   			 <div class="expo-hd" title="黄金展位企业——实力铸就品牌"> <a href="{$EXT[ad_url]}" target="_blank" class="expo-title"><span>黄金展位供应商</span></a></div> 
+			<div class="sw-mod-gold">
+                {ad($moduleid,$catid,$kw,7)}
+                <div class="hzBox">
+                    <div class="showImg"><a href="#" target="_blank"><img src="{DT_SKIN}images/sell/zzs.jpg" title="黄金展位企业——实力铸就品牌"></a></div>
+                    <div class="companyname"><a href="#"  target="_blank" class="hzCompName" title="苏州市某某科技有限公司">苏州市某某科技有限公司</a></div>
+                    <div class="contphone"><a href="#" target="_blank" title="0512-88888888">电话：0512-88888888</a></div>
+                </div>
+			</div>
+		</div>
+        <div class="rightp4pHead">热门推荐</div>
+        <div class="sw-mod-rightp4p">
+            <div class="rightp4p">
+                 <ul>
+          <!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>'' and level=1&catid=$catid&pagesize=4&areaid=$cityid&order=addtime desc&template=null");}-->
+            {loop $tags $i $t}
+                   <li class="p4poffer top">
+                        <div class="p4pImg"><a class="tag" href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{$t[thumb]}" width="148"></a></div>
+                        <p class="adtitle"><a href="{$t[linkurl]}" target="_blank" class="aTitle tag" title="{$t[alt]}">{$t[title]}</a></p>
+                        <p class="bold"><span class="rmb">{if $t[unit] && $t[price]>0} {$t[price]} / {$t[unit]} {else} 面议 {/if}</span></p>
+                   </li>
+            {/loop}
+
+                 </ul>
+
+            </div>
+        </div>
+ <div class="sw-mod-keywordHotTop sw-layout-mod">
+	<h3>搜索热门榜</h3>
+	<div class="sw-mod-keywordHotTop-words">
+    <!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3&pagesize=10&order=week_search desc&key=week_search&template=newlist-search_rank", -2)}-->
+    </div>
+</div>
+		</div>
+</div>
+			</div>
+</form>
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+<div class="sw-mod-moreInfo sw-layout-mod">没有找到适合的<strong></strong>供应商？<a rel="nofollow" class="sw-ui-btn-g20" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6&action=add" target="_blank"><span>马上发布询价单</span></a><!--<a href="{DT_PATH}top" target="_blank"><i></i>查看搜索排行榜</a>--><a rel="nofollow" class="slashend" href="{$MODULE[10][linkurl]}" target="_blank">去生意经求助</a></div>
+       {template 'ad_listtuijian', 'chip'}
+    	<div id="sw_mod_bank" class="sw-mod-bank sw-layout-mod">
+         	<h3>免责声明： 以上所展示的信息由企业自行提供，内容的真实性、准确性和合法性由发布企业负责。本站对此不承担任何责任！</h3>
+    	</div>
+<div  class="sw-mod-bottomsearch sw-layout-mod">
+  <div class="bottom-search-content fd-clr">
+        <ul class="bottom-search-tabs fd-clr" trace="productlinetabs">
+			 <li class="no_ml"><span class="b">供应</span></li>
+			 <li><a href="{$MODULE[6][linkurl]}search.php">求购</a></li>
+			 <li><a href="{$MODULE[4][linkurl]}search.php">公司</a></li>
+        </ul>
+        <div class="bottom-seach-input fd-clr">
+            <form action="{$MOD[linkurl]}search.php" id="fsearch">
+                <input type="text" maxLength="54" name="kw" value="" class="s_key"/>
+                <input type="submit" value="搜索" class="b ml7px butheight" />
+            </form>
+        </div>
+    </div>
+</div>
+    	</div>
+   </div>
+   </div>
+<script type="text/javascript" src="{DT_SKIN}js/cat.js"></script>
+{template 'footer'}

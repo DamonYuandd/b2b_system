@@ -1,0 +1,26 @@
+<div class="prolist_s2">
+{loop $tags $k $t}
+			<ul id="item_{$t[itemid]}">
+				<li class="img"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}" nmouseover="img_tip(this, this.src);" onmouseout="img_tip(this, '');" /></a></li>
+				<li class="txt"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><input type="checkbox" id="check_{$t[itemid]}" name="itemid[]" value="{$t[itemid]}" onclick="sell_tip(this, {$t[itemid]});"/> {$t[title]}</a></li>
+				<li class="pri1">总共成交{$t[orders]}笔&nbsp;&nbsp;&nbsp;&nbsp;
+			{if $t[username] && $DT[im_web]}{im_web($t[username].'&mid='.$moduleid.'&itemid='.$t[itemid])}&nbsp;{/if}
+			{if $t[qq] && $DT[im_qq]}{im_qq($t[qq])}&nbsp;{/if}
+			{if $t[ali] && $DT[im_ali]}{im_ali($t[ali])}&nbsp;{/if}
+			{if $t[msn] && $DT[im_msn]}{im_msn($t[msn])}&nbsp;{/if}
+			{if $t[skype] && $DT[im_skype]}{im_skype($t[skype])}&nbsp;{/if}
+                </li>
+				<li class="pri2"><em><a href="{$t[linkurl]}#comment" title="查看评论">(已有{$t[comments]}人评论)</a></em>价格：<span>￥</span><strong>{$t[price]}</strong></li>
+				<li class="buy"><a href="{$t[linkurl]}" class="la">立即购买</a></li>
+			</ul>
+{/loop}		
+<div class="clear"></div>
+</div>
+<div class="clear line15"></div>
+<div class="pages6">
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}
+</div>
+
+
+
+

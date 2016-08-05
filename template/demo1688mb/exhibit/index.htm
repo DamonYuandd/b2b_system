@@ -1,0 +1,106 @@
+{php $CSS = array('exhibit');}
+{template 'header'}
+<div class="adv"><img src="{DT_SKIN}images/990X80.gif" width="1190" height="80"/></div>
+<div class="show-content">
+		<table cellpadding="4" cellspacing="1" width="100%" bgcolor="#C5D7ED">
+		<tr bgcolor="#F1F7FC" align="center">
+		{php for($i=1;$i<13;$i++){ $j = $i<10 ? '0'.$i : $i;}
+		<td{if $j==date('m')} bgcolor="#AACCEE"{/if}><a href="{$MOD[linkurl]}{rewrite('search.php?month='.$i)}">{$j}月</a></td>
+		{php } }
+		</tr>
+		</table>
+		<div class="b10">&nbsp;</div>	
+  <div class="show-left fl">
+    <div class="carousel fl"><!--{tag("moduleid=$moduleid&condition=status=3 and level=2 and thumb!=''&areaid=$cityid&order=".$MOD[order]."&pagesize=".$MOD[page_islide]."&width=450&height=288&template=slide")}--></div>
+    <div class="report fr">
+         <h1 class="show-title">
+            <strong>展会报道</strong>
+            <span><a href="{$MODULE[$MOD[news_id]][linkurl]}{$NC[$MOD[cat_news]][linkurl]}">更多</a></span>
+         </h1>
+         <div class="report-new">
+<!--{php $tags=tag("moduleid=".$MOD['news_id']."&condition=status=3 and level=5&areaid=$cityid&catid=".$MOD['cat_news']."&pagesize=1&length=34&order=addtime desc&template=null");}-->
+           {loop $tags $k $t}
+            <a href="{$t[linkurl]}" title="{$t[alt]}" class="report-newtitle" target="_blank">{$t[title]}</a>
+            <small>{dsubstr($t[introduce], 90)}....<a href="{$t[linkurl]}" class="report-newtitlem" target="_blank"> [详细]</a></small>
+           {/loop}           
+         </div>
+         <div class="report-list">
+           <ul>
+<!--{php $tags=tag("moduleid=".$MOD['news_id']."&condition=status=3&areaid=$cityid&catid=".$MOD['cat_news']."&length=48&pagesize=7&datetype=2&order=addtime desc&template=null");}-->
+           {loop $tags $k $t}
+                <li><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+           {/loop}           
+           </ul> 
+         </div>
+    </div>
+
+    <div class="direct">
+      <h2>展会直达</h2>
+      <div class="direct-list">
+		{loop $maincat $k $v}
+        <a href="{$MOD[linkurl]}{$v[linkurl]}" target="_blank">{set_style($v[catname],$v[style])}</a>
+		{/loop}
+      </div>
+    </div>
+   <div class="adv-report"><img src="{DT_SKIN}images/720x80.gif" width="720" height="80" alt="2012中国地理信息技术装备展览会"/></div>    
+
+    <div class="recommend">
+      <h1 class="show-title rec-h1">
+            <strong>推荐展会</strong>
+       </h1> 
+       <div class="rec-list">
+
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and level=1&showcat=1&condition=status=3&pagesize=12&order=addtime desc&template=null");}-->
+{loop $tags $i $t}
+{if $i%4==0}<ul class="rec-list1">{/if}
+<li><a href="{$t[caturl]}" class="small-title" target="_blank">[{$t[catname]}]</a><a href="{$t[linkurl]}" class="li-height" title="{$t[alt]}" target="_blank">{$t[title]}</a><strong>[{timetodate($t[fromtime], 3)} ~ {timetodate($t[totime], 2)}]</strong><span>[{$t[city]}]</span></li>
+{if $i%4==(4-1)}</ul>{/if}
+{/loop}            
+       </div>
+    </div>
+    <div class="adv-2 adv-report"><img src="{DT_SKIN}images/720x80.gif" alt="第十届中国国际食品加工与包装设备（青岛）展览会"/></div>
+ </div>
+
+  <div class="show-right fr">
+
+     <div class="release">
+         <a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=8&action=add" target="_blank" class="release-ss show-botton"></a>
+         <a href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=21&action=add" target="_blank" class="release-ss release-botton"></a>
+         
+         <div class="will-begin">
+         <h1 class="show-title pad16 font333"><strong>即将开幕</strong></h1>
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3&length=34&showcat=1&condition=status=3&pagesize=6&order=addtime desc&template=null");}-->
+         {loop $tags $i $t}
+                <p><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a><span class="indent">时间：{timetodate($t[fromtime], 3)} ~ {timetodate($t[totime], 2)}</span></p>
+         {/loop}            
+         </div>
+     </div>
+
+     <div class="adv-reportr"><img src="{DT_SKIN}images/260x80.gif" alt="2012中国郑州国际皮革工业博览会"/></div>
+
+     <div class="key-show">
+         <h1 class="show-title pad16 font333"><strong>重点展会</strong></h1>
+        <div class="key-list">
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and thumb<>''&showcat=1&condition=status=3&pagesize=4&order=addtime desc&template=null");}-->
+         {loop $tags $i $t}
+                  <p><img src="{imgurl($t[thumb], 1)}" width="60" height="60"/><a href="{$t[linkurl]}" class="letter" title="{$t[alt]}" target="_blank">{$t[title]}</a><span>时间：{timetodate($t[fromtime], 3)} ~ {timetodate($t[totime], 2)}</span></p>
+         {/loop}            
+        </div>
+     </div>
+
+     <div class="adv-3"><img src="{DT_SKIN}images/260x80.gif" alt="2013中国长春第十四届国际工业装备展览会"/></div>
+  </div>
+</div>
+		{if $MOD[cat_hall]}
+	<div class="m b10">&nbsp;</div>
+<div class="cooperation">
+   <h1 class="show-title rec-h1"><span class="f_r"><a href="{$MODULE[$MOD[news_id]][linkurl]}{$NC[$MOD[cat_hall]][linkurl]}">更多..</a></span><strong>展馆介绍</strong></h1>
+   <div class="coop-img">
+<!--{php $tags=tag("moduleid=".$MOD['news_id']."&condition=status=3 and thumb!=''&areaid=$cityid&catid=".$MOD['cat_hall']."&pagesize=8&length=15&order=addtime desc&template=null");}-->
+           {loop $tags $i $t}
+        <a href="{$t[linkurl]}" {if $i%4==3}{else}class="mar10"{/if} title="{$t[alt]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}" width="240px" height="120px"/></a>
+           {/loop}           
+   </div>
+</div>
+		{/if}
+{template 'footer'}

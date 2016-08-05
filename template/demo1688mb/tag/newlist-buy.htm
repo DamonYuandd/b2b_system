@@ -1,0 +1,21 @@
+{loop $tags $k $t}
+<li class="item"> 
+       <div class="main-content fd-clr"> 
+             <div class="titlebuy"> 
+                    <h3><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a><span class="pub-date">{timetodate($t[edittime], $datetype)}</span></h3> 
+                    <ul class="fd-clr prop"> 
+                        <li>{$t[introduce]}</li>
+                    </ul> 
+                </div> 
+                <div class="main-attr"> 
+                    <ul class="fd-clr"> 
+                        <li class="purchase-amount"><p><span class="amount">采购量：<em>{$t[amount]}</em></span></p><p class="xianhuo">规格要求：{$t[standard]}</p></li>                        
+                        <li class="area"> <span class="province">{area_pos($t[areaid], '', 2)}</span> </li>
+                        <li class="trust-newtype"> <p><a href="{$t[linkurl]}" target="_blank"><img src="{DT_SKIN}images/sell/bj.gif" /></a></p></li>
+                    </ul> 
+                </div> 
+            </div>
+			        </li>
+{/loop}
+<br />
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}           

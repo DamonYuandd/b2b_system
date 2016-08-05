@@ -1,0 +1,52 @@
+<div id="offers" class="offers">
+	<ul>
+
+{loop $tags $k $t}
+		<li class="offer paGetId">
+			    <h2><a class="Title" href="{$t[linkurl]}" target="_blank" title="{$t[company]}">{$t[company]}</a> <a rel="nofollow" class="Wxb" href="#" target="_blank">推广</a></h2>
+				<div class="sw-mod-popcompany-Summary ">
+					  <div class="Sale"><p><em>成交记录：</em>1笔</p></div>	
+					  <div class="Biz-type"><em>经营模式：</em>经销批发</div>
+					  <div class="sw-mod-allcompany-Service"><em>主营产品：</em>{$t[business]}</div>
+					  <div class="Address"><em>地址：</em><a href="#" target="_blank"> 河北 邢台 河北省新河县泰达街陆号</a></div>
+					  <div class='iconCollection'><a rel="nofollow" class="high-cxt-mumber-c" href="#" title="阿里巴巴建议您优先选择诚信通会员" target="_blank">第<b>7</b>年</a><a rel="nofollow" class="sw-ui-icon-payGuarantee" title="该卖家支持先行赔付，保障买家交易安全" href="#" offer-stat="7day" target="_blank" ></a></div>
+					  <ul class="Feedback">
+					         <li><a class="sw-ui-icon-ww-off" href="#"></a></li>
+					         <li><a href="#" title="将您的询价单发送给该供应商" memberid="songjiantao" class="sw-ui-icon-xjd"></a></li>
+					  </ul>
+				</div>
+				<div class="sw-mod-allcompany-Photos">
+                
+				<!--{php $tags=tag("moduleid=5&condition=status=3 and username='".$t[username]."'&pagesize=2&order=addtime desc&template=null");}-->
+                                  {loop $tags $k $t}
+						 <div class="sw-mod-allcompany-Photo">
+						     <div class="SamplePic"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}" width="150"/></a></div>
+            				 <div class="SampleTitle"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></div>
+						 </div>
+                                  {/loop}
+
+				</div>
+		</li>
+        
+{/loop}		
+
+
+      
+	</ul>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

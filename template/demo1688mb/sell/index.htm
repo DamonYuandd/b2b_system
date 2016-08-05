@@ -1,0 +1,143 @@
+<style type="text/css">
+.subpage .prosul { display:block !important;}
+</style>
+{php $CSS = array('company');}
+{template 'auto_header'}
+
+<div class="wrap rel mb20">
+  <div class="sn-hot wrap clearfix">
+  <div class="sp-wrap_right">
+    <div class="mod-login login" >
+		{template 'userindex', 'chip'}
+    </div>
+    <div class="sp-wrap">
+      <h3><span class="f_r" style="font-size:12px;"><a href="{$MOD[linkurl]}{rewrite('news.php?more=1')}">更多..</a></span>企业新闻</h3>
+       <ul>
+		<!--{php $tags=tag("table=news&condition=status=3&pagesize=11&order=addtime desc&template=null");}-->
+				{loop $tags $t}
+         <li><a href="{$t[linkurl]}" class="org" target="_blank">[{timetodate($t['addtime'], 2)}]</a>  <a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+				{/loop}
+       </ul>
+    </div>
+  </div>
+    <!--<div class="rec"><a target="_blank" title="企商商城" href="{$MODULE[16][linkurl]}"><img src="{DT_SKIN}images/comad2.jpg" width="454" height="72" alt=""/></a></div>-->
+    <div class="slide-wrap">
+      <div class="slideImg" id="slideImg">{ad(50)}</div>
+      
+      <div id="mod-provide" class="mod-provide">
+                <div class="arrow-container">
+                  <div class="arrow up"></div>
+                  <div class="arrow down"></div>
+                </div>
+                <div id="mod-provide-list" class="wrap">
+                  <div class="listindex f-slider">
+                    <P class="dcms-beacon-position">
+                        <div class="item f-tab-b dcms-beacon-position">
+                            <div class="titleindex"><strong>最新供应</strong></div>
+                            <div class="infoindex"> 
+                                  <ul style="width: 2520px; ">
+                   <!--{php $tags=tag("moduleid=5&condition=status=3&areaid=$cityid&order=addtime desc&pagesize=10&template=null");}-->
+                                 {loop $tags $i $t}
+                                       <li><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+                                 {/loop}
+                                  </ul>
+                              </div>
+                        </div>
+                    </P>    
+                    
+                  <div class="item f-tab-b">
+                      <div class="titleindex"><strong>最新求购</strong></div>
+                      <div class="infoindex"> 
+                         <ul>
+                   <!--{php $tags=tag("moduleid=5&condition=status=3&areaid=$cityid&order=addtime desc&pagesize=10&template=null");}-->
+                           {loop $tags $i $t}
+                            <li><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+                           {/loop}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tips-right"></div>
+              </div>
+      
+    </div>
+
+    <!--<div class="com">
+      <div class="com-t">
+        <h3 class="com-t-cur com-t-h" id="m01">最新注册公司</h3>
+        <h3 class="com-t-h" id="m02">最新{VIP}公司</h3>
+      </div>
+      <div class="com-con" id="c01">
+        <ul>
+     <!--{php $tags=tag("moduleid=4&condition=groupid>5 and catids<>''&pagesize=4&order=userid desc&template=null");}-->
+         {loop $tags $k $t}
+          <li><a href="{$t[linkurl]}" target="_blank">{$t[company]}</a></li>
+           <div class="line clearfix">
+            <span class="aboutcom">{dsubstr($t[business], 22)}</span><a href="{$t[linkurl]}" target="_blank" class="conn">查看联系方式</a>
+           </div>
+         {/loop}        
+        </ul>
+        </div>
+        <div class="com-con" style="display: none;" id="c02">
+        <ul>
+<!--{php $tags=tag("moduleid=4&condition=vip>0 and catids<>''&pagesize=4&order=fromtime desc&template=null");}-->
+         {loop $tags $k $t}
+          <li><a href="{$t[linkurl]}" target="_blank">{$t[company]}</a></li>
+           <div class="line clearfix">
+            <span class="aboutcom">{dsubstr($t[business], 22)}</span><a href="{$t[linkurl]}" target="_blank" class="conn">查看联系方式</a>
+           </div>
+         {/loop}        
+        </ul>
+      </div>
+    </div>-->
+
+</div>
+
+   <div class="wrap mt clearfix">{ad(31)}</div>
+
+<!--smt end-->
+ </div>
+<div class="layout">
+{template 'catalogsell', 'chip'}  
+</div>
+<script type="text/javascript" src="{DT_SKIN}js/top-merge.js"></script>
+<script type="text/javascript" src="{DT_SKIN}js/bottom-merge.js"></script>  
+<!--<script type="text/javascript">
+function scrollDoor(){
+}
+scrollDoor.prototype = {
+	sd : function(menus,divs,openClass,closeClass){
+		var _this = this;
+		if(menus.length != divs.length)
+		{
+			alert("菜单层数量和内容层数量不一样!");
+			return false;
+		}				
+		for(var i = 0 ; i < menus.length ; i++)
+		{	
+			_this.$(menus[i]).value = i;				
+			_this.$(menus[i]).onmouseover = function(){
+					
+				for(var j = 0 ; j < menus.length ; j++)
+				{						
+					_this.$(menus[j]).className = closeClass;
+					_this.$(divs[j]).style.display = "none";
+				}
+				_this.$(menus[this.value]).className = openClass;	
+				_this.$(divs[this.value]).style.display = "block";				
+			}
+		}
+		},
+	$ : function(oid){
+		if(typeof(oid) == "string")
+		return document.getElementById(oid);
+		return oid;
+	}
+}
+window.onload = function(){
+	var SDmodel = new scrollDoor();
+	SDmodel.sd(["m01","m02"],["c01","c02"],"com-t-cur com-t-h","com-t-h");
+}
+</script>-->
+{template 'footer'}

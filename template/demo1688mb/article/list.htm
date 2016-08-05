@@ -1,0 +1,43 @@
+{php $CSS = array('newsshow');}
+{template 'header'}
+<div id="doc">
+    <div id="content">
+<div class="info-layout">
+   <div class="bread">
+       <span class="fr">共 <b class="red">{$items}</b> 条信息</span><span class="gray">您当前的位置：</span><a href="{$MODULE[1][linkurl]}">首页</a> > <a href="{$MOD[linkurl]}">{$MOD[name]}</a> > {cat_pos($CAT, ' > ')}</div>
+       <div class="grid-680">{if $tags}{template 'newlist-cat', 'tag'}{/if}</div>
+        <div class="grid-300 grid-fixed">
+			 <div class="bannerl-300x240"><img src="{DT_SKIN}images/312x240.jpg" width="312" height="240"/></div>
+			 <div class="week-hot-sort">
+                  <div class="titlenews"><h2>本周热门资讯排行</h2></div>
+                  <div class="detailnews">
+ 				     <ul>
+			<!--{php $tags=tag("moduleid=$moduleid&length=38&condition=status=3 and addtime>$today_endtime-30*86400&areaid=$cityid&order=hits desc&pagesize=9&template=null");}-->
+		   	       {loop $tags $i $t}
+ 				      <li><i{if $i<3} class="tft"{/if}><?php echo $i+1;$i++?></i><div style="width:246px"><a href="{$t[linkurl]}" title="{$t[alt]}" class="lnk-a">{$t[title]}</a></div></li>
+		   	       {/loop}
+ 				      </ul>	
+			 </div>
+        </div>
+        <div class="box div-info-focus">
+			 <div class="titlenews"><h2>推荐资讯</h2></div>
+                   <ul>
+			<!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and level=1&showcat=1&catid=$catid&areaid=$cityid&order=".$MOD[order]."&pagesize=6&template=null");}-->
+                     {loop $tags $i $t}
+                    			<li{if $i%2==1} class="li-odd"{/if}><div><a href="{$MODULE[6][linkurl]}" target="_blank" title="求购">[{$t[catname]}]</a><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a><i>{$t[amount]}</i></div></li>
+                      {/loop}
+                   </ul>
+        </div>
+                   <div class="bpx div-recommend">
+                         <div class="titlenews"><h2>推荐图文</h2></div>
+                         <div class="detailnews">
+			<!--{php $tags=tag("moduleid=$moduleid&length=20&condition=status=3 and thumb!=''&catid=$catid&areaid=$cityid&pagesize=20&order=".$MOD[order]."&template=null");}-->
+                          {loop $tags $i $t}<a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}" width="130" height="130" border="0" />{dsubstr($t[alt], 18)}</a>{/loop}
+                         </div>
+                   </div>
+                   <div id="tanx"><img src="{DT_SKIN}images/300x180.jpg" width="300" height="180"/></div>
+        </div>
+    </div>
+</div>
+</div>
+{template 'footer'}

@@ -1,0 +1,6 @@
+{loop $tags $i $t}
+<ul class="recl-list1">
+<li><a href="{$t[linkurl]}" class="li-heightl" title="{$t[alt]}" target="_blank">{$t[title]}</a><strong>[{timetodate($t[fromtime], 3)} ~ {timetodate($t[totime], 2)}]</strong><span>[{$t[city]}]</span></li>
+</ul>
+{/loop}		
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

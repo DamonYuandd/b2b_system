@@ -1,0 +1,83 @@
+{php $CSS = array('brand');}
+{template 'header'}
+
+
+
+
+
+<div class="m">
+	<div class="m_l_2 f_l">
+    
+		{if $MOD[page_irec]}
+<div class="brand-listtj">
+            <div class="brand-section">
+                <div class="fl-hd headbr fd-clr">
+                    <h3>推荐{$MOD[name]}</h3>
+                </div>
+                <div class="fl-bd brandtj">
+                    <ul class="fd-clr">
+			<!--{tag("moduleid=$moduleid&condition=status=3 and level>0&areaid=$cityid&pagesize=12&order=".$MOD[order]."&template=thumb-brandindex&target=_blank")}-->
+
+                 </div>
+              </div>
+</div>    
+		{/if}
+
+    
+    
+		{if $MOD[page_icat]}
+		{loop $maincat $i $c}
+<div class="brand-list">
+            <div class="brand-section">
+                <div class="fl-hd headbr fd-clr">
+                    <h3><span><?php echo $i+1;$i++?>F</span>{$c[catname]}</h3>
+                    <div align=right><a href="{$MOD[linkurl]}{$c[linkurl]}" target="_self" class="fl-hd-more">更多品牌</a></div>
+                </div>
+                <div class="fl-bd">
+                    <ul class="fd-clr">
+                    <!--{tag("moduleid=$moduleid&condition=status=3&areaid=$cityid&catid=".$c[catid]."&pagesize=12&order=".$MOD[order]."&template=thumb-brandindex&target=_blank")}--></ul>
+
+                 </div>
+              </div>
+</div>    
+		{/loop}
+		{/if}
+    
+    
+    
+    
+        
+
+	</div>
+	<div class="m_n f_l">&nbsp;</div>
+	<div class="m_r_2 f_l">
+		<div class="box_head_1"><div><strong>按分类浏览</strong></div></div>
+		<div class="box_body">
+		<table width="100%" cellpadding="3">
+		{loop $maincat $k $v}
+		{if $k%2==0}<tr>{/if}
+		<td><a href="{$MOD[linkurl]}{$v[linkurl]}">{set_style($v[catname],$v[style])}</a> <span class="f_gray px10">({$v[item]})</span></td>
+		{if $k%2==1}</tr>{/if}
+		{/loop}
+		</table>
+		</div>
+		<div class="b10">&nbsp;</div>
+		<div class="box_head_1"><div><strong>按地区浏览</strong></div></div>
+		<div class="box_body">
+		{php $mainarea = get_mainarea(0)}
+		<table width="100%" cellpadding="3">
+		{loop $mainarea $k $v}
+		{if $k%4==0}<tr>{/if}
+		<td><a href="{$MOD[linkurl]}{rewrite('search.php?areaid='.$v['areaid'])}">{$v[areaname]}</a></td>
+		{if $k%4==3}</tr>{/if}
+		{/loop}
+		</table>
+		</div>
+		<div class="b10"> </div>
+		<div class="box_head_1"><div><strong>最热{$MOD[name]}</strong></div></div>
+		<div class="box_body">
+		<div class="rank_list"><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$today_endtime-180*86400&areaid=$cityid&order=hits desc&pagesize=10", -2)}--></div>
+		</div>
+	</div>
+</div>
+{template 'footer'}

@@ -1,0 +1,13 @@
+{loop $tags $k $t}
+<ol class="clearfix">
+<li id="item_{$t[itemid]}"> 
+<i class="iPic"><div class="imgBox"><a title="{$t[alt]}" target="_blank" href="{$t[linkurl]}"><img width="160" src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}"></a></div></i>
+<i class="iDes"> <em class="eTit">[{area_pos($t[areaid], '', 1)}] <a title="{$t[alt]}" target="_blank" href="{$t[linkurl]}">{$t[title]}</a> </em> 
+<em class="eDes">
+<p>招商分类:  {$catname}</p>
+<p>招商简介：{$t[introduce]}</p>
+</em> </i> 
+</li>
+</ol>
+{/loop}		
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

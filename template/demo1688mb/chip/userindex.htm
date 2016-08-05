@@ -1,0 +1,25 @@
+<script type="text/javascript">var user_auth = get_cookie('auth');</script>
+	{if defined('TOHTML')}
+	<script type="text/javascript">document.write(user_auth ? '<div>' : '<div style="display:none;">');</script>
+	{else}
+		{if $_userid}<div>{else}<div style="display:none;">{/if}
+	{/if}
+                <ul class="login-info seller dcms-beacon-position ">
+                  <li class="odd"><a rel="nofollow" href="{$MODULE[2][linkurl]}{$DT[file_my]}">发布供求信息</a></li>
+                  <li> <a rel="nofollow" href="{$MODULE[2][linkurl]}home.php">免费开通旺铺</a></li>
+                  <li class="odd"> <a rel="nofollow" href="{$MODULE[2][linkurl]}edit.php?tab=2">完善企业资料</a></li>
+                  <li> <a rel="nofollow" href="{$MODULE[2][linkurl]}">进入商务中心</a></li>
+                </ul>
+	</div>
+	{if defined('TOHTML')}
+	<script type="text/javascript">document.write(user_auth ? '<div style="display:none;">' : '<div>');</script>
+	{else}
+		{if $_userid}<div style="display:none;">{else}<div>{/if}
+	{/if}
+                <ul class="login-nav">
+                  <li class="zhuce"><a rel="nofollow" href="{$MODULE[2][linkurl]}{$DT[file_register]}" title="马上注册，做生意、交商友、订阅行情" class="register-btn">注册</a></li>
+                  <li class="denglu"><a rel="nofollow" href="{$MODULE[2][linkurl]}{$DT[file_login]}" title="马上登录，享受会员专属服务" class="login-btn">登录</a></li>
+                 <!-- <li><a rel="nofollow" href="{$MODULE[2][linkurl]}" title="成为诚信通会员，将拥有更多服务" class="supplier-btn">进入商务中心</a></li>-->
+                </ul>
+
+	</div>

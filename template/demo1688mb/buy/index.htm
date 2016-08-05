@@ -1,0 +1,112 @@
+{php $CSS = array('buy');}
+{template 'auto_header'}
+
+<div class="wrap rel mb20">
+  <div class="sn-hot wrap clearfix">
+  <div class="sp-wrap_right">
+    <div class="mod-login login" >
+		{template 'userindex', 'chip'}
+    </div>
+    <div class="sp-wrap">
+      <h3><span class="f_r" style="font-size:12px;"></span>按照地区查找采购</h3>
+       <ul>
+		<div>
+			{php $mainarea = get_mainarea(0)}
+			{loop $mainarea $k $v}
+			{if $k%5==0}<li>{/if}
+			   <p><a href="{$MOD[linkurl]}search.php?areaid={$v[areaid]}" target="_blank" rel="nofollow">{$v[areaname]}</a></p>
+			{if $k%5==9}</li>{/if}
+			{/loop}
+	     </div>
+       </ul>
+    </div>
+    <div class="purgent">
+       <p class="purgetit px14 bold">紧急采购</p>
+       <ul>
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3&areaid=$cityid&order=addtime desc&pagesize=5&template=null");}-->
+       {loop $tags $n $m}
+        <li>{$m[title]}</li>
+       {/loop}        
+       </ul>
+    </div>
+  </div>
+    
+    <div class="slide-wrap">
+       <div class="slideImg" id="slideImg">{ad(51)}</div>
+       <div class="slideImg_bottom">
+         <li class="slideImg_bottom_left">{ad(52)}</li><li class="slideImg_bottom_right">{ad(53)}</li>
+       </div>
+    </div>
+
+    <div class="com">
+      <div class="com-t">
+        <h3 class="com-t-cur com-t-h" id="m01">最新采购</h3>
+      </div>
+      <div class="com-con" id="c01">
+        <ul>
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3&areaid=$cityid&order=addtime desc&pagesize=2&template=null");}-->
+         {loop $tags $k $t}
+          <li><div class="up_left_title px14 bold"><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></div>
+           <div class="line clearfix">
+            <span class="aboutcom mb5">采购价格：￥{$t[price]}</span>
+            <span class="aboutcom">采购数量：{$t[amount]}</span>
+           </div>
+          </li>
+         {/loop}
+         <div>
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3&areaid=$cityid&&order=hits desc&pagesize=9&template=null");}-->
+         {loop $tags $k $t} 
+         <p><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></p>
+         {/loop}                   
+         </div>        
+        </ul>
+        </div>
+    </div>
+
+</div>
+
+   <div class="wrap mt clearfix">{ad(31)}</div>
+
+<!--smt end-->
+ </div>
+<div class="layout">
+{template 'catalogbuy', 'chip'}  
+</div>  
+<!--<script type="text/javascript">
+function scrollDoor(){
+}
+scrollDoor.prototype = {
+	sd : function(menus,divs,openClass,closeClass){
+		var _this = this;
+		if(menus.length != divs.length)
+		{
+			alert("菜单层数量和内容层数量不一样!");
+			return false;
+		}				
+		for(var i = 0 ; i < menus.length ; i++)
+		{	
+			_this.$(menus[i]).value = i;				
+			_this.$(menus[i]).onmouseover = function(){
+					
+				for(var j = 0 ; j < menus.length ; j++)
+				{						
+					_this.$(menus[j]).className = closeClass;
+					_this.$(divs[j]).style.display = "none";
+				}
+				_this.$(menus[this.value]).className = openClass;	
+				_this.$(divs[this.value]).style.display = "block";				
+			}
+		}
+		},
+	$ : function(oid){
+		if(typeof(oid) == "string")
+		return document.getElementById(oid);
+		return oid;
+	}
+}
+window.onload = function(){
+	var SDmodel = new scrollDoor();
+	SDmodel.sd(["m01","m02"],["c01","c02"],"com-t-cur com-t-h","com-t-h");
+}
+</script>-->
+{template 'footer'}

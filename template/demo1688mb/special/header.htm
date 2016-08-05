@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<meta name="generator" content="Destoon B2B,www.destoon.com"/>
+<link rel="shortcut icon" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
+<link rel="bookmark" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
+{if $head_canonical}
+<link rel="canonical" href="{$head_canonical}"/>
+{/if}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
+{if $moduleid>4}<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$module}.css"/>{/if}
+{if $CSS}
+{loop $CSS $css}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$css}.css"/>
+{/loop}
+{/if}
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/>
+<![endif]-->
+{if !DT_DEBUG}<script type="text/javascript">window.onerror=function(){return true;}</script>{/if}
+{if $itemid && $DT[anticopy]}
+<script type="text/javascript">
+document.oncontextmenu=function(e){return false;};
+document.onselectstart=function(e){return false;};
+</script>
+{/if}
+<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/jquery.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/jquery.lazyload.js"></script>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}css/style.css"/>
+</head>
+<body>
+<div class="mod-b">
+    <div id="alibar" class="mod-alibar fd-clr">
+    <div id="alibar-v4">
+        <div class="alibar-container">
+            <div class="account-sign-status" id="destoon_member"><ul></ul></div>
+            <div class="topnav">
+                <ul>
+                    <li class="topnav-myali extra list-first">
+                        <div class="nav-title"><a rel="nofollow" class="nav-arrow" href="{$MODULE[2][linkurl]}" title="商务中心">商务中心</a></div>
+                        <div class="nav-content">
+                            <dl>
+                                <dt>采购</dt>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}trade.php?action=order" title="发出的订单">发出的订单</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6&action=add" title="发布询价单">发布询价单</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6" title="管理询价单">管理询价单</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>销售</dt>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}trade.php" title="已卖出货品">已卖出货品</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5&action=add" title="发布供应产品">发布供应产品</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5" title="管理供应产品">管理供应产品</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>工具</dt>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}home.php" title="管理旺铺">管理旺铺</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}favorite.php" title="商机收藏">商机收藏</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}spread.php" title="排名推广">排名推广</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li class="topnav-tp extra">
+                        <div class="nav-title"><a rel="nofollow" class="nav-arrow" href="{$MODULE[2][linkurl]}grade.php" title="{VIP}服务">{VIP}服务</a></div>
+                        <div class="nav-content">
+                            <dl>
+                                <dd><a rel="nofollow" class="contact-us" href=" "title="免费联系我们">免费联系我们</a></dd>
+                                <!--<dd><a rel="nofollow" class="order-online alitalk alitalk-on" href="" title="在线订购申请">在线订购申请</a></dd>-->
+                                <dd><a rel="nofollow" class="renewal-online" href="{$MODULE[2][linkurl]}grade.php" title="在线办理服务">在线办理服务</a></dd>
+                                <!--<dd><a rel="nofollow" class="apply-form" href="" title="免费填写申请表">免费填写申请表</a></dd>-->
+                                <dd><a rel="nofollow" class="join-promotion" href="" title="参加优惠活动">参加优惠活动</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li><div class="nav-title"><script type="text/javascript">addFav('收藏本页');</script></div></li>
+                    <li><div class="nav-title"><a rel="nofollow" href="{$MODULE[3][linkurl]}shortcut.php" rel="nofollow">加入桌面</a></div></li>
+                    <li><div class="nav-title"><a rel="nofollow" href="{$MODULE[2][linkurl]}ask.php" title="客服中心">客服中心</a></div></li>
+                    <li class="topnav-sitemap extra">
+                        <div class="nav-title"><a class="nav-arrow" href="{$MODULE[1][linkurl]}sitemap"title="网站导航">网站导航</a></div>
+                        <div class="nav-content">
+                            <dl>
+                                <dt>安全交易</dt>
+                                <dd><a rel="nofollow" href="#" title="买家保障">买家保障</a></dd>
+                                <dd><a rel="nofollow" href="#" title="商家认证">商家认证</a></dd>
+                                <dd><a rel="nofollow" href="#" title="支付宝" >支付宝</a></dd>
+                                <dd><a rel="nofollow" href="#"title="投诉举报">投诉举报</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>常用工具</dt>
+                                <dd><a rel="nofollow" href="#" title="商机助理">商机助理</a></dd>
+                                <dd><a rel="nofollow" href="#" title="商机快递">商机快递</a></dd>
+                                <dd><a rel="nofollow" href="#" title="阿里旺旺">阿里旺旺</a></dd>
+                                <dd><a rel="nofollow" href="#" title="手机阿里">手机阿里</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>资讯社区</dt>
+                                <dd><a rel="nofollow" href="#" title="商业资讯">商业资讯</a></dd>
+                                <dd><a rel="nofollow" href="#" title="论坛">论坛</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="博客">博客</a></dd>
+                                <dd><a rel="nofollow" href="#" title="商友圈">商友圈</a></dd>
+                                <dd><a rel="nofollow" href="#" title="生意经">生意经</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>商机市场</dt>
+                                <dd><a rel="nofollow" href="#" title="原材料">原材料</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="工业品">工业品</a></dd>
+                                <dd><a rel="nofollow" href="#" title="服装服饰">服装服饰</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="家居百货">家居百货</a></dd>
+                                <dd><a rel="nofollow" href="#" title="小商品">小商品</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="农食">农食</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="代理">代理</a></dd>
+                                <dd><a rel="nofollow" href="#" title="VIP批发">VIP批发</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="样品中心">样品中心</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>    </div><div class="m b5">&nbsp;</div>
+<script type="text/javascript">var module_id={$moduleid},item_id={$itemid};</script>
+{php $searchid = $moduleid;}

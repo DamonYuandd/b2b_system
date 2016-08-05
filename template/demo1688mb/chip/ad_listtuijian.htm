@@ -1,0 +1,15 @@
+<div class="sw-mod-bottomp4p sw-layout-mod">
+        <div class="p4pBottom-box p4pBottom990">
+               <div class="p4pBottom-head"><h3 class="titlelist">热门推荐</h3><!--<span class="more"><a title="我也要出现在这里" target="_blank" href="#">我也要出现在这里</a></span>--></div>
+               <ul class="p4pBottom-offer-list">
+          <!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>'' and addtime>$today_endtime-90*86400&catid=$catid&pagesize=6&areaid=$cityid&order=hits desc&template=null");}-->
+            {loop $tags $i $t}
+                     <li class="each">
+                        <a href="{$t[linkurl]}" class="pic" target="_blank" title="{$t[alt]}" style="background-image:url({$t[thumb]})">&nbsp;</a>
+                        <h3 class="titlelist"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></h3>
+                        <p class="price">{if $t[unit] && $t[price]>0}<em>￥</em> {$t[price]} / {$t[unit]} {else} 面议 {/if}</p>
+                     </li>
+            {/loop}
+               </ul>
+               </div>
+</div>

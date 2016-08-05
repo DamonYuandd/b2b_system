@@ -1,0 +1,12 @@
+{loop $tags $i $t}
+	 <div class="offer-content">
+				 <div class="offerdetail">
+				     <h3 class="titlesearch"> <a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></h3>
+				     <p class="param-group">{$t[introduce]}...</p>
+				     <p class="mark"> 发布时间：{timetodate($t[addtime], $datetype)} </p>
+				 </div>
+			<div class="Clear"></div>
+	 </div>
+{/loop}
+
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

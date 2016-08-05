@@ -1,0 +1,274 @@
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,fieldset,lengend,button,input,textarea,form,th
+/*,td*/
+	 {
+	margin:0;
+	padding:0;
+}
+.qclr {
+	zoom:1
+}
+.qclr:after {
+	content:"\0020";
+	display:block;
+	height:0;
+	clear:both
+}
+.hyscTitle {
+	width:1188px;
+	height:34px;
+	line-height:34px;
+	background:url(../images/quote/tb25.jpg) repeat-x;
+	border-left:#e2e2e2 solid 1px;
+	border-right:#e2e2e2 solid 1px
+}
+.hyscTitle h2 {
+	height:34px;
+	line-height:34px;
+	color:#444444;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+	margin:0px;
+	padding:0 0 0 10px;
+	margin-left:0px;
+}
+.hyscTitle h2 a {
+	color:#444444;
+}
+.hyscTitle span {
+	padding-right:10px;
+}
+.quote_body {
+	border:#e7e9ee 1px solid;
+	padding:0px 0 11px 0;
+}
+.quote_h {
+	width:1188px;
+	background: #fdf9f8;
+	border-bottom:1px solid #e7e9ee;
+	height:25px;
+	line-height:25px;
+}
+.quote_h li {
+	color:#666666;
+	height:25px;
+	line-height:25px;
+	overflow:hidden;
+	float:left;
+	font-size:14px;
+	font-weight:bold;
+}
+#quoteup li {
+	color:#666666;
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	float:left;
+	border-bottom:1px dotted #e7e9ee;
+}
+#quoteup a {
+	color:#4691cb;
+}
+.hyscTitle input {
+	_margin-top:5px;
+}
+.q1 {
+	width:290px;
+	padding-left:10px;
+}
+.q2 {
+	width:100px;
+}
+.q3 {
+	width:100px;
+}
+.q4 {
+	width:100px;
+}
+.q5 {
+	width:100px;
+}
+.q6 {
+	width:90px;
+}
+.q7 {
+	width:90px;
+}
+.q8 {
+	width:288px;
+}
+.headline {
+	float:left;
+}
+.mq_l {
+	width:830px;
+	border:1px solid #e7e9ee;
+}
+.mq_r {
+	width:348px;
+}
+.mq_n {
+	width:10px;
+}
+.qad {
+	padding:10px;
+}
+.fl {
+	float:left
+}
+.fr {
+	float:right
+}
+.cont-txt-1 {
+	clear:both;
+	float:left;
+	width:100%;
+	margin-top:8px;
+	margin-bottom:5px;
+	+display:inline;
+	color:#ff6600
+}
+.cont-txt-1 a {
+	color:#ff6600
+}
+.cont-txt-1 li {
+	float:left;
+	width:100%;
+	text-align:center;
+	font-size:12px;
+	line-height:26px;
+}
+.cont-txt-1 li p {
+	text-align:left;
+	line-height:20px;
+	height:40px;
+	overflow:hidden;
+	margin:4px 12px 0;
+	color:#666;
+	text-indent:2em;
+}
+.cont-txt-1 li.fst {
+	font-size:16px;
+	font-weight:bold;
+}
+.cont-txt-2 {
+	float:left;
+	width:100%;
+	+display:inline;
+	margin-top:8px
+}
+.cont-txt-2 li {
+	width:95%;
+	float:left;
+	background:url("") no-repeat -300px -42px;
+	line-height:26px;
+	overflow:hidden;
+	height:26px;
+	color:#333333;
+}
+.cont-txt-2 li a {
+	font-size:14px;
+	padding-left:10px;
+}
+.cont-txt-2 li span.p1 {
+	float:left;
+}
+.cont-txt-2 li span.p2 {
+	float:left;
+	color:#999;
+}
+.cont-txt-2 li span.p3 {
+	float:right;
+}
+.pr-tab .tabslt {
+	position:relative;
+	padding-left:1px;
+}
+.pr-tab .tabslt li {
+	position:relative;
+	float:left;
+	+display:inline;
+	width:130px;
+	height:21px;
+	padding:5px 0 5px;
+	margin:0 0 0 -1px;
+	background-image:url(../images/quote/head_bg.gif);
+	background-position:-150px 0;
+	text-align:center;
+	font-size:14px;
+	font-weight:bold;
+}
+.pr-tab .tabslt li.current {
+	z-index:2;
+	width:119px;
+	background-position:0 0;
+	color:#333
+}
+.pr-tab .more {
+	float:right;
+	+display:inline;
+	margin:0 8px 0;
+	font-size:12px;
+	font-weight:normal
+}
+.f-tab-b {
+	border:1px solid #e7e9ee;
+	border-top:0;
+}
+.f-tab-b li {
+	line-height:23px;
+	height:23px;
+	overflow:hidden;
+	vertical-align:middle;
+	width:240px;
+	padding-left:5px;
+}
+.f-tab-b .p2 {
+	float:right;
+	+display:inline;
+	width:47px;
+}
+.f-tab-b .p3 {
+	float:right;
+	+display:inline;
+	width:47px;
+}
+.rk {
+	float:left;
+	+display:inline;
+	padding-left:22px;
+	background:url(../images/quote/index_num_icon.gif) no-repeat
+}
+.n_1 {
+	background-position:0px 5px
+}
+.n_2 {
+	background-position:0px -15px
+}
+.n_3 {
+	background-position:0px -35px
+}
+.n_4 {
+	background-position:0px -55px
+}
+.n_5 {
+	background-position:0px -75px
+}
+.n_6 {
+	background-position:0px -95px
+}
+.n_7 {
+	background-position:0px -115px
+}
+.n_8 {
+	background-position:0px -135px
+}
+.n_9 {
+	background-position:0px -155px
+}
+.n_0,.n_10 {
+	background-position:0px -175px
+}
+.box_head {
+	color:#000
+}

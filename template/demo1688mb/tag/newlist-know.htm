@@ -1,0 +1,19 @@
+<dl class="list-table list-square list-waitsolve">
+<dt>
+  <div class="lp-1">问题标题(共{$items}条)</div>
+  <div class="lp-2">回答数</div>
+  <div class="rp-1"> 提问时间 </div>
+</dt>
+{php global $PROCESS;}
+{loop $tags $k $t}
+<dd >
+  <div class="lp-1 ">
+		<a class="txt" href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a> <img src="{DT_SKIN}image/know_{$t[process]}.gif" title="{$PROCESS[$t[process]]}"/>
+        {if $t[credit]}<span class="sign-wealth" title="悬赏积分"></span><span class="wealth-sum">{$t[credit]}</span>{/if}
+  </div>
+  <div class="lp-2"> {$t[answer]}</div>
+  <div class="rp-1">{timetodate($t[edittime], 3)}</div>
+</dd>
+{/loop}	
+</dl>	
+{if $showpage && $pages}<div class="pages" style="margin-top:15px;">{$pages}</div>{/if}

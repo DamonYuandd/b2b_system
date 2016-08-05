@@ -1,0 +1,6 @@
+{php isset($file) or $file='search';}
+<ul>
+{loop $tags $i $t}
+<li title="搜索{$t[$key]}次 约{$t[items]}条结果"><span class="f_r px11 f_gray">&nbsp;{$t[items]}条</span><i class="sw-mod-keywordHotTop-num{if $i<3}1{else}2{/if}"><span><?php echo $i+1;$i++?></span></i><a href="{$MODULE[$moduleid][linkurl]}{rewrite($file.'.php?kw='.urlencode($t['word']))}"{if $target} target="{$target}"{/if} title="{$t[word]}">{$t[word]}</a></li>
+{/loop}
+</ul>

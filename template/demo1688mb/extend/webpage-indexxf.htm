@@ -1,0 +1,279 @@
+{template 'header'}
+<link href="{DT_SKIN}css/indexxf.css" rel="stylesheet"/>
+<script src="{DT_SKIN}js/indexgy.js"></script>
+<script src="{DT_SKIN}js/indexylbt.js"></script>
+
+<div id="doc">
+      <div id="content" class="screen">
+    <div class="layoutxf layout-e5m0s6 section">
+
+<div class="grid-extra">
+    <div class="mod-material-cate">
+        <div class="headerxf"><h3>所有产品</h3></div>
+        <div class="contentyl">
+            <div class="material-cate-wrap">
+                <ul id="material-category" class="material-cate-list">
+{php $mid = 5;}
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+        {if in_array($c[catid], array(10,11,13,14,15,23,24,27,31,33,37))}
+                    <li class="item">
+                        <div class="cate-main">
+                            <dl>
+                                <dt><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" title="{$c[catname]}" target="_blank">{$c[catname]}</a></dt>
+                                <dd>
+	{if $c[child]}
+	{php $sub = get_maincat($c[catid], $mid, 2);}
+	{loop $sub $j $s}<a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" title="{$s[catname]}" target="_blank">{$s[catname]}</a>{/loop}
+	{/if}
+								</dd>
+                            </dl>
+                        </div>
+                        
+                        <div class="cate-extra">
+                            <div class="cate-extra-main">
+                                <div class="cate-extra-main-wrap">
+{if $c[child]}
+{php $sub = get_maincat($c[catid], $mid);}
+{loop $sub $j $s}
+                                    <dl class="cate-extra-detail">
+                                        <dt><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" title="{$s[catname]}" target="_blank">{$s[catname]}</a></dt>
+                                        <dd>
+                                            <ul>
+{if $s[child]}
+{php $a = get_maincat($s[catid], $mid,1);}
+{loop $a $k $v}<li><a href="{$MODULE[$mid][linkurl]}{$v[linkurl]}" title="{$v[catname]}" target="_blank">{$v[catname]}</a></li>{/loop}
+{/if}
+                                        </ul>
+                                        </dd>
+                                    </dl>
+{/loop}
+{/if}   
+                               </div>
+                        </div>
+                    </div>				
+               </li>      
+     {/if}               
+{/loop}
+                </ul>
+            </div>
+        </div>
+        <div class="footer"><a href="{$MODULE[5][linkurl]}" target="_blank">查看所有分类</a></div>
+
+    </div>
+
+</div>    
+
+
+        <div class="grid-main">  
+               
+            <div class="mod mod-mainslider">
+	<div class="slider-container">
+		<ul class="slider-pic fd-clr">
+                  <li class="f-tab-b"><a href=" " title=""><img src="http://i01.c.aliimg.com/cms/upload/2013/607/136/631706_1365468273.jpg" alt="2013最in数码来袭！" width="530" height="280" border="0"/></a></li>
+                  <li class="f-tab-b"><a href=" " title=""><img src="http://i01.c.aliimg.com/cms/upload/2013/607/136/631706_1365468273.jpg" alt="2013最in数码来袭！" width="530" height="280" border="0"/></a></li>
+                  <li class="f-tab-b"><a href=" " title=""><img src="http://i01.c.aliimg.com/cms/upload/2013/607/136/631706_1365468273.jpg" alt="2013最in数码来袭！" width="530" height="280" border="0"/></a></li>
+                  <li class="f-tab-b"><a href=" " title=""><img src="http://i01.c.aliimg.com/cms/upload/2013/607/136/631706_1365468273.jpg" alt="2013最in数码来袭！" width="530" height="280" border="0"/></a></li>
+		</ul>
+		<ul class="slider-trigger fd-clr">
+			<li class="f-tab-t current">1</li>
+			<li class="f-tab-t">2</li>
+			<li class="f-tab-t">3</li>
+			<li class="f-tab-t">4</li>
+		</ul>
+  </div>
+</div> 
+
+
+<div class="mod-specials">
+	<div class="cell-header"><h3 class="titlexf">今日最新</h3></div>
+	<div class="contentxf">
+	<div class="list-bottom">
+		<ul class="list-product fd-clr">
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>''&catid=10,11,12,13,14,15,23,24,27,31,33,37&pagesize=8&order=addtime desc&template=null");}-->
+{loop $tags $k $t}
+		<li class="item-3rd">
+		<dl class="cell-product-2nd">
+			<dt class="vertical-img"><a class="box-img" href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"> <img alt="{$t[alt]}" src="{imgurl($t[thumb], 1)}" /> </a></dt>
+			<dd class="description"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></dd>
+			<dd class="price">{if $t[unit] && $t[price]>0}<span class="fd-cny">&yen;<span class="value">{$t[price]}</span></span>/<span class="unit">{$t[unit]}</span>{else}<span class="fd-cny">面议</span>{/if}</dd>
+		</dl>
+		</li>
+{/loop}                
+			</ul>
+	</div>
+	
+	</div>
+</div>        </div>
+        <div class="grid-sub col-fixed">
+
+<div class="mod-integrity">
+	<ul>
+		<li class="integrity-safe tab"><h4><s class="icon icon-safe"></s>安全交易</h4></li>
+		<li class="integrity-trust tab"><h4><s class="icon icon-trust"></s>买家保障</h4></li>
+	</ul>
+</div>       
+
+       <div class="mod-cal fd-clr" data-category-ids="7,509,6,1043661,1532,1036540,10325,1036517">
+	<div class="cal-ym" id="js-cal-ym"><span class="cal-year"></span><span class="cal-month"></span></div>
+	<div class="cal-d" id="js-cal-d"></div>
+	<div class="cal-trends">今日更新产品<em>304104
+</em>件<br />总产品数<em>1356907</em>件</div>
+</div> 
+
+           <div class="mod mod-newrec">
+	<div class="cell-header"><h3 class="titlexf">今日推荐</h3></div>
+	<div class="contentxf">
+		<ul class="list-product fd-clr">
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>'' and level=1&catid=10,11,12,13,14,15,23,24,27,31,33,37&pagesize=2&order=addtime desc&template=null");}-->
+{loop $tags $k $t}
+	<li>
+	<dl class="cell-product-3rd">
+		<dt><a class="a-img" href="{$t[linkurl]}" title="{$t[alt]}"><img width="80" height="80" alt="{$t[alt]}" src="{imgurl($t[thumb], 1)}" /></a></dt>
+		<dd class="description"><a href="" title="{$t[alt]} ">{$t[title]}</a></dd>
+		<dd class="price">{if $t[unit] && $t[price]>0}<span class="fd-cny">&yen;<span class="value">{$t[price]}</span></span>/<span class="unit">{$t[unit]}</span>{else}<span class="fd-cny">面议</span>{/if}</dd>
+		<dd class="remain">产品人气<span class="num"> {$t[hits]} </span>次</dd>
+	</dl>
+	</li>
+{/loop}                
+	</ul>
+	</div>
+</div> 
+
+           <div class="mod-rank">
+	<div class="cell-header">
+		<h5 class="titlexf">供应商热销榜</h5>
+		<div class="fd-right">最近<span class="num">7</span>日</div>
+	</div>
+	<div class="contentxf">
+		<ol class="rank-list">
+<!--{php $tags=tag("moduleid=4&condition=groupid>5 and catids<>''&pagesize=8&areaid=$cityid&order=userid desc&template=null");}-->
+{loop $tags $i $t}
+	<li{if $i<1} class="current"{/if}>
+		<div class="item item-{if $i<3}1st{else}4th{/if}"><?php echo $i+1;$i++?></div>
+		<dl>
+			<dt class="description"><a href="{$t[linkurl]}" title="{$t[company]}">{$t[company]}</a></dt>
+			<dd class="major" title="{$t[business]}">主营：{dsubstr($t[business], 20, '...')}</dd>
+			<dd class="sold-out">人气指数：<span class="num">{$t[hits]}</span>次</dd>
+			<dd class="medal"><span class="titlexf">经营模式：</span><span>{$t[mode]}</span></dd>
+		</dl>
+	</li>
+{/loop}        
+</ol>
+	</div>
+</div>        </div>
+    </div>
+
+<div class="fd-clear">&nbsp;</div>
+{php $mid = 5; $adl = 1;}
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+{if in_array($c[catid], array(10,11,12,13,14,15,23,24,27,31,33,37))}
+<div class="layoutxf layout-s5m0 section-brand section">
+     <div class="header fd-clr">
+             <h3 class="titlexf ms-yh">{$c[catname]}</h3>
+             <div class="fd-right"><a class="more-circle" href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" tille="查看更多">查看更多<span class="icon"></span></a></div>
+             <div class="fd-right hot-list">
+             	<ul>
+             	{php $sub = get_maincat($c[catid], $mid, 2);}
+                {loop $sub $j $s}<li><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" title="{$s[catname]}">{$s[catname]}</a>|</li>{/loop}                
+             	</ul>
+             </div>
+     </div>        
+        <div class="contentxf fd-clr">
+<div class="grid-sub">
+                <div class="mod-sub-slider">
+	<div class="slider-container">
+		<ul class="slider-pic fd-clr">
+        <li class="f-tab-b">{if $adl<>1}<img src="{DT_SKIN}images/index/adl-{$c[catid]}.jpg" alt="" />{else}<img src="{DT_SKIN}images/index/adl-10.jpg" alt="" />{/if}</li></ul>
+	</div>
+</div>            </div>
+            <div class="grid-main">
+                <div class="mod-product-list" >
+                    <ul class="list-product">
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>''&catid=".$c[catid]."&length=34&pagesize=5&order=addtime desc&template=null");}-->
+{loop $tags $k $t}
+<li>
+	<dl class="cell-product-2nd">
+		<dt class="vertical-img"><a class="box-img" href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><img alt="{$t[alt]}" src="{imgurl($t[thumb], 1)}" /></a></dt>
+		<dd class="description">
+			<a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a>
+		</dd>
+		<dd class="price">{if $t[unit] && $t[price]>0}<span class="fd-cny">&yen;</span><span class="value">{$t[price]}</span>/<span class="unit">{$t[unit]}</span>{else}<span class="value">面议</span>{/if}</dd>
+		<dd class="sold-out">人次<span class="num"> {$t[hits]} </span>次</dd>
+		<dd class="company"><a href="{userurl($t[username])}" title="{$t[company]}" target="_blank">{$t[company]}</a></dd>
+	</dl>
+</li>
+{/loop}                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{/if}
+{/loop}
+
+    <div class="layoutxf layout-col">
+              <div class="grid">
+                    <div class="mod-newcompany">
+                    	<div class="header fd-clr"><h3 class="titlexf ms-yh">人气消费品供应商</h3><!--<p class="fd-right"><a href=" ">我也要出现在这里</a></p>--></div>
+	<div class="contentxf fd-clr">
+		<ul class="slider-trigger fd-clr">
+			<li class="f-tab-t current">最新更新</li>
+			<li class="f-tab-t">本月热门</li>
+		</ul>
+        
+		<ul class="slider-list">
+						<li class="f-tab-b">
+	<ul class="list-product">
+    
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>''&catid=10,11,12,13,14,15,23,24,27,31,33,37&group=username&length=34&pagesize=8&order=addtime desc&template=null");}-->
+{loop $tags $k $t}
+		<li>
+			<dl class="cell-product-2nd">
+				<dt class="vertical-img"><a class="box-img" href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"> <img alt="{$t[alt]}" src="{imgurl($t[thumb], 1)}" /> </a></dt>
+				<dd class="subject"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></dd>
+				<dd class="price">{if $t[unit] && $t[price]>0}<span class="fd-cny">&yen;</span><span class="num">{$t[price]}</span>/{$t[unit]}{else}<span class="fd-cny">面议</span>{/if}</dd>
+				<dd class="sold-out">人气<span class="num"> {$t[hits]} </span>次</dd>
+				<dd class="company-name"><a href="{userurl($t[username])}" title="{$t[company]}" target="_blank">{$t[company]}</a></dd>
+			</dl>
+		</li>
+{/loop}    
+			</ul>
+</li>
+                        
+						<li class="f-tab-b">
+	<ul class="list-product">
+
+
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>'' and addtime>$today_endtime-30*86400&catid=10,11,12,13,14,15,23,24,27,31,33,37&group=username&length=34&pagesize=8&order=hits desc&template=null");}-->
+{loop $tags $k $t}
+		<li>
+			<dl class="cell-product-2nd">
+				<dt class="vertical-img"><a class="box-img" href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"> <img alt="{$t[alt]}" src="{imgurl($t[thumb], 1)}" /> </a></dt>
+				<dd class="subject"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></dd>
+				<dd class="price">{if $t[unit] && $t[price]>0}<span class="fd-cny">&yen;</span><span class="num">{$t[price]}</span>/{$t[unit]}{else}<span class="fd-cny">面议</span>{/if}</dd>
+				<dd class="sold-out">人气<span class="num"> {$t[hits]} </span>次</dd>
+				<dd class="company-name"><a href="{userurl($t[username])}" title="{$t[company]}" target="_blank">{$t[company]}</a></dd>
+			</dl>
+		</li>
+{/loop}    
+
+			</ul>
+</li>
+
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	(function(jq){
+		jq.use('ui-tabs-lazyload, ui-tabs-effect', function(){
+			jq('#content div.mod-newcompany').tabs({});
+		});
+	})(jQuery);
+</script>                </div>
+  </div>
+
+<script src="{DT_SKIN}js/indexylbt.js"></script>
+
+{template 'footer'}

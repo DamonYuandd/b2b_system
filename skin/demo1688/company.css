@@ -1,0 +1,125 @@
+/*最新供应*/
+.mod-sidepoper a.siderpoper-survey {
+	display: block;
+	width: 20px;
+	margin-left: 3px;
+	padding: 11px 2px;
+	border: 1px solid #d5d5d5;
+	text-align: center;
+	line-height: 14px;
+	background: #fbfbfb;
+	cursor: pointer
+}
+
+.mod-sidepoper a.first {
+	border-bottom: 0
+}
+
+.mod-sidepoper a:hover,.mod-sidepoper a:active {
+	text-decoration: none
+}
+
+.mod-provide {
+	height: 30px;
+	width:693px;
+	border: 1px solid #e2e2e2;
+	margin-top: 9px;
+	overflow: hidden;
+	position: absolute;
+	background: #f4f4f4;
+	bottom:0;
+}
+
+.mod-provide .wrap {
+	height: 30px;
+	width: 670px;
+	float: left;
+	overflow: hidden
+}
+
+.mod-provide .listindex {
+	float: left;
+	width: 690px
+}
+
+.mod-provide .item {
+	overflow: hidden
+}
+
+.mod-provide .arrow-container {
+	float: left;
+	width: 17px;
+	height: 30px;
+	background: #fff
+}
+
+.mod-provide .arrow-container .arrow {
+	width: 16px;
+	height: 16px;
+	border-right: 1px solid #e2e2e2;
+	border-bottom: 1px solid #e2e2e2;
+	background: url("images/460264_1451252140.jpg") no-repeat scroll 0 0 transparent;
+	cursor: pointer
+}
+
+.mod-provide .arrow-container .arrow.up {
+	background-position: 5px -358px
+}
+
+.mod-provide .arrow-container .arrow.up:hover {
+	background-position: -16px -358px
+}
+
+.mod-provide .arrow-container .arrow.down {
+	background-position: 5px -376px
+}
+
+.mod-provide .arrow-container .arrow.down:hover {
+	background-position: -16px -376px
+}
+
+.mod-provide .titleindex {
+	float: left;
+	width: 74px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border-right: 1px solid #e2e2e2;
+	background: #fff
+}
+
+.mod-provide .infoindex {
+	float: left;
+	overflow: hidden;
+	height: 30px;
+	line-height: 32px;
+	padding-left: 9px;
+	width: 590px
+}
+
+.mod-provide .infoindex ul {
+	height: 32px;
+	overflow: hidden
+}
+
+.mod-provide .infoindex li {
+	float: left;
+	width: 190px;
+	overflow: hidden;
+	margin-right: 20px
+}
+
+.mod-provide .tips-right {
+	position: absolute;
+	display: block;
+	width: 9px;
+	height: 9px;
+	font-size: 0;
+	overflow: hidden;
+	z-index: 10;
+	top: 10px;
+	left: 89px;
+	left: 88px\9;
+	_left: 88px;
+	background: url("images/459266_1451252140.png") no-repeat 0 -421px
+}

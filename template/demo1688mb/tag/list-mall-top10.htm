@@ -1,0 +1,12 @@
+                 {loop $tags $k $t}
+		<ul>
+			<li class="img"><a href="{$t[linkurl]}"><img alt="{$t[alt]}" src="{imgurl($t[thumb], 1)}" /></a></li>
+			<li class="txt">
+				<p class="til"><a href="{$t[linkurl]}">{$t[title]}</a></p>
+				<p>已有{$t[comments]}人评论</p>
+				<p class="pri">价格：￥{$t[price]}</p>
+			</li>
+			<div class="clear"></div>
+		</ul>
+                 {/loop}                    
+

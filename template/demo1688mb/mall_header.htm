@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}</title>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+<link rel="shortcut icon" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
+<link rel="bookmark" type="image/x-icon" href="{DT_PATH}favicon.ico"/>
+{if $head_canonical}
+<link rel="canonical" href="{$head_canonical}"/>
+{/if}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
+<!--{if $moduleid>4}<link rel="stylesheet" type="text/css" href="{DT_SKIN}{$module}.css"/>{/if}-->
+{if $CSS}
+{loop $CSS $css}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}css/{$css}.css"/>
+{/loop}
+{/if}
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}css/style.css"/>
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/>
+<![endif]-->
+<script type="text/javascript">window.onerror=function(){return true;}</script>
+<script type="text/javascript" src="{DT_PATH}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/page.js"></script>
+<script type="text/javascript" src="{DT_PATH}file/script/jquery.js"></script>
+
+{if $lazy}<script type="text/javascript" src="{DT_STATIC}file/script/jquery.lazyload.js"></script>{/if}
+{if $JS}
+{loop $JS $js}
+<script type="text/javascript" src="{DT_STATIC}file/script/{$js}.js"></script>
+{/loop}
+{/if}
+{php $searchid = ($moduleid > 3 && $MODULE[$moduleid]['ismenu'] && !$MODULE[$moduleid]['islink']) ? $moduleid : 5;}
+<script type="text/javascript">
+{if $head_mobile && $EXT[mobile_goto]}
+GoMobile('{DT_PATH}mobile/');
+{/if}
+var searchid = {$searchid};
+{if $itemid && $DT[anticopy]}
+document.oncontextmenu=function(e){return false;};
+document.onselectstart=function(e){return false;};
+{/if}
+</script>
+<!--[以上为系统关键代码，除非您明确其含义，否则请勿修改或删除，否则会导致系统错误]-->
+<!--[模板中所有带id的元素，请勿修改或删除，否则会导致部分JS代码无法运行]-->
+<!--[以上类似的注释，在编译模板时，系统会自动移除，不会显示在实际的]-->
+
+</head>
+<body>
+<div id="top-banner-layout" style="background:#FF0334">
+  <!--<div id="top-banner"><img src="{DT_SKIN}images/topad.jpg" width="990" height="32"/></div>-->
+  
+  <!--<div id="top-notice"><span id="top-notice-close"></span>
+   	 <div class="text">尊敬的用户<span>:&nbsp;2012年9月13日3:00-3:30，网站升级维护，届时中国站涉及资金的相关操作（如付款、退款等）将暂停使用，敬请谅解！</span></div>
+  </div>-->
+</div>   
+
+<div class="mod-b">
+    <div id="alibar" class="mod-alibar fd-clr">
+    <div id="alibar-v4">
+        <div class="alibar-container">
+            <div class="account-sign-status" id="destoon_member"><ul></ul></div>
+            <div class="topnav">
+                <ul>
+                    <li class="topnav-myali extra list-first">
+                        <div class="nav-title"><a rel="nofollow" class="nav-arrow" href="{$MODULE[2][linkurl]}" title="商务中心">商务中心</a></div>
+                        <div class="nav-content">
+                            <dl>
+                                <dt>采购</dt>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}trade.php?action=order" title="发出的订单">发出的订单</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6&action=add" title="发布询价单">发布询价单</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6" title="管理询价单">管理询价单</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>销售</dt>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}trade.php" title="已卖出货品">已卖出货品</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5&action=add" title="发布供应产品">发布供应产品</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=5" title="管理供应产品">管理供应产品</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>工具</dt>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}home.php" title="管理旺铺">管理旺铺</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}favorite.php" title="商机收藏">商机收藏</a></dd>
+                                <dd><a rel="nofollow" href="{$MODULE[2][linkurl]}spread.php" title="排名推广">排名推广</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li class="topnav-tp extra">
+                        <div class="nav-title"><a rel="nofollow" class="nav-arrow" href="{$MODULE[2][linkurl]}grade.php" title="{VIP}服务">{VIP}服务</a></div>
+                        <div class="nav-content">
+                            <dl>
+                                <dd><a rel="nofollow" class="contact-us" href="{$EXT[guestbook_url]}"title="立即留言我们">立即留言我们</a></dd>
+                                <dd><a rel="nofollow" class="renewal-online" href="{$MODULE[2][linkurl]}grade.php" title="在线办理服务">在线办理服务</a></dd>
+                                <!--<dd><a rel="nofollow" class="apply-form" href="" title="免费填写申请表">免费填写申请表</a></dd>-->
+                                <!--<dd><a rel="nofollow" class="join-promotion" href="" title="参加优惠活动">参加优惠活动</a></dd>-->
+                            </dl>
+                        </div>
+                    </li>
+                    <!--<li><div class="nav-title"><a rel="nofollow" href="{$MODULE[3][linkurl]}shortcut.php">加入桌面</a></div></li>-->
+                    <li><div class="nav-title"><a rel="nofollow" href="{$MODULE[2][linkurl]}ask.php" title="客服中心">客服中心</a></div></li>
+                    <li class="topnav-sitemap extra">
+                        <div class="nav-title"><a class="nav-arrow" href="{$MODULE[1][linkurl]}sitemap"title="网站导航">网站导航</a></div>
+                        <div class="nav-content">
+                            <dl>
+                                <dt>安全交易</dt>
+                                <dd><a rel="nofollow" href="#" title="买家保障">买家保障</a></dd>
+                                <dd><a rel="nofollow" href="#" title="商家认证">商家认证</a></dd>
+                                <dd><a rel="nofollow" href="#" title="支付宝" >支付宝</a></dd>
+                                <dd><a rel="nofollow" href="#"title="投诉举报">投诉举报</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>常用工具</dt>
+                                <dd><a rel="nofollow" href="#" title="商机助理">商机助理</a></dd>
+                                <dd><a rel="nofollow" href="#" title="商机快递">商机快递</a></dd>
+                                <dd><a rel="nofollow" href="#" title="在线洽谈">在线洽谈</a></dd>
+                                <dd><a rel="nofollow" href="#" title="手机企商">手机企商</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>资讯社区</dt>
+                                <dd><a rel="nofollow" href="#" title="商业资讯">商业资讯</a></dd>
+                                <dd><a rel="nofollow" href="#" title="论坛">论坛</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="博客">博客</a></dd>
+                                <dd><a rel="nofollow" href="#" title="商友圈">商友圈</a></dd>
+                                <dd><a rel="nofollow" href="#" title="生意经">生意经</a></dd>
+                            </dl>
+                            <dl>
+                                <dt>商机市场</dt>
+                                <dd><a rel="nofollow" href="#" title="原材料">原材料</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="工业品">工业品</a></dd>
+                                <dd><a rel="nofollow" href="#" title="服装服饰">服装服饰</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="家居百货">家居百货</a></dd>
+                                <dd><a rel="nofollow" href="#" title="小商品">小商品</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="农食">农食</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="代理">代理</a></dd>
+                                <dd><a rel="nofollow" href="#" title="VIP批发">VIP批发</a>&nbsp;&nbsp;<a rel="nofollow" href="#" title="样品中心">样品中心</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>    </div>
+
+<div class="m"><div id="search_tips" style="display:none;"></div></div>
+
+<div class="mod-b">
+    <div id="header" class="mod-masthead">
+  <div class="header-container layout">
+    <div id="masthead-v5" class="fd-clr">
+      <div class="ali-logo-v5"><a title="{$DT[sitename]}" href="{$MODULE[1][linkurl]}" class="main-logo-v5"><img alt="{$DT[sitename]}" src="{if $MODULE[$moduleid][logo]}{DT_SKIN}image/logo_{$moduleid}.gif{elseif $DT[logo]}{$DT[logo]}{else}{DT_SKIN}images/logo.png{/if}"></a></div>
+      <div class="masthead-right">
+        <div class="ali-search-v5">
+	{php $searchid = ($moduleid > 3 && $MODULE[$moduleid]['ismenu'] && !$MODULE[$moduleid]['islink']) ? $moduleid : 5;}
+	{php $searchids = array(5,6,4,21,22,7);}
+	{if !in_array($searchid, $searchids)}
+		{php $searchids[] = $searchid;}
+	{/if}
+	<script type="text/javascript">var searchid = {$searchid};</script>
+          <form id="destoon_search" action="{DT_PATH}search.php" onSubmit="return Dsearch();">
+          <input type="hidden" name="moduleid" value="{$searchid}" id="destoon_moduleid"/>
+          <input type="hidden" name="spread" value="0" id="destoon_spread"/>
+            <fieldset>
+              <legend>阿里巴巴搜索</legend>
+              <ul id="search_module" class="alisearch-type-v5 fd-clr">
+                {loop $searchids $s}
+                {if isset($MODULE[$s])}<li{if $searchid == $s} class="head_search_on"{/if} onclick="setModule({$s}, this);"><a title="{$MODULE[$s][name]}">{$MODULE[$s][name]}</a></li>{/if}
+                {/loop}
+              </ul>
+              <div class="alisearch-container-v5">
+                <div class="alisearch-keywords-v5">
+                  <input name="kw" id="destoon_kw" type="text" class="empty" maxlength="50" value="{if $kw}{$kw}{else}请输入关键词{/if}" onFocus="if(this.value=='请输入关键词') this.value='';"{if $DT[search_tips]} onKeyUp="STip(this.value);" autocomplete="off"{/if}/>
+                </div>
+                <div class="alisearch-action-v5">
+                  <button type="submit" class="alisearch-textbotton">搜索</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+       <!-- <div class="alisearch-top">
+	        <p><a href="" onClick="Dsearch_adv();return false;" class="head_search_adv_1">高级搜索</a></p>
+        	<p><a href="" onClick="Dsearch_top();return false;" class="head_search_adv_2">标王直达</a></p>
+        </div>-->
+        <div class="hot-keyword">
+         <div class="fd-clr hot-keyword-success">
+            <ul class="hot-keyword-list fd-left fd-clr">
+                <!--{tag("moduleid=$searchid&table=keyword&condition=moduleid=$searchid and status=3&pagesize=12&order=total_search desc&template=list-search_header", -2)}-->
+                <li><a class="more-search" >搜索排行榜</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="settleup">
+		<div class="buycart" id="buycart" onmouseover="this.className='hovercart';Dd('boxcart').className='hoverbox';" onmouseout="this.className='buycart';Dd('boxcart').className='boxcart';">
+			<s></s>
+			<span class="shopping"><span id="destoon_cart1">0</span></span>
+			<a href="{$MODULE[16][linkurl]}cart.php" class="gocart">去购物车结算</a>
+			<b></b>
+		</div>
+		<div class="boxcart" id="boxcart" onmouseover="this.className='hoverbox';Dd('buycart').className='hovercart';" onmouseout="this.className='boxcart';Dd('buycart').className='buycart';"></div>
+	</div>
+<div class="head_sousuo_right">{ad(47)}</div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="header-wrap">
+  <div class="navwrap">
+	<div id="nav">
+		<div style="position:relative" class="ali-nav2 w990 mod-nav">
+        <ul style="position:relative" class="ali-nav-main fd-clr">
+        <li{if $moduleid<4} class="ali-nav-current"{/if}><a href="{$MODULE[1][linkurl]}" title="首页">首页</a></li>
+        {loop $MODULE $m}{if $m[ismenu]}<li{if $m[moduleid]==$moduleid} class="ali-nav-current"{/if}><a href="{$m[linkurl]}"{if $m[isblank]} target="_blank"{/if} title="{$m[name]}">{$m[name]}</a></li>{/if}{/loop}
+
+          <li class="last caigou-img"><a href="{$MODULE[2][linkurl]}" title="免费发布信息" target="_blank">免费发布</a></li>
+        </ul>
+    </div>
+{php $child = get_maincat(0, 5, 1);}   
+			<div class="pros subpage">
+				<h2>全部行业分类</h2>
+				<ul class="prosul clearfix" id="proinfo">
+                {php $mid = $moduleid;}
+				{php $child = get_maincat(0, $mid, 1);}
+				{loop $child $i $c}
+				{if $i<8 && $c[child]}
+				{php $sub = get_maincat($c[catid], $mid, 1);}
+                
+					<li><i>&gt;</i><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" target="_blank" class="ti">{set_style($c[catname], $c[style])}</a>
+						<div class="prosmore hide">
+                         {loop $sub $j $s}
+				         {if $j<4}
+                          <span><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank"><strong>{set_style($s[catname], $s[style])}</strong></a>
+                           <ul>
+                           {if $s[child]}{php $sub = get_maincat($s[catid], $mid, 1);}
+                           {loop $sub $k $t}
+                            {if $k<10}
+                            <em><A href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank">{set_style($t[catname], $t[style])}</A></em>
+                            {/if}
+                           {/loop}
+                           {/if}
+                           </ul>
+                          </span>
+                         {/if}
+				         {/loop}
+						</div>
+					</li>
+                    
+                {/if}
+				{/loop}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+(function(){
+	
+	var $subblock = $(".subpage"), $head=$subblock.find('h2'), $ul = $("#proinfo"), $lis = $ul.find("li"), inter=false;
+	
+	$head.click(function(e){
+		e.stopPropagation();
+		if(!inter){
+			$ul.show();
+		}else{
+			$ul.hide();
+		}
+		inter=!inter;
+	});
+	
+	$ul.click(function(event){
+		event.stopPropagation();
+	});
+	
+	$(document).click(function(){
+		$ul.hide();
+		inter=!inter;
+	});
+
+	$lis.hover(function(){
+		if(!$(this).hasClass('nochild')){
+			$(this).addClass("prosahover");
+			$(this).find(".prosmore").removeClass('hide');
+		}
+	},function(){
+		if(!$(this).hasClass('nochild')){
+			if($(this).hasClass("prosahover")){
+				$(this).removeClass("prosahover");
+			}
+			$(this).find(".prosmore").addClass('hide');
+		}
+	});
+	
+})();
+</script>

@@ -1,0 +1,86 @@
+{php $CSS = array('info');}
+{template 'header'}
+<div class="m">
+    <div class="grid-m730s200 layoutinfo"> 
+      <div class="col-infomain">
+        <div class="main-wrap">
+          <div class="tit01"> <strong>热点招商信息</strong> </div>
+          <div class="con01">
+            <ul class="clearfix">
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and thumb<>'' and level>0&areaid=$cityid&order=addtime desc&pagesize=8&template=null");}-->
+            {loop $tags $i $t}
+               <li><div class="imgCon"><div class="img"><a target="_blank" title="{$t[alt]}" href="{$t[linkurl]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}" width="160" height="120" /></a></div><p class="box"><a target="_blank" title="{$t[alt]}" href="{$t[linkurl]}">{$t[title]}</a></p></div></li>
+            {/loop}               
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-infosub">
+        <div class="con01">
+          <div class="tit01"> <strong><a href="{$MODULE[4][linkurl]}" target="_blank">经销商信息</a></strong> </div>
+          <div class="c1">
+            <table border="0" width="100%">
+              <thead><tr><th>姓名</th><th>省份</th></tr></thead>
+              <tbody>
+<!--{php $tags=tag("moduleid=4&condition=groupid>5 and catids<>''&pagesize=11&areaid=$cityid&order=userid desc&template=null");}-->
+{loop $tags $i $t}
+                <tr>
+                  <td><span><a href="{$t[linkurl]}" target="_blank">{dsubstr($t[company], 28, '...')}</a></span></td>
+                  <td>{area_pos($t[areaid], '/', 1)}</td>
+                </tr>
+{/loop}                
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="banner-990"><img src="{DT_SKIN}images/87.gif" width="1190" height="75" border="0" alt="厦门怡惟服饰股份有限公司"></div>
+
+		{loop $maincat $i $c}
+    <div id="mTit">
+      <ul>
+        <li class="lil li0<?php echo $i+1;$i++?>"><a href="{$MOD[linkurl]}{$c[linkurl]}" target="_blank"><strong>{$c[catname]}</strong></a></li>
+        <li  class="lir"><a href="{$MOD[linkurl]}{$c[linkurl]}" target="_blank">更多 &gt;&gt;</a></li>
+      </ul>
+    </div>
+    <div class="grid-m730s200 layoutinfo"> 
+      <!--[if!IE]>左框架 <![endif]--> 
+      <div class="col-infomain">
+        <div class="main-wrap">
+        <div class="con02">
+        <ol class="clearfix">
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3&areaid=$cityid&catid=".$c[catid]."&order=".$MOD[order]."&pagesize=8&template=null");}-->
+            {loop $tags $i $t}
+               <li><div class="imgCon"><div class="img"><a target="_blank" title="{$t[alt]}" href="{$t[linkurl]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}" /></a></div><p class="box"><a target="_blank" title="{$t[alt]}" href="{$t[linkurl]}">{$t[title]}</a></p></div></li>
+            {/loop}               
+            </ol>
+        </div>
+        </div>
+      </div>
+      <!--[if!IE]>左框架 END <![endif]--> 
+      <!--[if!IE]>右框架 <![endif]--> 
+      <div class="col-infosub">
+      <div class="tit02 f2">
+      <strong><a href="{$MOD[linkurl]}{$c[linkurl]}" target="_blank">热门{$c[catname]}</a></strong>
+      </div>
+      <div class="con02">
+      <ol class="lst mod-lst">
+<!--{php $tags=tag("moduleid=$moduleid&condition=status=3&areaid=$cityid&catid=".$c[catid]."&order=hits desc&pagesize=11&template=null");}-->
+            {loop $tags $i $t}
+          <li><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+            {/loop}               
+
+
+</ol>
+      </div>
+      </div>
+      <!--[if!IE]>右框架 END <![endif]--> 
+    </div>
+    
+		{/loop}
+ </div>
+{template 'footer'}

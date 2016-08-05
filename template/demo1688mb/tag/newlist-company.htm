@@ -1,0 +1,30 @@
+<div id="offers" class="offers">
+	<ul>
+{loop $tags $k $t}
+	<li class="offer paGetId">
+	<h2><a class="Title" href="{$t[linkurl]}" target="_blank">{$t[company]}</a>{if $t[vip]}<img src="{DT_SKIN}image/vip.gif" align="absmiddle"/> <img src="{DT_SKIN}image/vip_{$t[vip]}.gif" align="absmiddle"/>{/if}</h2>
+				<div class="sw-mod-popcompany-Summary ">
+					  <div class="Biz-type"><em>简介：</em>{dsubstr($t[introduce],100,'......')}</div>
+					  <div class="sw-mod-allcompany-Service"><em>主营产品：</em>{dsubstr($t[business], 120, '...')}</div>
+                      <!--{php $tags=tag("moduleid=5&condition=status=3 and username='".$t[username]."'&pagesize=1&template=null");}-->
+                      {loop $tags $i $s}
+					  <div class="Address"><em>地址：</em>{$s[address]}</div>
+					  <div class="Address"><em>电话：</em>{$s[telephone]} </div>
+                      {/loop}
+					  <div class='iconCollection'>{if $t[mode]}({$t[mode]})&nbsp;&nbsp;{/if} {if $t[validated]}[已核实]{else}[未核实]{/if}</div>
+					  <ul class="Feedback"><li><a class="sw-ui-icon-ww-off" href="{$MODULE[2][linkurl]}chat.php?touser={$t[username]}&mid=4" target="_blank"></a></li><li><a href="{$t[linkurl]}" title="点击进入企业商铺" memberid="songjiantao" class="sw-ui-icon-xjd"></a></li></ul>
+				</div>
+				<div class="sw-mod-allcompany-Photos">
+				<!--{php $tags=tag("moduleid=5&condition=status=3 and groupid>5 and username='".$t[username]."'&pagesize=3&order=addtime desc&template=null");}-->
+                                  {loop $tags $k $t}
+						 <div class="sw-mod-allcompany-Photo">
+						     <div class="SamplePic"><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}" width="150" height="150"/></a></div>
+            				 <div class="SampleTitle"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></div>
+						 </div>
+                                  {/loop}
+				</div>
+		</li>
+{/loop}		
+	</ul>
+</div>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

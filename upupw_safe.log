@@ -1,0 +1,331 @@
+已拦截-IP: 183.95.113.38 拦截时间: 2016-07-31 08:17:39 攻击出处:/haoidadmin.php 攻击方式: POST 详细信息: {php $CSS = array('index');}
+{template 'header'}
+<div class="layout main">
+  <div class="mod-a col-sub">
+     <div class="col-sub">
+            
+  
+</div>
+</div>
+
+     <div class="col-main">
+          <div class="mod-a"><div class="module mod-slider">{ad(14)}</div></div>
+           
+              <div id="mod-provide" class="mod-provide">
+                <div class="arrow-container">
+                  <div class="arrow up"></div>
+                  <div class="arrow down"></div>
+                </div>
+                <div id="mod-provide-list" class="wrap">
+                  <div class="listindex f-slider">
+                    <P class="dcms-beacon-position">
+                        <div class="item f-tab-b dcms-beacon-position">
+                            <div class="titleindex"><strong>最新供应</strong></div>
+                            <div class="infoindex"> 
+                                  <ul style="width: 2520px; ">
+                   <!--{php $tags=tag("moduleid=5&condition=status=3&areaid=$cityid&order=addtime desc&pagesize=10&template=null");}-->
+                                 {loop $tags $i $t}
+                                       <li><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+                                 {/loop}
+                                  </ul>
+                              </div>
+                        </div>
+                    </P>    
+                    
+                  <div class="item f-tab-b">
+                      <div class="titleindex"><strong>最新求购</strong></div>
+                      <div class="infoindex"> 
+                         <ul>
+                   <!--{php $tags=tag("moduleid=5&condition=status=3&areaid=$cityid&order=addtime desc&pagesize=10&template=null");}-->
+                           {loop $tags $i $t}
+                            <li><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+                           {/loop}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tips-right"></div>
+              </div>
+
+              <div class="mod-a" >
+              <div class="mod-operation-promotion-v2">
+                  
+              </div> 
+      </div>
+            </div>
+
+            <div class="col-ext mod-a">
+              <div class="mod-login login" >
+
+		{template 'userindex', 'chip'}
+
+              </div>
+              
+              <div id="user-intro" class="user-notice">
+                 <div class="intro">
+                   <div class="header">
+                       <ul class="tab">
+                          <li class="mm_2" id="mm_t_1" onmouseover="Tb(1, 2, 'mm', 'mm');">网站公告</li>
+                          <li class="mm_1" id="mm_t_2" onmouseover="Tb(2, 2, 'mm', 'mm');">网站帮助</li>
+                       </ul>
+                   </div>
+  <div class="contentindex" id="mm_c_1">
+    <ul class="cell-list-txt">
+<!--{php $tags=tag("table=announce&condition=1 and level=1&pagesize=3&length=27&areaid=$cityid&order=listorder desc,addtime desc&template=null");}-->
+{loop $tags $i $t}
+      <li><a href="{$t[linkurl]}" target="_blank">[公告] {$t[title]}</a></li>
+{/loop}    
+    </ul>
+  </div>
+  <div class="contentindex" style="display:none; " id="mm_c_2">
+    <ul class="cell-list-txt">
+<!--{php $tags=tag("table=announce&condition=1 and level=2&pagesize=3&length=27&areaid=$cityid&order=listorder desc,addtime desc&template=null");}-->
+{loop $tags $i $t}
+      <li><a href="{$t[linkurl]}" target="_blank">[帮助] {$t[title]}</a></li>
+{/loop}
+    </ul>
+  </div>
+</div> 
+
+     <div class="security">
+        <div class="header">
+          <h2 class="titleindex">安全网上贸易</h2>
+        </div>
+        <div class="contentindex">
+          <ul class="list-product">
+            <li> <a class="a-mix" title="交易有保障，采购更放心"><span class="cell-security-icon"><img src="{DT_SKIN}images/460264_1451252140.jpg" alt="买家保障" class="title-name1"></span><span class="description">买家保障</span></a></li>
+            <li> <a class="a-mix" title="真实验证商家资质和实力"><span class="cell-security-icon"><img src="{DT_SKIN}images/460264_1451252140.jpg" alt="商家认证" class="title-name2"></span><span class="description">商家认证</span></a></li>
+            <li> <a class="a-mix" title="通过支付宝付款，保障交易安全"><span class="cell-security-icon"><img src="{DT_SKIN}images/460264_1451252140.jpg" alt="交易安全" class="title-name3"></span><span class="description">安全交易</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="usertools">
+        <div class="header">
+          <h2 class="titleindex">常用工具</h2>
+        </div>
+        <div class="contentindex">
+          <ul>
+            <li class="tools-icon-1"> <a href="{$MODULE[2][linkurl]}friend.php">我的商友</a></li>
+            <li class="tools-icon-2"> <a href="#">手机企商</a></li>
+            <li class="tools-icon-3"> <a href="{$MODULE[2][linkurl]}favorite.php">商机收藏</a></li>
+            <li class="tools-icon-5"> <a href="{$MODULE[2][linkurl]}spread.php">排名推广</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>            </div>
+          </div>
+
+          <div class="layout">
+            <div class="module mod-asc">
+              <div class="contentindex">{ad(31)}</div>
+            </div>
+          </div>
+<div id="industry_ctn">
+          <div class="layout">
+			{php $mid = 5;}
+			{template 'catalogindex', 'chip'}
+          </div>
+
+          <div class="layout">
+            <div class="mod-tanx-793 fd-left">
+              <div class="contentindex">
+              {ad(49)}
+              </div>
+            </div>
+            <div class="mod-tanx-391 fd-left">
+              <div class="contentindex">
+              {ad(46)}              
+              </div>
+            </div>
+          </div>
+</div>
+          <div class="mod-a">
+          <div id="club" class="layout">
+  <div id="mod-club" class="mod-club-v2">
+    <div class="header">
+
+      <h2 class="title_bottom">商情资讯</h2>
+    </div>
+    
+    <div class="contentindex fd-clr">
+      <div class="club-left">
+        <div class="club-left-up">
+<!--{tag("moduleid=21&condition=status=3 and level=1 and thumb<>''&areaid=$cityid&order=addtime desc&pagesize=3&width=455&height=240&target=_blank&template=slide_min")}-->
+        </div>
+        <div class="club-left-bottom mt20">
+         <ul>
+<!--{php $tags=tag("moduleid=21&condition=status=3 and level=1&length=20&showcat=1&areaid=$cityid&order=addtime desc&pagesize=4&template=null");}-->
+             {loop $tags $i $t}
+			 <li><a class="f_orange mr10" href="{$t[caturl]}">[{$t[catname]}]</a><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></li>
+             {/loop}
+          </ul>
+        </div>
+      </div> 
+
+        <div id="club-star" class="club-star ml20">
+          <div class="fd-clr header-container">
+            <div>
+              <div class="cell-header">
+                <div class="px16">图文学院</div>
+              </div>
+            </div>
+          </div>
+          <div id="club-star" class="cell-hot-market">
+            <ul class="hot-img">
+<!--{php $tags=tag("moduleid=21&condition=status=3 and thumb<>''&areaid=$cityid&order=addtime desc&pagesize=3&template=null");}-->
+      {loop $tags $i $t}
+		  <li class="f-tab-b{if $i>0} fd-hide{/if}"><a title="{$t[alt]}" href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="auto" height="70"></a></li>
+      {/loop}
+            </ul>
+            <ul class="hot-info">
+<!--{php $tags=tag("moduleid=21&condition=status=3 and thumb<>''&length=20&areaid=$cityid&order=addtime desc&pagesize=3&template=null");}-->
+      {loop $tags $i $t}
+          <li class="f-tab-t"><a title="{$t[alt]}" href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+      {/loop}
+            </ul>
+            <ul class="f-tab-tt mt5">
+<!--{php $tags=tag("moduleid=21&condition=status=3 and thumb<>''&length=34&areaid=$cityid&order=hits desc&pagesize=7&template=null");}-->
+      {loop $tags $i $t}
+      <li><a title="{$t[alt]}" href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+      {/loop}
+            </ul>
+          </div>
+        </div>
+        
+        <div id="club-hot-v2" class="club-hot-v2 ml20">
+          <div class="fd-clr header-container">
+            <div>
+              <div class="cell-header">
+                <div class="px16">学院热门</div>
+              </div>
+            </div>
+          </div>
+          <div class="mod-industry mod-today-hot">
+            <div class="contentindex">
+              <ol class="cell-rank-list">
+<!--{php $tags=tag("moduleid=21&condition=status=3&length=26&areaid=$cityid&order=hits desc&pagesize=10&template=null");}-->
+      {loop $tags $i $t}
+            <li class="rank<?php echo $i+1;$i++?>"> <a title="{$t[alt]}" href="{$t[linkurl]}" target="_blank"><span class="count">{$t[hits]}</span>{$t[title]}</a></li>
+      {/loop}
+              </ol>
+            </div>
+          </div>
+        </div>
+        
+        <div class="club-right">
+          <ul>{ad(54)}</ul>
+          <ul>
+<!--{php $tags=tag("moduleid=21&condition=status=3&length=30&areaid=$cityid&order=rand() desc&pagesize=7&template=null");}-->
+      {loop $tags $i $t}
+            <li> <a title="{$t[alt]}" href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>
+      {/loop}
+          
+          </ul>
+        </div>
+
+    </div>
+
+  </div>  
+</div>          </div>
+
+
+          
+<div class="info-layout">
+				<div class="fl-box">
+                        <div class="titlenews">
+                           <span class="f_r"><a href="{$EXT[link_url]}" target="_blank">更多></a></span>
+                           <h2>友情链接</h2><h2>  </h2><a href="{rewrite('link/index.php?action=reg')}" target="_blank"><h2>申请链接</h2></a>
+                        </div>
+                        <div class="detailnews">
+                           <ul class="linkimg fd-clr">
+	{if $DT[page_logo]}
+	<!--{tag("table=link&condition=status=3 and level>0 and thumb<>'' and username=''&pagesize=".$DT['page_logo']."&areaid=$cityid&order=listorder desc,itemid desc&template=index-link_logo")}-->
+	{/if}
+                           </ul>
+                           <ul class="linktxt fd-clr">
+	{if $DT[page_text]}
+	<!--{tag("table=link&condition=status=3 and level>0 and thumb='' and username=''&pagesize=".$DT['page_text']."&areaid=$cityid&order=listorder desc,itemid desc&template=index-link_text")}-->
+	{/if}
+                           </ul>
+                        </div>
+    		</div>
+    	</div>          
+<div class="mod-foot">
+          <div class="layout" style="margin-bottom:0">
+    <div class="mod-services">
+        <div class="contentindex fd-clr">
+            <div class="obj-service">
+                <h2>新手指南</h2>
+                <ul>
+                    <li><a href="#" target="_blank" >注册新用户</a></li>
+                    <li><a href="#" target="_blank" >商务中心</a></li>
+                    <li><a href="#" target="_blank" >帐号密码</a></li>
+                    <li><a href="#" target="_blank" >买家入门</a></li>
+                    <li><a href="#" target="_blank" >卖家入门</a></li>
+                </ul>
+            </div>
+            <div class="obj-service">
+                <h2>采购商服务</h2>
+                <ul>
+                    <li><a href="#" target="_blank" >找公司</a></li>
+                    <li><a href="#" target="_blank" >找产品</a></li>
+                    <li><a href="#" target="_blank" >区域分站</a></li>
+                    <li><a href="#" target="_blank" >专业市场</a></li>
+                    <li><a href="#" target="_blank" >商机快递</a></li>
+                </ul>
+            </div>
+            <div class="obj-service">
+                <h2>供应商服务</h2>
+                <ul>
+                    <li><a href="#" target="_blank" >名企通服务</a></li>
+                    <li><a href="#" target="_blank" >速优推广</a></li>
+                    <li><a href="#" target="_blank" >应用市场</a></li>
+                    <li><a href="#" target="_blank" >物流服务</a></li>
+                    <li><a href="#" target="_blank" >网商培训</a></li>
+                </ul>
+            </div>
+            <div class="obj-service">
+                <h2>企商网服务</h2>
+                <ul>
+                    <li><a href="#" target="_blank" >名企学院</a></li>
+                    <li><a href="#" target="_blank" >名企贷款</a></li>
+                    <li><a href="#" target="_blank" >天下名企</a></li>
+                    <li><a href="#" target="_blank" >24小时在线帮助</a></li>
+                </ul>
+            </div>
+            <div class="obj-service">
+                <h2>交易安全</h2>
+                <ul>
+                    <li><a href="#" target="_blank" >买家防骗</a></li>
+                    <li><a href="#" target="_blank" >卖家防骗</a></li>
+                    <li><a href="#" target="_blank" >交易纠纷</a></li>
+                    <li><a href="#" target="_blank" >投诉举报</a></li>
+                    <li><a href="#" target="_blank" >支付宝担保交易</a></li>
+                </ul>
+            </div>
+            <div class="obj-integrity">
+                <a class="logo" href="#">logo</a>
+                <a class="txt ms-yh" style="margin-left:11px" href="#" target="_blank" >买家保障</a>
+            </div>
+        </div>
+        <ul class="module module-phone-link fd-clr">
+            <!--<li><h2>手机登录</h2></li>
+            <li><a href="http://www.haoid.cn" target="_blank" class="fd-bold">m.isuyou.com</a></li>-->
+            <li><h2>下载手机客户端</h2></li>
+            <li><a href="#" target="_blank" class="mob-app android"></a></li>
+            <li><a href="#" target="_blank" class="mob-app iphone"></a></li>
+            <li class="fd-gray"> | </li>
+            <li><h2>关注我们 :</h2></li>
+            <li><a href="#" target="_blank" class="mob-app sina"></a></li>
+            <li><a href="#" target="_blank" class="mob-app qq"></a></li>
+        </ul>
+    </div>
+</div>          </div>
+
+
+
+<script type="text/javascript" src="{DT_SKIN}js/top-merge.js"></script>
+<script type="text/javascript" src="{DT_SKIN}js/bottom-merge.js"></script>
+{template 'footer'}
+

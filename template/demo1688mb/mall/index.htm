@@ -1,0 +1,171 @@
+{php $CSS = array('mall');}
+{template 'mall_header'}
+<div class="m slidebox">
+<div class="homenav">
+
+</div>
+    
+<div class="slide">{ad(48)}</div>
+
+<div class="homebrand">
+	<div class="brbg">
+	<div class="titlemall">
+	<em><a href="{$MODULE[13][linkurl]}" target="_blank">更多品牌</a></em><img src="{DT_SKIN}images/mall/brand_tx1.gif" align="absmiddle" /></div>
+	<div class="brandbox">
+		<div class="brandlist">
+		<ul id="brandlist">
+<!--{php $tags=tag("moduleid=13&condition=status=3&length=34&condition=status=3&pagesize=7&order=addtime desc&template=null");}-->
+{loop $tags $k $t}
+<li><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img class="brandlist_img" src="{imgurl($t[thumb], 1)}" width="145" height="66" alt="{$t[alt]}"/></a></li>
+{/loop}	
+		</ul>
+		</div>
+	</div>
+	</div>
+</div>
+</div>
+<div class="clear line15"></div>
+
+<div class="abody">
+	<div class="row7">
+		<div class="title_h5">
+			<ul class="crz">
+				<li class="this" onmouseover="tabSet(this,'hotprox','ol');">新品上市</li>
+				<li onmouseover="tabSet(this,'hotprox','ol');">本月热销</li>
+				<li onmouseover="tabSet(this,'hotprox','ol');">今日特价</li>
+			</ul>
+		</div>
+		<div id="hotprox" class="hotprox">
+			<ol class="this">
+			<div class="hotsell">
+					<ul>
+<!--{php $tags=tag("moduleid=16&condition=status=3&length=28&pagesize=6&areaid=$cityid&order=addtime desc&template=null");}-->
+                 {loop $tags $k $t}
+                     <li>
+						<a href="{$t[linkurl]}" target="_blank" alt="{$t[alt]}"><img src="{imgurl($t[thumb], 1)}" width="175" height="175" align="absmiddle" /></a>
+                        <div class="txt">
+                            <p><span class="prc">{$t[price]}</span></p>
+							<p class="til"><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></p>
+						</div>
+                     </li>
+                 {/loop}                    
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</ol>
+
+			<ol class="hide">
+				<div class="hotsell">
+					<ul>
+<!--{php $tags=tag("moduleid=16&condition=status=3 and addtime>$today_endtime-30*86400&pagesize=6&areaid=$cityid&order=hits desc&template=null");}-->
+                 {loop $tags $k $t}
+                     <li>
+						<a href="{$t[linkurl]}" target="_blank" alt="{$t[alt]}"><img src="{imgurl($t[thumb], 1)}" width="175" height="175" align="absmiddle" /></a>
+                        <div class="txt">
+                            <p><span class="prc">{$t[price]}</span></p>
+							<p class="til"><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a> </p>
+						</div>
+                     </li>
+                 {/loop}                    
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</ol>
+
+			<ol class="hide">
+			<div class="hotsell">
+					<ul>
+<!--{php $tags=tag("moduleid=16&condition=status=3 and level>0&pagesize=6&areaid=$cityid&order=addtime desc&template=null");}-->
+                 {loop $tags $k $t}
+                     <li>
+						<a href="{$t[linkurl]}" target="_blank" alt="{$t[alt]}"><img src="{imgurl($t[thumb], 1)}" width="175" height="175" align="absmiddle" /></a>
+                        <div class="txt">
+                            <p><span class="prc">{$t[price]}</span></p>
+							<p class="til"><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></p>
+						</div>
+                     </li>
+                 {/loop}                    
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</ol>
+
+		</div>
+	</div>
+
+	<div class="clear line15"></div>
+</div>
+<div class="abody">
+	<p>{ad(27)}</p>
+    <div class="clear"></div>
+</div>
+
+{php $numa = 0;$numb = 0;$numc = 0;}
+{php $mid = 16;}
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+
+{if $i<10 && $c[child]}
+{php $sub = get_maincat($c[catid], $mid, 1);}
+<div class="abody">
+	<div class="row7">
+	<div class="title_h1 col<?php echo $numa+1;$numa++?>">
+		<strong><span><?php echo $numc+1;$numc++?> F</span> {$c[catname]}</strong>
+		<em>
+{php $sub = get_maincat($c[catid], $mid, 1);}
+	{loop $sub $j $s}
+    {if $j<10}
+    <a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank">{$s[catname]}</a> | 
+    {/if}
+    {/loop}
+ <a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" target="_blank">更多</a></em>
+		<div class="clear"></div>
+	</div>
+	<div class="homepro1 st1">
+		<div class="comx">
+				<!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and level=3&catid=".$c[catid]."&areaid=$cityid&order=addtime desc&pagesize=1&template=null");}-->
+                      {loop $tags $i $t}
+        <a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}" width="255" height="255" align="absmiddle" alt="{$t[alt]}" title="{$t[alt]}"/></a>
+		<p class="pri2">{$t[price]}</p>
+                      {/loop}
+		</div>
+		<div class="comy">
+        <div class="thumb"><!--{tag("moduleid=$moduleid&length=20&condition=status=3&catid=".$c[catid]."&areaid=$cityid&pagesize=8&order=addtime desc&&width=120&height=120&cols=4&template=thumb-mall&target=_blank")}--></div>
+			<div class="clear"></div>
+        </div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+ </div>
+	<div class="clear line15"></div>
+</div>
+{php $numb = 0;}
+{/if}
+{/loop}
+
+<div class="abody">
+	<p>{ad(29)}</p>
+    <div class="clear"></div>
+</div>
+
+<script type="text/javascript">
+function tabSet(obj,id,tag)
+{
+ var arrayli = obj.parentNode.getElementsByTagName("li"); //获取菜单数组
+ var arraytag = document.getElementById(id).getElementsByTagName(tag); //获取标签数组
+ for(i=0;i<arraytag.length;i++)
+ {
+  if(obj==arrayli[i])
+  {
+   arrayli[i].className = "this";
+   arraytag[i].className = "this";
+  }
+  else
+  {
+   arrayli[i].className = "";
+   arraytag[i].className = "hide";
+  }
+ }
+}
+</script>
+{template 'footer'}

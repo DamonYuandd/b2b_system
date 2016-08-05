@@ -1,0 +1,107 @@
+{php $CSS = array('know');}
+{template 'header'}
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
+<div id="content" class="w980">
+<div class="layout-p24a30">
+	<div class="grid-30">
+		<ul class="module mod-breadcrumb"><li class="first-col"><a href="{$MODULE[1][linkurl]}">首页</a></li><li><a href="{$MOD[linkurl]}">{$MOD[name]}</a></li><li>{cat_pos($CAT, '<li></li>')}</li></ul>
+	</div>
+</div>
+
+<div class="layout-p24a30">
+	<div class="grid-23">
+          <div class="module mod-category mod-graybox">
+			<div class="top-round"><b></b><i></i></div>
+			<div class="cell-hd"><h2> {$catname} </h2></div>
+            <div class="cell-bd">
+				<ul  class="list-square fd-clr"  >
+				{loop $maincat $k $v}
+					<li><a class="txt{if $v[catid]==$catid} f_b{/if}" href="{$MOD[linkurl]}{$v[linkurl]}" target="_self" title="{$v[catname]}">{set_style($v[catname],$v[style])}</a> <span class="tags">({$v[item]})</span></li>
+				{/loop}
+				</ul>
+		{if $CP}
+		{loop $PPT $p}
+		<div class="ppt">
+			<table cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td class="ppt_l" valign="top">按{$p[name]}</td>
+			<td class="ppt_r" valign="top">
+			{loop $p[options] $o}
+			<a href="###" onclick="Go(sh+'&ppt_{$p[oid]}={urlencode($o)}');">{$o}</a>&nbsp;|&nbsp;
+			{/loop}
+			</td>
+			</tr>
+			</table>
+		</div>
+		{/loop}
+		{/if}
+            </div>
+			<div class="bottom-round"><b></b><i></i></div>
+		</div>
+        
+            <div class="module mod-queslist mod-graybox">
+				<div class="top-round"><b></b><i></i></div>
+				<div class="cell-bd">
+				<ul class="list-tab fd-clr">
+					<li class="current"><a href="{$MOD[linkurl]}{$linkurl}" target="_self" title="全部"><em>全部</em></a></li>
+			{loop $TYPE $k $v}
+					<li ><a href="javascript:Go('{$MOD[linkurl]}{rewrite('search.php?typeid='.$k.'&catid='.$catid)}');" target="_self" title="{$v}"><em>{$v}</em></a></li>
+			{/loop}
+				</ul>
+				{if $tags}{template 'newlist-'.$module, 'tag'}{/if}
+			</div>
+			<div class="bottom-round"><b></b><i></i></div>
+		</div>
+
+	</div>
+	
+	<div class="grid-7 grid-fixed">
+        <div class="module mod-lastweeksort mod-indigobox mod-segment">
+			<div class="top-round"><b></b><i></i></div>
+			<div class="cell-hd">
+				<h2 style="color: #666666;font-weight: bold;">上周高手排行榜</h2>
+			</div>
+			<div class="cell-bd">
+				<ol class="list-sort">
+               <!--{php $tags=tag("moduleid=10&table=member&groupid>5&pagesize=10&order=credit desc&template=null");}-->
+                      {loop $tags $i $t}
+						 <li class="sort-<?php echo $i+1;$i++?>"><a class="txt" href="{userurl($t[username])}" title="{$t[company]}" target="_blank">{$t[truename]}  {$t[career]}</a><span class="tags">{$t[credit]}</span></li>	
+                      {/loop}                                
+				</ol>
+			</div>
+			<div class="bottom-round"><b></b><i></i></div>
+		</div>
+        
+
+		<div class="module mod-hotquessort mod-indigobox mod-segment">
+			<div class="top-round"><b></b><i></i></div>
+			<div class="cell-hd"><h2 style="color: #666666;font-weight: bold;">该类目最受欢迎问题</h2></div>
+			<div class="cell-bd">
+				<ol class="list-sort">
+               <!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and process=3&catid=$catid&order=hits desc&areaid=$cityid&pagesize=6&template=null");}-->
+                      {loop $tags $i $t}
+					  <li class="sort-<?php echo $i+1;$i++?>"><a class="txt" href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+                      {/loop}                                
+				</ol>
+			</div>
+			<div class="bottom-round"><b></b><i></i></div>
+		</div>
+		
+
+		<div class="module mod-hotquessort mod-indigobox mod-segment">
+			<div class="top-round"><b></b><i></i></div>
+			<div class="cell-hd"><h2 style="color: #666666;font-weight: bold;">等待回答的问题</h2></div>
+			<div class="cell-bd">
+				<ol class="list-sort">
+               <!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and process=1&catid=$catid&order=".$MOD[order]."&pagesize=10&template=null");}-->
+                      {loop $tags $i $t}
+					  <li class="sort-<?php echo $i+1;$i++?>"><a class="txt" href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></li>
+                      {/loop}                                
+				</ol>
+			</div>
+			<div class="bottom-round"><b></b><i></i></div>
+		</div>
+    </div>
+</div>
+</div>
+{template 'footer'}

@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{$COM[company]}{/if}</title>
+{if $head_keywords}<meta name="keywords" content="{$head_keywords}"/>{/if}
+{if $head_description}<meta name="description" content="{$head_description}"/>{/if}
+<meta name="generator" content="{$template}"/>
+<meta name="template" content="{$template}"/>
+{if $head_mobile}
+<meta http-equiv="mobile-agent" content="format=html5;url={$head_mobile}">
+{/if}
+{if $head_canonical}
+<link rel="canonical" href="{$head_canonical}"/>
+{/if}
+<link rel="stylesheet" type="text/css" href="{DT_STATIC}{$MODULE[4][moduledir]}/skin/common.css"/>
+<link rel="stylesheet" type="text/css" href="{$HSPATH}style.css"/>
+{if !DT_DEBUG}<script type="text/javascript">window.onerror= function(){return true;}</script>{/if}
+<script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script>
+<script type="text/javascript" src="{DT_STATIC}file/script/homepage.js"></script>
+{if $lazy}<script type="text/javascript" src="{DT_STATIC}file/script/jquery.lazyload.js"></script>{/if}
+<script type="text/javascript">
+{if $head_mobile && $EXT[mobile_goto]}
+GoMobile('{$head_mobile}');
+{/if}
+{if $itemid && $DT[anticopy]}
+document.oncontextmenu=function(e){return false;};
+document.onselectstart=function(e){return false;};
+{/if}
+</script>
+{if $css}<style type="text/css">{$css}</style>{/if}
+</head>
+<div class="m m_head">
+<div class="sign">
+{if $COM[vip]}
+<div><strong>{$COM[year]}</strong><span title="指数满分为10">{$COM[vip]}</span></div>
+{else}
+<img src="{DT_STATIC}{$MODULE[4][moduledir]}/image/free_bg.gif" alt="普通会员"/>
+{/if}
+</div>
+<div class="head">
+{if $logo}<div class="logo"><a href="{$COM[linkurl]}"><img src="{$logo}" alt="{$COM[company]}" onload="if(this.width>600)this.width=600;" height="90"/></a></div>{/if}
+<div class="vip_head">
+<h1>{$COM[company]}</h1>
+<h4>{dsubstr($COM['business'], $logo ? 60 : 80, '...')}</h4>
+</div>
+</div>
+</div>
+<body{if $bgcolor || $background} style="background:{if $bgcolor}{$bgcolor}{/if}{if $background}url('{$background}'){/if};"{/if}>
+<div class="m"><!--<div class="top" id="top"><script type="text/javascript">addFav('收藏本页');</script> | <a href="{$COM[linkurl]}" onclick="javascript:try{this.style.behavior='url(#default#homepage)';this.setHomePage(location.href);}catch(e){}return false;">设为主页</a> | <a href="{DT_PATH}api/shortcut.php?itemid={$userid}" rel="nofollow">保存桌面</a>{if $EXT[mobile_enable]} | <a href="javascript:Go('{$EXT[mobile_url]}index.php?moduleid=4&username={$username}');">手机版</a>{/if}{if $head_mobile} | <a href="javascript:Dqrcode();">二维码</a>{/if}</div>--></div>
+{if $head_mobile}<div id="destoon_qrcode" style="display:none;"></div>{/if}
+
+<div class="m m_menu">
+<div class="menu" id="menu"{if count($MENU)>8} style="height:60px;"{/if}>
+	<ul>
+	<li class="{if $file=='homepage'}menu_on{else}menu_li{/if}"><a href="{$COM[linkurl]}"><span>网站首页</span></a></li>
+	{loop $MENU $k $v}
+	<li class="{if $file==$menu_file[$k]}menu_on{else}menu_li{/if}"><a href="{$v[linkurl]}"><span>{$v[name]}</span></a></li>
+	{/loop}
+	</ul>
+</div>
+</div>
+{if $bannert || $banner}
+<div class="m m_banner">
+<div class="m_banner_list">
+{if $bannert == 2}
+<div id="slide_banner" style="width:{$bannerw}px;height:{$bannerh}px;background:#FAFAFA;overflow:hidden; margin:0 auto; align:absmiddle">
+<a href="###"><img src="{$banner1}" alt="" width="{$bannerw}" height="{$bannerh}" align="absmiddle"/></a>
+<a href="###"><img src="{$banner2}" alt="" width="{$bannerw}" height="{$bannerh}" align="absmiddle"/></a>
+{if $banner3}<a href="###"><img src="{$banner3}" alt="" width="{$bannerw}" height="{$bannerh}" align="absmiddle"/></a>{/if}
+{if $banner4}<a href="###"><img src="{$banner4}" alt="" width="{$bannerw}" height="{$bannerh}" align="absmiddle"/></a>{/if}
+{if $banner5}<a href="###"><img src="{$banner5}" alt="" width="{$bannerw}" height="{$bannerh}" align="absmiddle"/></a>{/if}
+</div>
+{load('slide.js')}
+<script type="text/javascript">new dslide('slide_banner');</script>
+{elseif $bannert == 1}
+<embed src="{$bannerf}" quality="high" loop="true" extendspage="http://get.adobe.com/flashplayer/" type="application/x-shockwave-flash" width="{$bannerw}" height="{$bannerh}" allowscriptaccess="never"></embed>
+{elseif $banner}
+<img src="{$banner}" width="100%"/>
+{/if}
+</div>
+</div>
+{/if}
+<div class="m">
+<div class="pos" id="pos">
+<span class="f_r">
+<script type="text/javascript">show_date();</script>
+</span>
+<span id="position"></span>
+</div>
+</div>
+<div class="m">
+<div style="display:none">
+<div class="main_left">
+<div class="main_head"><div><span class="f_r"><a href="{userurl($username, 'file=introduce', $domain)}"><img src="{DT_STATIC}{$MODULE[4][moduledir]}/image/more.gif" title="更多"/></a></span><strong>{$main_name[$HM]}</strong></div></div>
+<div class="main_body">
+	<div class="lh18 px13 pd10">
+	{if $video}
+	{load('player.js')}
+	<div style="width:250px;height:210px;text-align:right;float:right;"><script type="text/javascript">document.write(player('{$video}',240,200,'',1));</script></div>
+	{else}
+	<img src="{$COM[thumb]}" align="right" style="margin:5px 0 5px 10px;padding:5px;border:#C0C0C0 1px solid;"/>
+	{/if}
+	{$COM[intro]} [<a href="{userurl($username, 'file=introduce', $domain)}" class="t">详细介绍</a>]
+	<div class="c_b"></div>
+	</div>
+</div></div>
+<div class="main_center">
+{if $file != 'news'}
+<div class="side_head"><div><span class="f_r"><a href="{userurl($username, 'file=news', $domain)}"><img src="{DT_STATIC}{$MODULE[4][moduledir]}/image/more.gif" title="更多"/></a></span><strong>{$side_name[$HS]}</strong></div></div>
+<div class="side_body">
+<!--{php $tags=tag("table=news&condition=status=3 and username='$username'&pagesize=".$side_num[$HS]."&order=addtime desc&template=null");}-->
+<ul>
+{if $tags}
+{loop $tags $t}
+<li><a href="{userurl($username, 'file=news&itemid='.$t['itemid'], $domain)}" title="{$t[alt]} ({timetodate($t[addtime], 3)})">{$t[title]}</a></li>
+{/loop}
+{else}
+<li>暂无新闻</li>
+{/if}
+</ul>
+</div>
+{/if}</div>
+<div class="main_right">
+{if $file != 'contact' && $could_contact}
+<div class="side_head"><div><span class="f_r"><a href="{userurl($username, 'file=contact', $domain)}"><img src="{DT_STATIC}{$MODULE[4][moduledir]}/image/more.gif" title="更多"/></a></span><strong>{$side_name[$HS]}</strong></div></div>
+<div class="side_body">
+<ul>
+<li>联系人：{$COM[truename]}</li>
+{if $COM[telephone]}
+<li title="{$COM[telephone]}">电话：{$COM[telephone]}</li>
+{/if}
+{if $COM[mail]}
+<li title="{$COM[mail]}">邮件：{$COM[mail]}</li>
+{/if}
+{if $COM[mobile]}
+<li title="{$COM[mobile]}">手机：{$COM[mobile]}</li>
+{/if}
+{if $COM[fax]}
+<li title="{$COM[fax]}">传真：{$COM[fax]}</li>
+{/if}
+</ul>
+</div>
+{/if}</div>
+</div>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+{if $side_pos==0}
+<td width="{$side_width}" valign="top" id="side">{template 'side', $template}</td>
+<td width="10" id="split"></td>
+{/if}
+<td valign="top" id="main">

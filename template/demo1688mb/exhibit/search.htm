@@ -1,0 +1,141 @@
+{php $CSS = array('dtsearch');}
+{template 'header'}
+<div class="sw-layout-w990">
+<div class="sw-mod-navigatebar selloffer fd-clr">
+	<ul>
+    	 <li class="wholeCat"><a href="{$MODULE[1][linkurl]}" target="_self" title="首页">首页</a></li>
+    	 <li><a href="{$MOD[linkurl]}" target="_self" title="{$MOD[name]}">{$MOD[name]}</a></li>
+    	 <li><a href="{$MOD[linkurl]}search.php">搜索</a></li>
+    	 <li id="breadCrumbText" class="result">共找到<em>{$items}</em>条产品信息</li>
+    	 <li class="activityLogo"><a href="#"><span style="display:none;">true</span></a></li>
+    </ul>
+    <div class="header-splitLine"></div>
+</div>
+
+		<div class="sw-layout-800-180 layout-p32a24">  
+		<div class="sw-mod-sn sw-layout-mod">
+			<form action="{$MOD[linkurl]}search.php" id="fsearch">
+		{if $CP}
+		{loop $PPT $p}
+    	    	<div class="sw-mod-sn-catelist sw-mod-nb fd-clr">
+	    	    		<div class="sw-mod-sn-catelist-title">{$p[name]}：
+                        </div>
+	    	    		<div class="sw-mod-sn-list-body">
+		    	    		<ul class="sw-mod-sn-list-items fd-clr">
+		      	    	  	<input type="hidden" name="ppt_{$p[oid]}" id="ppt_{$p[oid]}" value="{$p[select]}"/>
+		      	    	  	<li><a href="###" onclick="Dd('ppt_{$p[oid]}').value='';Dd('fsearch').submit();">{if $p[select]==''}<span>全部</span>{else}全部{/if}</a></li>
+		      	    	  	{loop $p[options] $o}
+			    	    		 <li><a href="###" onclick="Dd('ppt_{$p[oid]}').value='{$o}';Dd('fsearch').submit();">{if $p[select]==$o}<span>{$o}</span>{else}{$o}{/if}</a></li>
+		      	    	  	{/loop}
+		    	    		</ul>
+	    	    		</div>
+    	    	</div>
+		{/loop}
+		{/if}
+    	 <div class="sw-mod-sn-catelist fd-clr">
+						<table cellpadding="5" cellspacing="3">
+			<tr>
+			<td width="80" align="right">关 键 词：</td>
+			<td><input type="text" size="60" name="kw" value="{$kw}" class="pd3"/></td>
+			<td>
+			{loop $sfields $k $v}
+			<input type="radio" name="fields" value="{$k}" id="fd_{$k}"{if $fields==$k} checked{/if}/><label for="fd_{$k}"> {$v}</label>&nbsp;
+			{/loop}			
+            </td>
+			</tr>
+			<tr>
+			<td align="right">开始日期：</td>
+			<td colspan="2">
+			{dcalendar('fromdate', $fromdate, '')} 至 {dcalendar('todate', $todate, '')}&nbsp;&nbsp;&nbsp;
+			展会状态：
+			<select name="process">
+			<option value="0"{if $process == 0} selected{/if}>全部</option>
+			<option value="1"{if $process == 1} selected{/if}>未开始</option>
+			<option value="2"{if $process == 2} selected{/if}>进行中</option>
+			<option value="3"{if $process == 3} selected{/if}>已过期</option>
+			</select>
+			</td>
+			</tr>
+			<tr>
+			<td align="right">所属分类：</td>
+			<td colspan="2">
+			{$category_select}&nbsp;&nbsp;&nbsp;
+			{if $DT[city]}
+			所在地区：{$area_select}
+			{/if}
+            &nbsp;&nbsp;&nbsp;排序方式：{$order_select}
+			</td>
+			</tr>
+			<tr>
+			<td></td>
+			<td colspan="2">
+			<input type="image" src="{DT_SKIN}image/btn_search.gif"/>&nbsp;&nbsp;
+			<a href="{$MOD[linkurl]}search.php"><img src="{DT_SKIN}image/btn_reset_search.gif"/></a>	
+			</td>
+			</tr>
+			</table>
+
+    	 </div>
+		</form>
+	 </div>
+
+   <div class="sw-mod-related sw-layout-mod">
+           <strong>您是不是在找：</strong>	
+           {if $kw}
+           <!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and word!='$kw' and keyword like '%$keyword%'&pagesize=30&order=total_search desc&template=list-search_relate-sh", -2)}-->
+           {/if}
+   </div>
+
+<div class="sw-layout-content">	
+<div id="nleftfunction">
+ <div class="sw-mod-keywordHotTop sw-layout-mod">
+	<h3>今日搜索排行</h3>
+	<div class="sw-mod-keywordHotTop-words">
+			<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400&pagesize=10&order=today_search desc&key=today_search&template=newlist-search_rank", -2)}-->
+    </div>
+</div>
+ <div class="sw-mod-keywordHotTop sw-layout-mod">
+	<h3>本周搜索排行</h3>
+	<div class="sw-mod-keywordHotTop-words">
+			<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*7&pagesize=10&order=week_search desc&key=week_search&template=newlist-search_rank", -2)}-->
+    </div>
+</div>
+ <div class="sw-mod-keywordHotTop sw-layout-mod">
+	<h3>本月搜索排行</h3>
+	<div class="sw-mod-keywordHotTop-words">
+			<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*30&pagesize=10&order=month_search desc&key=month_search&template=newlist-search_rank", -2)}-->
+    </div>
+</div>
+</div>
+     <div id="offerList" class="offerList">
+		<div class="info-offer">
+		{if $tags}
+		{template 'newlistsearch-'.$module, 'tag'}
+		{else}
+		{template 'noresult', 'message'}
+		{/if}
+
+		</div>
+     </div>
+</div>
+
+<div class="sw-mod-bottomsearch sw-layout-mod">
+  <div class="bottom-search-content fd-clr">
+        <ul class="bottom-search-tabs fd-clr" trace="productlinetabs">
+			 <li class="no_ml"><a href="{$MODULE[5][linkurl]}search.php">供应</a></li>
+			 <li><a href="{$MODULE[6][linkurl]}search.php">求购</a></li>
+			 <li><a href="{$MODULE[4][linkurl]}search.php">公司</a></li>
+			 <li><span class="b">展会</span></li>
+        </ul>
+        <div class="bottom-seach-input fd-clr">
+            <form action="{$MOD[linkurl]}search.php" id="fsearch">
+                <input type="text" maxLength="54" name="kw" value="" class="s_key"/>
+                <input type="submit" value="搜索" class="b ml7px butheight" />
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>	
+
+{template 'footer'}

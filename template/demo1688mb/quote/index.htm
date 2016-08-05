@@ -1,0 +1,139 @@
+{php $CSS = array('quote');}
+
+{template 'header'}
+
+
+
+
+<div class="m">
+	<div class="mq_l f_l">
+		<table cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+		<td valign="top" width="410" class="qad"><a href="" target="_blank"><img src="{DT_SKIN}images/quote/310x240.jpg" width="410" height="240"/></a></td>
+		<td valign="top">
+					<ul class="cont-txt-1 ">
+			  <!--{php $tags=tag("moduleid=$moduleid&length=40&condition=status=3 and level=5&order=".$MOD[order]."&pagesize=1&template=null");}-->
+			         {loop $tags $t}
+						<li class="fst"><a href="{$t[linkurl]}">{$t[title]}</a></li>						
+						<li><p>{$t[introduce]} &hellip;</p></li>		
+			         {/loop}
+					</ul>
+			<ul class="headline">
+			<!--{tag("moduleid=$moduleid&condition=status=3 and level=4&pagesize=2&order=".$MOD[order]."&template=list-hlr&cols=2&target=_blank")}-->
+			</ul>
+            <ul class="cont-txt-2">
+			  <!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and level=1&showcat=1&order=".$MOD[order]."&pagesize=5&order=".$MOD[order]."&&template=null");}-->
+			         {loop $tags $t}
+						<li><span class="p3">[{timetodate($t[edittime], 2)}]</span><span class="p1"><a href="{$t[caturl]}">[{$t[catname]}]</a></span><span class="p2"><a href="{$t[linkurl]}">{$t[title]}</a></span></li>
+			         {/loop}
+            </ul>
+		</td>
+		</tr>
+		</table>
+	</div>
+	<div class="mq_n f_l">&nbsp;</div>
+	<div class="mq_r f_l">
+		<div class="pr-tab" >
+        <div class="box_head_1"><div><strong>行情排行</strong></div></div>
+			<div class="f-tab-b">
+			  <ul> 
+			  <!--{php $tags=tag("moduleid=$moduleid&condition=status=3&order=hits desc&pagesize=10&template=null");}-->
+			  {loop $tags $i $t}
+			      <li><a class="rk n_<?php echo $i+1;$i++?>" href="{$t[linkurl]}">{$t[title]}</a></li>
+			  {/loop}
+			  </ul> 		
+			</div>
+		</div>
+	</div>
+</div>
+		<div class="b10 c_b">&nbsp;</div>
+<div class="m">
+	    <div class="hyscTitle"> 
+	        <span class="fr mr8"> 
+			<form action="{$MOD[linkurl]}price.php" onsubmit="return quote_search();">
+			<input type="text" size="20" value="输入产品名" name="kw" id="quote_kw" class="quote_head_i" onclick="if(this.value=='输入产品名')this.value='';"/> <input type="image" src="{DT_SKIN}image/btn_quote.gif" align="absmiddle"/>
+			</form>
+	        </span> 
+	        <h2 class="fl"><a href="{$MOD[linkurl]}{rewrite('price.php?product=all')}">行情速递</a></h2> 
+	        <div class="clear"></div> 
+	    </div> 
+			<div class="quote_body">
+            <ul class="quote_h">
+                 <li class="q1">品名</li> <li class="q2">型号</li> <li class="q3">规格</li> <li class="q4">品牌</li> <li class="q5">价格(元/吨)</li> <li class="q6">产地</li> <li class="q7">更新时间</li> <li class="q8">公司</li>
+            </ul>
+            <div class="clear"></div> 
+				<div id="quoteup" style="height:340px;overflow:hidden;">
+				<!--{php $tags=tag("moduleid=5&condition=unit<>'' and price>0 and status=3&pagesize=100&order=edittime desc&template=null");}-->
+				<ul>
+				{loop $tags $k $t}
+                 <li class="q1"><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li> <li class="q2">{if $t[model]}{$t[model]}{else}-{/if}</li> <li class="q3">{if $t[standard]}{$t[standard]}{else}-{/if}</li> <li class="q4">{if $t[brand]}{$t[brand]}{else}-{/if}</li> <li class="q5">{$t[price]}{$DT[money_unit]}/{$t[unit]}</li> <li class="q6">{area_pos($t[areaid], '', 2)}</li> <li class="q7">{timetodate($t[edittime], 3)}</li> <li class="q8"><a href="{userurl($t[username])}" target="_blank">{$t[company]}</a></li>
+				{/loop}
+				</ul>
+				</div>
+			</div>
+</div>
+
+<div class="m">
+	<div class="m_l f_l">
+		
+		<div class="c_b"></div>
+		{if $MOD[page_icat]}
+		<table cellpadding="0" cellspacing="0" width="100%">
+		{loop $maincat $i $c}
+		{if $i%2==0}<tr>{/if}
+		<td valign="top" width="335">
+			<div class="b10"></div>
+			<div class="box_head"><span class="f_r"><a href="{$MOD[linkurl]}{$c[linkurl]}">更多..</a></span><strong>{$c[catname]}</strong></div>
+			<div class="box_body li_dot f_gray"><!--{tag("moduleid=$moduleid&catid=".$c[catid]."&areaid=$cityid&condition=status=3&order=".$MOD[order]."&pagesize=".$MOD[page_icat]."&datetype=2&target=_blank")}--></div>			
+		</td>
+		{if $i%2==0}<td>&nbsp;</td>{/if}
+		{if $i%2==1}</tr>{/if}
+		{/loop}
+		</table>
+		{/if}
+	</div>
+	<div class="m_n f_l">&nbsp;</div>
+	<div class="m_r f_l">
+    			<div class="b10"></div>
+
+		<div class="box_head_1"><div><strong>本周关注排行</strong></div></div>
+		<div class="box_body">
+			<div class="rank_list">
+				<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*7&pagesize=10&order=week_search desc&key=week_search&template=list-search_rank", -2)}-->
+			</div>
+		</div>
+		<div class="b10 c_b"> </div>
+		<div class="box_head_1"><div><strong>按分类浏览</strong></div></div>
+		<div class="box_body">
+		<table width="100%" cellpadding="3">
+		{loop $maincat $k $v}
+		{if $k%2==0}<tr>{/if}
+		<td><a href="{$MOD[linkurl]}{$v[linkurl]}">{set_style($v[catname],$v[style])}</a> <span class="f_gray px10">({$v[item]})</span></td>
+		{if $k%2==1}</tr>{/if}
+		{/loop}
+		</table>
+		</div>
+		<div class="b10 c_b"> </div>
+		<div class="box_head_1"><div><strong><a href="{$MOD[linkurl]}product.php">产品报价</a></strong></div></div>
+		<div class="box_body">
+		<!--{tag("moduleid=$moduleid&table=quote_product&condition=1&pagesize=10&order=catid desc,itemid desc&pagesize=10&template=list-quote_product&cols=2")}-->
+		</div>
+		<div class="b10 c_b">&nbsp;</div>
+		<div class="box_head_1"><div><strong>点击排行</strong></div></div>
+		<div class="box_body">
+		<div class="rank_list"><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$today_endtime-30*86400&areaid=$cityid&order=hits desc&pagesize=10", -2)}--></div>
+		</div>
+	</div>
+</div>
+{load('marquee.js')}
+<script type="text/javascript">
+function quote_search() {
+	if(Dd('quote_kw').value.length < 2 || Dd('quote_kw').value == '输入产品名') {
+		Dd('quote_kw').value = '';
+		window.setTimeout(function(){Dd('quote_kw').value = '输入产品名';}, 500); 
+		return false;
+	}
+}
+new dmarquee(31, 20, 1000, 'quoteup');
+</script>
+{template 'footer'}

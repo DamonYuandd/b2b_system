@@ -1,0 +1,33 @@
+{if $options && $values}
+<div class="mod-detail-attributes">
+            <table>
+                <tbody>
+
+                 {if $brand}
+				<tr>
+				<td class="f_dblue">品牌：</td>
+				<td>{$brand}</td>
+				</tr>
+				{/if}
+				{if $n1 && $v1}
+				<tr>
+				<td class="f_dblue">{$n1}：</td>
+				<td>{$v1}</td>
+				</tr>
+				{/if}
+				{if $n2 && $v2}
+				<tr>
+				<td class="f_dblue">{$n2}：</td>
+				<td>{$v2}</td>
+				</tr>
+				{/if}
+				{if $n3 && $v3}
+				<tr>
+				<td class="f_dblue">{$n3}：</td>
+				<td>{$v3}</td>
+				</tr>
+				{/if}
+                </tbody>
+			</table>
+</div>
+{/if}

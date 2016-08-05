@@ -1,0 +1,83 @@
+<!--分类开始-->
+<div class="index_floor_all">
+{php $numa = 36;$numb = 54;$numc = 0;}
+{php $mid = 5;}
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+{if $i<10 && $c[child]}
+{php $sub = get_maincat($c[catid], $mid, 1);}
+
+<div class="mod-a floor_index">
+ <div class="center_header">
+      <ul class="fd-right">
+        <li class="first-col"><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" target="_blank">更多...</a></li></ul>
+      <h2 class="center_titleindex">{set_style($c[catname], $c[style])}</h2>
+ </div>
+ <div class="region-industry mod-smart">
+            
+  <div class="obj-event">
+    <div class="contentindex_left">{ad($c[catid])}</div>  
+  </div>
+  <div class="mod_body">
+  <div class="mod-industry obj-category">
+    <div class="contentindex_brand mt15">
+       <div class="header_toupai mt15">
+         <span class="ml30 bold f_orange"> <a alt="头牌" class="title-name12 px20">品牌</a></span>
+       </div>
+ <?php
+      $strimg = $numb+1;$numb++
+ ?>
+       <div class="header_toupai_img">{ad($strimg)}</div>
+       <div class="header_toupai_right">
+       <!--{php $tags=tag("moduleid=5&condition=status=3 and brand<>''&catid=".$c[catid]."&length=16&areaid=$cityid&order=hits desc&pagesize=3&template=null");}-->
+      {loop $tags $i $t}
+       <li><a title="{$t[brand]}" href="{$t[linkurl]}" target="_blank">{$t[brand]}</a></li>
+      {/loop}
+       </div>
+    </div>
+    <div class="contentindex_center">
+                         {loop $sub $j $s}
+				         {if $j<4}
+                          <li>
+                           <div class="mulu_er">
+                             <a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank"><strong>{set_style($s[catname], $s[style])}</strong></a>
+                           </div>  
+                           <div class="mulu_san">
+                           {if $s[child]}{php $sub = get_maincat($s[catid], $mid, 1);}
+                           {loop $sub $k $t}
+                            {if $k<10}
+                            <p><A href="{$MODULE[$mid][linkurl]}{$t[linkurl]}" target="_blank">{set_style($t[catname], $t[style])}</A></p>
+                            {/if}
+                           {/loop}
+                           {/if}
+                           </div>
+                          </li>
+                         {/if}
+				         {/loop}
+
+    </div>
+    <div class="content_tuijian_left">
+<!--{php $tags=tag("moduleid=5&condition=status=3 and level=1&catid=".$c[catid]."&pagesize=8&template=null");}-->
+    {loop $tags $n $m} 
+    <div>
+       <li><a href="{$m[linkurl]}" target="_blank">{$m[company]}</a></li> 
+
+    </div>   
+    {/loop}
+         
+    </div>
+  </div>
+  
+            </div>
+            </div>
+ <div class="mb20">  
+  <?php
+      $str = $numa+1;$numa++
+  ?>
+  {ad($str)}
+  </div>           
+</div>
+{php $numc = 0;}
+{/if}
+{/loop}
+</div>

@@ -1,0 +1,41 @@
+function move1(i) {
+	$.post('{$MODULE[16][linkurl]}cart.php', 'action=delete&ajax=1&key='+i, function(data) {
+		if(data == '1') {
+			$('#trc_'+i).remove();
+			ca1();
+		} else {
+			alert('操作失败，请重试');
+		}
+	});
+}
+function ca1() {
+	var t = c = 0;
+	$('.cart_price').each(function(i) {
+		var p = parseFloat($(this).text().replace('￥', ''));
+		t += p;
+		c++;
+	});
+	$('#ttp').html('￥ '+t.toFixed(2));
+	$('#ttc').html(c);
+	$('#destoon_cart1').html('<strong>'+c+'</strong>');
+}
+<?php
+require_once DT_ROOT.'/module/mall/global.func.php';
+require_once DT_ROOT.'/module/mall/cart.class.php';
+$table = $DT_PRE.'mall';
+$table_cart = $DT_PRE.'mall_cart';
+$do = new cart();
+$do->max = 100;
+$cart = $do->get();
+$tags2 = $do->get_list($cart);
+?>
+var mallurl = '{$MODULE[16][linkurl]}';
+var errimg = '{DT_SKIN}image/nopic50.gif';
+$('#boxcart').html(destoon_cart ? '<div class="smt"><strong class="f_l">最新加入的商品</strong></div><div class="prompt"><table cellpadding="4" cellspacing="0" width="100%">'+'{loop $tags2 $i $t}'+
+'<tr align="center"{if $i%2==1} bgcolor="#F6F6F6"{/if} id="trc_{$t[key]}">'+
+'<td><a href="{DT_PATH}api/redirect.php?mid=16&itemid={$t[itemid]}" target="_blank"><img src="{$t[thumb]}" width="50" onerror="this.src=errimg;"/></a></td>'+
+'<td width="160" align="left" style="line-height:14px;color:#666666;"><a href="{DT_PATH}api/redirect.php?mid=16&itemid={$t[itemid]}" target="_blank" class="j" title="{$t[alt]}">{$t[title]}{if $t[m1]}&nbsp;&nbsp;{$t[m1]}{/if}{if $t[m2]}&nbsp;&nbsp;{$t[m2]}{/if}{if $t[m3]}&nbsp;&nbsp;{$t[m3]}{/if}</a></td>'
++'<td width="94" class="ar"><span class="cart_price"><strong>￥{$t[price]}</strong></span><br/><span class="cart_delete" onclick="move1('+"'"+'{$t[key]}'+"'"+');">删除</span></td>'
++'</tr>'
++'{/loop}</table></div><div class="smb ar">共<b id="ttc">0</b>件商品　共计<strong id="ttp">￥ 0.00</strong></div><div class="smb_go mr20"><a href="{$MODULE[16][linkurl]}cart.php" title="去购物车结算" id="btn-payforgoods">去购物车结算</a></div>' : '<div class="prompt"><div class="nogoods"><b></b>购物车中还没有商品，赶紧选购吧！</div></div>');
+ca1();

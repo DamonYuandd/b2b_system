@@ -1,0 +1,106 @@
+{php $CSS = array('selllist');}
+{template 'auto_header'}
+<script type="text/javascript" src="{DT_SKIN}js/cn.js"></script>
+<div class="sw-layout-w990">
+<div class="sw-mod-navigatebar selloffer fd-clr">
+	<ul>
+    	 <li class="wholeCat"><a href="{$MODULE[1][linkurl]}" target="_self" title="首页">首页</a></li>
+    	 <li><a href="{$MOD[linkurl]}" target="_self" title="{$MOD[name]}">{$MOD[name]}</a></li>
+    	 {if $catid}<li>{cat_pos($CAT, ' > ')}</li>{/if}
+    	 <li id="breadCrumbText" class="result">共找到<em>{$items}</em>条产品信息</li>
+    	 <li class="activityLogo"><a href="#"><span style="display:none;">true</span></a></li>
+    </ul>
+    <div class="header-splitLine"></div>
+</div>
+	<div id="doc" class="sw-layout-doc"> 
+	  <div id="content" class="sw-layout-content">
+		<div id="sw_mod_sn" class="sw-mod-sn sw-layout-mod">
+    	    	<div class="sw-mod-sn-catelist fd-clr">
+	    	    		<div class="sw-mod-sn-catelist-title">类目：</div>
+	    	    		<div class="sw-mod-sn-list-body">
+		    	    		<ul class="sw-mod-sn-list-items fd-clr">
+		      	    	  	{loop $maincat $k $v}
+			    	    			 <li {if $k>15}class="more"{/if}><a target="_self" title="{$v[catname]}" {if $v[catid]==$catid} class="f_b"{/if} href="{$MOD[linkurl]}{$v[linkurl]}">{set_style($v[catname],$v[style])}</a></li>
+		      	    	  	{/loop}
+		    	    		</ul>
+	    	    		</div>
+	    	    		<div class="sw-mod-sn-bottombar"></div>
+    	    	</div>
+    	    	<div class="sw-mod-sn-bottommore" id="sw_mod_sn_bottommore">显示更多</div>
+		</div>
+
+    <div class="sw-ui-tab comtab">
+		<ul><li class="cominfo">公司信息</li><li>公司产品</li></ul>
+    </div>
+ <div class="sw-mod-filter sw-layout-mod" id="sw_mod_filter" trace="filtbar"></div>
+<div id="sw_mod_mainblock" class="sw-mod-mainblock sw-layout-mod">
+
+<div class='main_content'>
+		{if $page == 1}{ad($moduleid,$catid,$kw,6)}{/if}
+		{if $tags}{template 'newlist-company', 'tag'}{/if}
+</div>        
+
+<div class="sw-layout-sub">
+	<div class="delayshow">	
+
+		<div class="sw-mod-whitegold">
+   			 <div class="expo-hd" title="黄金展位企业——实力铸就品牌"> <a href="{$EXT[ad_url]}" target="_blank" class="expo-title"><span>黄金展位供应商</span></a></div> 
+			<div class="sw-mod-gold">
+                {ad($moduleid,$catid,$kw,7)}
+				
+				<!--<div class="hzBox">
+                    <div class="showImg"></a></div>
+                    <div class="companyname"><a href="#"  target="_blank" class="hzCompName" title="苏州市某某科技有限公司">苏州市某某科技有限公司</a></div>
+                    <div class="contphone"><a href="#" target="_blank" title="0512-88888888">电话：0512-88888888</a></div>
+                </div>-->
+			</div>
+		</div>
+        <div class="rightp4pHead">热门推荐</div>
+        <div class="sw-mod-rightp4p">
+            <div class="rightp4p">
+                 <ul>
+          <!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>'' and level=1&catid=$catid&pagesize=4&areaid=$cityid&order=addtime desc&template=null");}-->
+            {loop $tags $i $t}
+                   <li class="p4poffer top">
+                        <div class="p4pImg"><a class="tag" href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{$t[thumb]}" width="148" height="148"></a></div>
+                        <p class="adtitle"><a href="{$t[linkurl]}" target="_blank" class="aTitle tag" title="{$t[alt]}">{$t[title]}</a></p>
+                        <p class="bold"><span class="rmb">{if $t[unit] && $t[price]>0} {$t[price]} / {$t[unit]} {else} 面议 {/if}</span></p>
+                   </li>
+            {/loop}
+                 </ul>
+            </div>
+        </div>
+ <div class="sw-mod-keywordHotTop sw-layout-mod">
+	<h3>搜索热门榜</h3>
+	<div class="sw-mod-keywordHotTop-words">
+    <!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3&pagesize=10&order=week_search desc&key=week_search&template=newlist-search_rank", -2)}-->
+    </div>
+</div>
+		</div>
+</div>
+			</div>
+<div class="sw-mod-moreInfo sw-layout-mod">没有找到适合的<strong></strong>供应商？<a rel="nofollow" class="sw-ui-btn-g20" href="{$MODULE[2][linkurl]}{$DT[file_my]}?mid=6&action=add" target="_blank"><span>马上发布询价单</span></a><!--<a href="{DT_PATH}top" target="_blank"><i></i>查看搜索排行榜</a>--><a rel="nofollow" class="slashend" href="{$MODULE[10][linkurl]}" target="_blank">去生意经求助</a></div>
+{template 'ad_listtuijian', 'chip'}
+    	<div id="sw_mod_bank" class="sw-mod-bank sw-layout-mod">
+         	<h3>免责声明： 以上所展示的信息由企业自行提供，内容的真实性、准确性和合法性由发布企业负责。本站对此不承担任何责任！</h3>
+    	</div>
+<div  class="sw-mod-bottomsearch sw-layout-mod">
+  <div class="bottom-search-content fd-clr">
+        <ul class="bottom-search-tabs fd-clr" trace="productlinetabs">
+			 <li><a href="{$MODULE[5][linkurl]}search.php">供应</a></li>
+			 <li><a href="{$MODULE[6][linkurl]}search.php">求购</a></li>
+			 <li class="no_ml"><span class="b">公司</span></li>
+        </ul>
+        <div class="bottom-seach-input fd-clr">
+            <form action="{$MOD[linkurl]}search.php" id="fsearch">
+                <input type="text" maxLength="54" name="kw" value="" class="s_key"/>
+                <input type="submit" value="搜索" class="b ml7px butheight" />
+            </form>
+        </div>
+    </div>
+</div>
+    	</div>
+   </div>
+   </div>
+<script type="text/javascript" src="{DT_SKIN}js/cat.js"></script>
+{template 'footer'}

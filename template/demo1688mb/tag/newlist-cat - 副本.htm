@@ -1,0 +1,8 @@
+{loop $tags $i $t}
+<dl>
+   <dt><span class="gray fr">[{timetodate($t[addtime], 3)}]</span><b class="f14 blue"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></b></dt>
+   <dd>{$t[introduce]}...<span class="orange"><a href="{$t[linkurl]}" target="_blank">[阅读全文]</a></span></dd>
+  <!-- <dd class="mt10">关键字：<span class="orange"><a href="#" target="_blank">宝马停止联保</a></span></dd>-->
+</dl>
+{/loop}
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

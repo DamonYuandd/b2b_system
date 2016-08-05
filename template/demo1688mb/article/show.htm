@@ -1,0 +1,156 @@
+{php $CSS = array('newsshow');}
+{template 'header'}
+<div id="doc">
+    <div id="content">
+<div class="info-layout">
+    <div class="grid-680">
+         <div class="info-detail-path"><span>您当前的位置：</span><a href="{$MODULE[1][linkurl]}">首页</a><i></i><a href="{$MOD[linkurl]}">{$MOD[name]}</a><i></i>{cat_pos($CAT, ' <i></i> ')}<i></i><span>正文</span></div>
+         <div class="info-detail-article">
+              <div class="titlenews"><h1>{$title}</h1>
+                <div class="other">   
+                     <span class="f_r"><img src="{DT_SKIN}image/zoomin.gif" width="16" height="16" alt="放大字体" class="c_p" onclick="fontZoom('+', 'article');"/>&nbsp;&nbsp;<img src="{DT_SKIN}image/zoomout.gif" width="16" height="16"  alt="缩小字体" class="c_p" onclick="fontZoom('-', 'article');"/></span>
+                    <span>发布日期：</span><strong>{$adddate}</strong>
+                    {if $copyfrom}<span>来源：</span>{if $fromurl}<a href="{$fromurl}" class="mr18" target="_blank">{/if}<strong>{$copyfrom}</strong>{if $fromurl}</a>{/if}{/if}
+                     {if $author}<span>作者：</span><strong>{$author}</strong>{/if}
+                    <span>浏览次数：</span><strong id="hits">{$hits}</strong>
+                </div>
+            </div>
+            <div class="detailnews">
+                <div class="d-content">       
+		{if $CP}{template 'property', 'chip'}{/if}
+		<div id="content">{template 'newcontent', 'chip'}</div>
+		{if $voteid}<div class="pd20">{loop $voteid $v}
+		{load('vote_'.$v.'.htm')}{/loop}</div>
+		{/if}
+		{if $pages}<div class="pages">{$pages}</div>{/if}
+                </div>
+                
+		{if $keytags}
+		<div class="newkeytags">
+		<strong>关键词：</strong>
+		{loop $keytags $t}
+		<a href="{$MOD[linkurl]}{rewrite('search.php?kw='.urlencode($t))}" target="_blank">{$t}</a>
+		{/loop}
+		</div>
+
+		{/if}
+
+               <div class="d-footer">
+
+                    <a href="javascript:Print();" class="print" target="_self">打印</a>
+            		<a href="#comment-area-id" title="" target="_self" class="comment">评论</a>
+					<div style="float:left;display:inline;margin-left:10px;">
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<span class="bds_more">分享到：</span>
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6432158" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->                    
+                    
+					</div>
+               </div>
+            </div>
+        </div>
+        <!-- 正文 E -->
+
+        <div class="info-detail-ud">
+            <div class="up"><i></i><span>上一篇：</span><!--{tag("moduleid=$moduleid&condition=status=3 and addtime<$addtime&length=20&areaid=$cityid&pagesize=1&order=addtime desc&template=list-npnews", -1)}--></div>
+            <div class="down"><span>下一篇：</span><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$addtime&length=20&areaid=$cityid&pagesize=1&order=addtime asc&template=list-npnews", -1)}--><i></i></div>
+        </div>
+
+		{if $MOD[page_srelate]}
+		{if $keytags}
+        <div class="related-recommend">
+            <div class="rr fd-clr">
+                <h2 class="titlenews">相关推荐：</h2>
+                <div class="rr-path fd-clr"><a href="{$MODULE[1][linkurl]}">首页</a><i></i><a href="{$MOD[linkurl]}">{$MOD[name]}</a><i></i>{cat_pos($CAT, ' <i></i> ')}</div>
+                </div>
+                <div class="fd-clr">
+                    <div id="irecom-list">
+                         <div class="rr-list">
+                               <ul>
+			<!--{php $tags=tag("moduleid=$moduleid&length=44&condition=status=3 and itemid<>$itemid and keyword like '%".$keytags[0]."%'&areaid=$cityid&pagesize=12&order=".$MOD[order]."&template=null");}-->
+                          {loop $tags $i $t}<li><i></i><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{dsubstr($t[alt], 40)}</a></li>{/loop}
+                               </ul>
+                         </div>
+                    </div>
+                </div>
+            </div>
+		{else}
+        <div class="related-recommend">
+            <div class="rr fd-clr">
+                <h2 class="titlenews">相关推荐：</h2>
+                <div class="rr-path fd-clr"><a href="{$MODULE[1][linkurl]}">首页</a><i></i><a href="{$MOD[linkurl]}">{$MOD[name]}</a><i></i>{cat_pos($CAT, ' <i></i> ')}</div>
+                </div>
+                <div class="fd-clr">
+                    <div id="irecom-list">
+                         <div class="rr-list">
+                               <ul>
+			<!--{php $tags=tag("moduleid=$moduleid&length=44&catid=$catid&condition=status=3 and itemid!=$itemid&areaid=$cityid&pagesize=12&order=".$MOD[order]."&template=null");}-->
+                          {loop $tags $i $t}<li><i></i><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{dsubstr($t[alt], 40)}</a></li>{/loop}
+                               </ul>
+                         </div>
+                    </div>
+                </div>
+            </div>
+		{/if}
+		{/if}
+            <div class="the-statement">
+                <p>“如果发现本网站发布的资讯影响到您的版权，可以联系本站！同时欢迎来本站投稿！</p>
+            </div>
+
+
+     <div  class="comment-area" id="comment-area-id" >{template 'comment', 'chip'}</div>
+
+</div>
+
+
+        <div class="grid-300 grid-fixed">
+			 <div class="banner-300x240">{ad(45)}</div>
+
+			 <div class="week-hot-sort">
+                  <div class="titlenews"><h2>本周热门资讯排行</h2></div>
+                  <div class="detailnews">
+ 				           <ul>
+			<!--{php $tags=tag("moduleid=$moduleid&length=38&condition=status=3 and addtime>$today_endtime-30*86400&areaid=$cityid&order=hits desc&pagesize=9&template=null");}-->
+		   	       {loop $tags $i $t}
+ 				              <li><i{if $i<3} class="tft"{/if}><?php echo $i+1;$i++?></i><div style="width:246px"><a href="{$t[linkurl]}" title="{$t[alt]}" class="lnk-a">{$t[title]}</a></div></li>
+		   	       {/loop}
+ 				           </ul>	
+			 </div>
+        </div>
+
+        <div class="box div-info-focus">
+			 <div class="titlenews"><h2>推荐资讯</h2></div>
+                   <ul>
+			<!--{php $tags=tag("moduleid=$moduleid&condition=status=3 and level=1&showcat=1&catid=$catid&areaid=$cityid&order=".$MOD[order]."&pagesize=6&template=null");}-->
+                     {loop $tags $i $t}
+                    			<li{if $i%2==1} class="li-odd"{/if}><div><a href="{$MODULE[6][linkurl]}" target="_blank" title="{$t[catname]}">[{$t[catname]}]</a><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a><i>{$t[amount]}</i></div></li>
+                      {/loop}
+                   </ul>
+        </div>
+
+                   <div class="bpx div-recommend">
+                         <div class="titlenews"><h2>推荐图文</h2></div>
+                         <div class="detailnews">
+			<!--{php $tags=tag("moduleid=$moduleid&length=20&condition=status=3 and thumb!=''&catid=$catid&areaid=$cityid&pagesize=10&order=".$MOD[order]."&template=null");}-->
+                          {loop $tags $i $t}<a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{imgurl($t[thumb], 1)}" alt="{$t[alt]}" width="130" height="130" border="0" />{dsubstr($t[alt], 18)}</a>{/loop}
+                         </div>
+                   </div>
+                   <div id="tanx"><img src="{DT_SKIN}images/300x180.jpg" width="300" height="180"/></div>
+        </div>
+    </div>
+            </div>
+</div>
+{template 'zoom', 'chip'}
+{template 'footer'}

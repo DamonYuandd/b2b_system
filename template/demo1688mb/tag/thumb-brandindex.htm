@@ -1,0 +1,4 @@
+{loop $tags $i $t}
+<li><a href="{$t[linkurl]}"{if $target} target="{$target}"{/if} class="brand-logo" title="{$t[alt]}"><img alt="{$t[alt]}" src="{$t[thumb]}"><div><span>{$t[title]}</span></div></a></li>
+{/loop}
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

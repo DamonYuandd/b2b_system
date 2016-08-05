@@ -1,0 +1,299 @@
+{template 'header'}
+<div class="m b10">&nbsp;</div>
+<link href="{DT_SKIN}css/indexgy.css" rel="stylesheet"/>
+<script src="{DT_SKIN}js/indexgy.js"></script>
+
+<div id="content" class="screen">
+				<div class="layoutgy layout-e5m0s6">
+					<div class="grid-extra mod-spm" data-spm="5084031">
+        <div class="mod-catpanel">
+    <h3>所有商品</h3>
+    <div class="cat-box">
+        <ul id="mod-catpanel-id">  
+{php $mid = 5;}
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+        {if in_array($c[catid], array(4,5,7,8,9,12,16,17,22,30,32))}
+            <li{if $i<1} class="first"{/if}>
+                <h4><a href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" title="{$c[catname]}" target="_blank">{$c[catname]}</a></h4>
+                <p>
+	{if $c[child]}
+	{php $sub = get_maincat($c[catid], $mid, 2);}
+	{loop $sub $j $s}<a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank" title="{$s[catname]}">{$s[catname]}</a>{/loop}
+	{/if}
+				</p>
+                <div class="subcat">
+                    <div class="item">
+                        <div class="main-cat">
+                            <div class="main-cat-cont">
+{if $c[child]}
+{php $sub = get_maincat($c[catid], $mid);}
+{loop $sub $j $s}
+                                <div class="mc-row">
+                                    <div class="mc-hd"><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" title="{$s[catname]}">{$s[catname]}</a></div>
+                                    <div class="mc-bd">
+{if $s[child]}
+{php $a = get_maincat($s[catid], $mid,1);}
+{loop $a $k $v}<a href="{$MODULE[$mid][linkurl]}{$v[linkurl]}" title="{$v[catname]}">{$v[catname]} </a>{/loop}
+{/if}
+                                    </div>
+                                </div>
+{/loop}
+{/if}   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li> 
+     {/if}               
+{/loop}
+          </ul>                
+    </div>
+    <h3><a href="{$MODULE[5][linkurl]}"><b>&gt;</b><span>查看所有商品分类</span></a></h3>
+</div>    </div>
+
+
+
+
+
+					<div class="grid-main mod-spm" data-spm="5626202">
+						<div class="mod-mainslide">
+	<div class="contentgy">
+
+         <div class="f-tab-b"><a href="#"><img src="http://i02.c.aliimg.com/cms/upload/2013/731/907/709137_1251762154.gif" alt="拜年"/></a></div>    
+         <div class="f-tab-b"><a href="#"><img src="http://i02.c.aliimg.com/cms/upload/2013/731/907/709137_1251762154.gif" alt="拜年"/></a></div>    
+         <div class="f-tab-b"><a href="#"><img src="http://i02.c.aliimg.com/cms/upload/2013/731/907/709137_1251762154.gif" alt="拜年"/></a></div>    
+         <div class="f-tab-b"><a href="#"><img src="http://i02.c.aliimg.com/cms/upload/2013/731/907/709137_1251762154.gif" alt="拜年"/></a></div>    
+
+
+    </div>
+    <div class="header">
+        <b class="f-tab-t">1</b>
+        <b class="f-tab-t">2</b>
+		<b class="f-tab-t">3</b>
+		<b class="f-tab-t">4</b>
+    </div>
+</div>
+
+
+
+<div class="mod-subfocal mod-subfocal-combine">
+	<div class="header"><h3>特别推荐</h3></div>
+	<div class="contentgy">
+		<div class="content-wrp">
+          <div class="f-tab-b">
+				<div class="list-tiny-product">
+					<ul>
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>'' and level=1&catid=4,5,7,8,9,12,16,17,22,30,32&pagesize=2&order=addtime desc&template=null");}-->
+              {loop $tags $k $t}
+						<li>
+							<dl class="cell-product-around-1">
+								<dt><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}"></a></dt>
+								<dd class="subject"><a title="{$t[alt]}" href="{$t[linkurl]}" target="_blank">{$t[alt]}</a></dd>
+								<dd class="price">售价：{if $t[unit] && $t[price]>0}<em><span class="fd-cny">&yen;</span>{$t[price]}/{$t[unit]}{else}面议</em>{/if}</dd>
+								<dd class="sale">人气：<em>{$t[hits]} 次</em></dd>
+							</dl>
+						</li>
+              {/loop}                    
+					</ul>
+			</div>
+			  <div class="list-tall-product-2">
+					<ul>
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>'' and level=3&catid=4,5,7,8,9,12,16,17,22,30,32&pagesize=4&order=addtime desc&template=null");}-->
+              {loop $tags $k $t}
+						<li>
+							<dl class="cell-product-block-2">
+								<dt><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}"></a></dt>
+								<dd class="subject"><a title="{$t[alt]}" href="{$t[linkurl]}" target="_blank">{$t[alt]}</a></dd>
+								<dd class="price">售价：{if $t[unit] && $t[price]>0}<em><span class="fd-cny">&yen;</span>{$t[price]}/{$t[unit]}{else}面议</em>{/if}</dd>
+								<dd class="sale">人气：<em>{$t[hits]} 次</em></dd>
+							</dl>
+						</li>
+              {/loop}                    
+					</ul>
+			</div>
+		  </div>
+		</div>
+	</div>
+</div>					</div>
+
+
+
+
+<div class="grid-sub mod-spm">
+<div class="mod-integrity">
+	<ul>
+		<li class="integrity-safe tab"><h4><s class="icon icon-safe"></s>安全交易</h4></li>
+		<li class="integrity-trust tab"><h4><s class="icon icon-trust"></s>买家保障</h4></li>
+	</ul>
+</div>       
+
+			<div class="mod-cal">
+	<div class="cal-ym" id="js-cal-ym"><span class="cal-year"></span><span class="cal-month"></span></div>
+	<div class="cal-d" id="js-cal-d"></div>
+	<div class="cal-trends">今日总商品<em>30184161</em>件<br>新增<em>1069</em>商家<em>63798</em>商品</div>
+</div>						<div class="mod-latest-news">
+	<div class="header">
+		<h3>最新资讯</h3>
+	</div>
+	<div class="contentgy">
+		<ul>
+<!--{php $tags=tag("moduleid=21&condition=status=3&showcat=1&areaid=$cityid&order=addtime desc&pagesize=8&template=null");}-->
+{loop $tags $i $t}
+			<li><a href="{$t[linkurl]}"><small class="tag">[{$t[catname]}]</small>{$t[title]}</a></li>
+{/loop}
+		</ul>
+	</div>
+</div>	
+
+<div class="mod-trade-rank">
+	<div class="contentgy">
+    
+    
+		<div class="tab-content">
+			<div class="tab-content-title">
+				<h3>热门工业品</h3>
+			</div>
+			<div class="tab-content-list">
+			   <div class="accordion-list">
+                     <ol>
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>'' and addtime>$today_endtime-500*86400&catid=4,5,7,8,9,12,16,17,22,30,32&pagesize=5&order=hits desc&template=null");}-->
+                 {loop $tags $i $t}
+                         <li{if $i<1} class="hover rank-top"{/if}>
+                               <small><?php echo $i+1;$i++?></small>
+                               <div class="picture"><div class="vertical"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><img src="{imgurl($t[thumb], 1)}"></a></div></div>
+                               <div class="subject"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></div>
+                               <div class="brief">{if $t[unit] && $t[price]>0}<em class="price"><span class="fd-cny">&yen;</span>{$t[price]}/{$t[unit]}</em>{else}<em class="price">面议</em>{/if}</div>
+                         </li>
+                 {/loop}                     
+                 </ol>
+                         
+              </div>                
+			</div>
+		</div>
+
+	</div>
+</div>					</div>
+				</div>
+                
+  <div class="layoutgy layout-col">
+	<div class="grid">
+		<div class="mod-marquee-block">
+			<div class="header"><h3>活跃供应商</h3><span class="extra"><a class="more" href="{$MODULE[4][linkurl]}" title="更多供应商">更多供应商</a></span></div>
+			<div class="contentgy">
+				<a href="#" class="marquee-prev"><em>向前翻</em></a>
+				<div class="marquee-wrap">
+					<ul class="marquee-content">
+<!--{php $tags=tag("moduleid=4&condition=groupid>5 and catids<>'' and thumb<>''&pagesize=12&areaid=$cityid&order=userid desc&template=null");}-->
+{loop $tags $i $t}
+						<li>
+							<dl>
+								<dt><a href="{$t[linkurl]}" target="_blank"><img src="{imgurl($t[thumb], 1)}"></a></dt>
+								<dd class="company"><a title="{$t[company]}" href="{$t[linkurl]}" target="_blank">{$t[company]}</a></dd>
+								<dd class="brief">主营：<span title="{$t[business]}">{dsubstr($t[business], 12, '...')}</span></dd>
+								<dd class="medal">人气：<em>{$t[hits]} 次</em></dd>
+							</dl>
+						</li>
+{/loop}                        
+				  </ul>
+			  </div>
+				<a href="#" class="marquee-next"><em>向后翻</em></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{php $mid = 5; $adl = 1;}
+{php $child = get_maincat(0, $mid, 1);}
+{loop $child $i $c}
+{if in_array($c[catid], array(4,5,7,8,9,12,16,17,22,30,32))}
+<div class="layoutgy layout-col">
+	<div class="grid">
+		<div class="mod-floor-tiny">
+			<div class="header">
+                <h3><em>{$c[catname]}</em></h3><span class="extra"><a class="more" href="{$MODULE[$mid][linkurl]}{$c[linkurl]}" title="更多">更多</a></span>
+				<dl class="list-floor-tag">
+					<dt>热门推荐：</dt>
+					<dd class="list-border">
+						<ul>
+             	{php $sub = get_maincat($c[catid], $mid, 1);}
+                {loop $sub $j $s}<li><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" title="{$s[catname]}">{$s[catname]}</a></li>{/loop}                
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div class="contentgy">
+				<div class="aside-floor-show">
+					<div class="brick-content">
+						<div class="aside-floor-brick">
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>''&catid=".$c[catid]."&length=34&pagesize=6&order=addtime desc&template=null");}-->
+        {loop $tags $i $t}
+		       {if $i==0}<ul class="left-brick">{elseif $i==3}<ul class="right-brick">{/if}
+						<li>
+							<div class="brick-main"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{imgurl($t[thumb], 1)}"/></a></div>
+							<div class="brick-extra"><dl><dt>{if $t[unit] && $t[price]>0}{$t[price]}/{$t[unit]}{else}面议{/if}</dt><dd>{$t[alt]}</dd></dl></div>
+						</li>
+		       {if $i==2}</ul>{elseif $i==5}</ul>{/if}
+        {/loop}    
+						</div>
+					</div>
+				</div>
+                
+				<div class="main-floor-show">
+					<ul class="tab-trigger"><li class="current">热销单品</li></ul>
+					<div class="tab-content-wrap">
+						<div class="tab-content">
+							<ul class="list-main-floor">
+<!--{php $tags=tag("moduleid=5&condition=status=3 and thumb<>''&catid=".$c[catid]."&pagesize=5&order=addtime desc&template=null");}-->
+{loop $tags $k $t}
+<li>
+	<dl>
+		<dt><a title="{$t[alt]}" href="{$t[linkurl]}"><img src="{imgurl($t[thumb], 1)}"/></a></dt>
+		<dd class="subject"><a title="{$t[alt]}" href="{$t[linkurl]}">{$t[title]}</a></dd>
+		<dd class="price">售价：{if $t[unit] && $t[price]>0}<em class="price"><span class="fd-cny">&yen;</span>{$t[price]}/{$t[unit]}</em>{else}<em class="price">面议</em>{/if}</dd>
+		<dd class="sale">人气：<em>{$t[hits]} 次</em></dd>
+	</dl>
+</li>
+{/loop}                 
+							</ul>
+					  </div>
+				  </div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div> 
+{/if}
+{/loop}
+
+  <div class="layoutgy layout-col">
+	<div class="grid">
+		<div class="mod-supplier-discount">
+			<div class="header"><h3>优惠商家</h3></div>	
+			<div class="contentgy">
+				<div class="tab-supplier-discount">
+					<div class="tab-content-wrap">
+						<div class="tab-content">
+							<ul>
+<!--{php $tags=tag("moduleid=4&condition=groupid>5 and catids<>'' and thumb<>''&pagesize=5&areaid=$cityid&order=userid desc&template=null");}-->
+{loop $tags $i $t}
+	<li>
+		<dl class="obj-supplier-discount">
+			<dt><a href="{$t[linkurl]}" title="{$t[company]}" target="_blank">{$t[company]}</a></dt>
+			<dd class="major"><span class="label">主营：</span><span class="value">{$t[business]}</span></dd>
+			<dd class="chain"><span class="label">经营模式：</span><span class="value">{$t[mode]}</span></dd>
+			<dd class="medal"><span class="label">公司地址：</span><span class="value">{$t[address]}</span></dd>
+			<dd class="product"><a href="{$t[linkurl]}" title="{$t[company]}"><img src="{imgurl($t[thumb], 1)}"/></a></dd>
+		</dl>
+	</li>
+{/loop}                
+</ul>						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+</div>           
+<script src="{DT_SKIN}js/indexgybt.js"></script>
+{template 'footer'}
