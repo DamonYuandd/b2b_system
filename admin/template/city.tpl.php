@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -28,7 +28,7 @@ show_menu($menus);
 <th>地区</th>
 <th>分站名称</th>
 <th>绑定域名</th>
-<th width="80">操作</th>
+<th width="100">操作</th>
 </tr>
 <?php foreach($lists as $k=>$v) {?>
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">

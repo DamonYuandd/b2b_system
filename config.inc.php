@@ -1,10 +1,6 @@
 <?php
 defined('IN_DESTOON') or exit('Access Denied');
-/*
-	[Destoon B2B System] Copyright (c) 2008-2015 Destoon.COM
-	This is NOT a freeware, use is subject to license.txt
-*/
-# http://help.destoon.com/faq/config.php shows detail
+
 
 $CFG['database'] = 'mysql';
 $CFG['pconnect'] = '0';

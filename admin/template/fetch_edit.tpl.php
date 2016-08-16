@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -28,7 +28,7 @@ show_menu($menus);
 <tr>
 <td class="tl"><span class="f_red">*</span> 内容规则</td>
 <td><textarea name="content" rows="6" cols="50" id="content"><?php echo $content;?></textarea>
-<br/><span id="dcontent" class="f_red"></span></td>
+<span id="dcontent" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl"><span class="f_red">*</span> 内容编码</td>

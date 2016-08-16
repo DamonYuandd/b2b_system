@@ -1,9 +1,9 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
-<div class="tt">模板管理 <?php echo $dir ? ' - '.$dir : '';?></div>
+<div class="tt">模板管理</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <th>文件名</th>
@@ -74,13 +74,6 @@ show_menu($menus);
 <?php }?>
 </table>
 <?php }?>
-<div class="btns">
-<?php if($dir) { ?>
-<input type="button" value="返回上级" class="btn" onclick="Go('?file=<?php echo $file;?>');"/>&nbsp;
-<?php } else { ?>
-<input type="button" value="重建缓存" class="btn" onclick="Go('?file=<?php echo $file;?>&action=cache');"/>&nbsp;
-<?php } ?>
-</div>
 <script type="text/javascript">
 function template_name(fileid, name) {
 	makeRequest('file=<?php echo $file;?>&dir=<?php echo $dir;?>&action=template_name&fileid='+fileid+'&name='+name, '?', '_template_name');

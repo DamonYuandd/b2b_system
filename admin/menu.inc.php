@@ -20,7 +20,7 @@ $menu = array(
 	array('后台搜索', '?file=search'),
 	array('系统体检', '?file=doctor'),
 );
-if(!$_founder) unset($menu[0],$menu[1],$menu[3]);
+/*if(!$_founder) unset($menu[0],$menu[1],$menu[3]);
 $menu_help = array(
 	array('使用协议', '?file=cloud&action=license'),
 	array('在线文档', '?file=cloud&action=doc'),
@@ -29,7 +29,7 @@ $menu_help = array(
 	array('信息反馈', '?file=cloud&action=feedback'),
 	array('检查更新', '?file=cloud&action=update'),
 	array('关于软件', '?file=cloud&action=about'),
-);
+);*/
 $menu_system = array(
 	array('网站设置', '?file=setting'),
 	array('模块管理', '?file=module'),

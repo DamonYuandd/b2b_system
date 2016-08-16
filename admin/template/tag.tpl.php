@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -161,6 +161,11 @@ show_menu($menus);
 </td>
 </tr>
 <tr>
+<td class="tl"><span class="f_hid">*</span> JS调用</td>
+<td><textarea name="tag_js" id="tag_js"  style="width:98%;height:40px;font-family:Fixedsys,verdana;overflow:visible;color:#800000;"></textarea> 
+</td>
+</tr>
+<tr>
 <td class="tl"><span class="f_hid">*</span> HTML结束标签</td>
 <td><input type="text" name="tag_html_e" id="tag_html_e" size="10" value="" style="font-family:Fixedsys,verdana;"/></td>
 </tr>
@@ -186,11 +191,11 @@ show_menu($menus);
 </div>
 <script type="text/javascript">
 function mk_tag() {
+	var tag = js = '';
 	if(Dd('moduleid').value == '' && Dd('table').value == '') {
 		alert('所属模块 或 数据表 必须指定一项');
 		return false;
 	}
-	var tag = '';
 	if(Dd('moduleid').value != '') tag += '&moduleid='+Dd('moduleid').value;
 	if(Dd('table').value != '') tag += '&table='+Dd('table').value;
 	if(Dd('catid').value != '') tag += '&catid='+Dd('catid').value;
@@ -208,12 +213,28 @@ function mk_tag() {
 	if(Dd('order').value != '') tag += '&order='+Dd('order').value;
 	if(Dd('template').value != 0) tag += '&template='+Dd('template').value;
 	tag = tag.substr(1);
+	var rp = false;
+	for(var i=0;i<tag.length;i++) {
+		if(tag.charAt(i) == '$') {
+			js += '{$'
+			rp = true;
+		} else if(rp && tag.charAt(i) == '&') {
+			js += '}&';
+			rp = false;
+		} else {
+			js += tag.charAt(i);
+		}
+	}
+	js = '<script type="text/javascript" charset="<?php echo DT_CHARSET;?>" src="<?php echo DT_PATH;?>api/js.php?'+js;
 	tag = '<!--{tag("'+tag+'"';
 	if(Dd('expires').value != '') {
 		tag += ', '+Dd('expires').value;
+		js += '&tag_expires='+Dd('expires').value;
 	}
+	js = js+'"><\/script>';
 	tag = tag+')}-->';
 	Dd('tag_code').value = tag;
+	Dd('tag_js').value = js;
 }
 function copy_tag() {
 	if(!Dd('tag_code').value) return;
@@ -244,16 +265,6 @@ function mod(m) {
 	}
 	Go('?file=<?php echo $file;?>&mid='+m);
 }
-function stoinp(s, i, p) {
-	if(Dd(i).value) {
-		var p = p ? p : ',';
-		var a = Dd(i).value.split(p);
-		for (var j=0; j<a.length; j++) {if(s == a[j]) return;}
-		Dd(i).value += p+s;
-	} else {
-		Dd(i).value = s;
-	}
-}
 function cat() {
 	if(Dd('catid_1').value > 0) {
 		stoinp(Dd('catid_1').value, 'catid');
@@ -276,5 +287,5 @@ function Dict() {
 	mkDialog('', '<iframe src="?file=tag&action=find&mid='+Dd('moduleid').value+'&tb='+Dd('table').value+'" width="600" height=300" border="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" framespacing="0" frameborder="0" scrolling="yes"></iframe>', '数据字典', 620, 0, 0);
 }
 </script>
-<script type="text/javascript">Menuon(3);</script>
+<script type="text/javascript">Menuon(0);</script>
 <?php include tpl('footer');?>

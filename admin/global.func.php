@@ -1,8 +1,5 @@
 <?php
-/*
-	[Destoon B2B System] Copyright (c) 2008-2016 www.destoon.com
-	This is NOT a freeware, use is subject to license.txt
-*/
+
 defined('IN_DESTOON') or exit('Access Denied');
 function msg($msg = errmsg, $forward = 'goback', $time = '1') {
 	global $CFG;

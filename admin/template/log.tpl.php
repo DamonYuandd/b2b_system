@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -35,11 +35,11 @@ show_menu($menus);
 </tr>
 <?php foreach($lists as $k=>$v) {?>
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
-<td title="<?php echo $v['qstring'];?>"><input type="text" size="30" value="<?php echo $v['qstring'];?>"/> <a href="?<?php echo $v['qstring'];?>" target="_blank"><img src="admin/image/link.gif" width="16" height="16" title="点击打开网址" alt="" align="absmiddle"/></a></td>
+<td title="<?php echo $v['qstring'];?>"><input type="text" size="30" value="<?php echo $v['qstring'];?>"/></td>
 <td><?php echo $v['module'];?></td>
 <td><?php echo $v['file'];?></td>
 <td><?php echo $v['action'];?></td>
-<td><a href="<?php echo DT_PATH;?>api/redirect.php?mid=<?php echo $v['mid'];?>&itemid=<?php echo $v['itemid'];?>" target="_blank"><?php echo $v['itemid'];?></a></td>
+<td><a href="<?php echo $MODULE[3]['linkurl'];?>redirect.php?mid=<?php echo $v['mid'];?>&itemid=<?php echo $v['itemid'];?>" target="_blank"><?php echo $v['itemid'];?></a></td>
 <td><a href="javascript:_ip('<?php echo $v['ip'];?>');"><?php echo $v['ip'];?></a></td>
 <td><?php echo ip2area($v['ip']);?></td>
 <td><a href="?file=<?php echo $file;?>&username=<?php echo $v['username'];?>"><?php echo $v['username'];?></a></td>

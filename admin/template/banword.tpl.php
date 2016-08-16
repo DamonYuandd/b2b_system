@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -52,7 +52,7 @@ var _del = 0;
 </tr>
 <tr>
 <td> </td>
-<td height="30" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value="更 新" onclick="if(_del && !confirm('提示:您选择删除'+_del+'个词语？确定要删除吗？')) return false;" class="btn"/></td>
+<td height="30" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value="更 新" onclick="if(_del && !confirm('提示:您选择删除'+_del+'个词语？确定要删除吗？')) return false;" class="btn"/>&nbsp;&nbsp;<input type="submit" name="submit" value="删除选中" onclick="if(_del && !confirm('提示:您选择删除'+_del+'个词语？确定要删除吗？')) return false;" class="btn"/></td>
 </tr>
 <tr>
 <td colspan="4"><div class="pages"><?php echo $pages;?></div></td>

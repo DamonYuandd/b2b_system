@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -90,7 +90,7 @@ var _del = 0;
 <tr>
 <td style="padding:10px;color:#666666;">
 1、如果一个产品属于多个分类，首先按分类多次添加此产品，然后在任意一个同名产品下建立属性，属性建立之后，可以做为源产品ID将属性同步到其他指定的目标产品。<br/>
-2、目标产品ID如果有多个，请用英文逗号(,)分隔开。目标产品没有而源产品有的属性，将被创建；目标产品和源产品同名的属性，将被更新。
+2、目标产品ID如果有多个，请用英文逗号(,)分割开。目标产品没有而源产品有的属性，将被创建；目标产品和源产品同名的属性，将被更新。
 </td>
 </tr>
 </table>

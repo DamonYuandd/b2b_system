@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -30,6 +30,7 @@ IP地址/段 <input type="text" size="30" name="ip"/>&nbsp;
 <tr>
 <th width="25"><input type="checkbox" onclick="checkall(this.form);"/></th>
 <th>IP地址/段</th>
+<th>地区</th>
 <th>有效期至</th>
 <th>状态</th>
 <th>操作人</th>
@@ -40,6 +41,7 @@ IP地址/段 <input type="text" size="30" name="ip"/>&nbsp;
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
 <td><input type="checkbox" name="itemid[]" value="<?php echo $v['itemid'];?>"/></td>
 <td><?php echo $v['ip'];?></td>
+<td><?php echo ip2area($v['ip']);?></td>
 <td><?php echo $v['totime'];?></td>
 <td><?php echo $v['status'];?></td>
 <td><?php echo $v['editor'];?></td>
@@ -49,8 +51,7 @@ IP地址/段 <input type="text" size="30" name="ip"/>&nbsp;
 <?php }?>
 </table>
 <div class="btns">
-<input type="submit" value=" 批量删除 " class="btn" onclick="if(confirm('确定要删除选中记录吗？此操作将不可撤销')){this.form.action='?file=<?php echo $file;?>&action=delete'}else{return false;}"/>&nbsp;&nbsp;
-<input type="submit" value=" 清空过期 " class="btn" onclick="if(confirm('确定要清空过期记录吗？此操作将不可撤销')){this.form.action='?file=<?php echo $file;?>&action=clear'}else{return false;}"/>
+<input type="submit" value=" 批量删除 " class="btn" onclick="if(confirm('确定要删除选中记录吗？此操作将不可撤销')){this.form.action='?file=<?php echo $file;?>&action=delete'}else{return false;}"/>
 </div>
 </form>
 <div class="pages"><?php echo $pages;?></div>

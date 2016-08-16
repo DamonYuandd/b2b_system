@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -19,8 +19,8 @@ show_menu($menus);
 <td><input name="category[catname]" type="text" id="catname" size="20" value="<?php echo $catname;?>"/> <?php echo dstyle('category[style]', $style);?> <span id="dcatname" class="f_red"></span></td>
 </tr>
 <tr>
-<td class="tl"><span class="f_red">*</span> 分类目录</td>
-<td><input name="category[catdir]" type="text" id="catdir" size="20" value="<?php echo $catdir;?>"/><?php tips('限英文、数字、中划线、下划线、斜线，该分类相关的html文件将保存在此目录');?> <span id="dcatdir" class="f_red"></span></td>
+<td class="tl"><span class="f_red">*</span> 分类目录[英文名]</td>
+<td><input name="category[catdir]" type="text" id="catdir" size="20" value="<?php echo $catdir;?>"/><?php tips('限英文、数字、中划线、下划线，该分类相关的html文件将保存在此目录');?> <span id="dcatdir" class="f_red"></span></td>
 </tr>
 <tr>
 <td class="tl"><span class="f_hid">*</span> 字母索引</td>
@@ -30,14 +30,16 @@ show_menu($menus);
 <td class="tl"><span class="f_hid">*</span> 级别</td>
 <td><input name="category[level]" type="text" size="2" value="<?php echo $level;?>"/><?php tips('0 - 不在首页显示 1 - 正常显示 2 - 首页和上级分类并列显示');?></td>
 </tr>
+
 <tr>
 <td class="tl"><span class="f_hid">*</span> 分类模板</td>
 <td><?php echo tpl_select('list', $MODULE[$mid]['module'], 'category[template]', '默认模板', $template);?></td>
 </tr>
-<tr style="display:<?php echo $mid == 18 ? 'none' : '';?>;">
+<tr>
 <td class="tl"><span class="f_hid">*</span> 内容模板</td>
 <td><?php echo tpl_select('show', $MODULE[$mid]['module'], 'category[show_template]', '默认模板', $show_template);?></td>
 </tr>
+
 <tr>
 <td class="tl"><span class="f_hid">*</span> Title(SEO标题)</td>
 <td><input name="category[seo_title]" type="text" id="seo_title" value="<?php echo $seo_title;?>" size="61"></td>

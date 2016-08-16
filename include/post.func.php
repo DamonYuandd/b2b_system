@@ -415,6 +415,7 @@ function is_crsf($url) {
 }
 
 function dpassword($password, $salt) {
+	
 	return md5((is_md5($password) ? md5($password) : md5(md5($password))).$salt);
 }
 

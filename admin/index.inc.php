@@ -1,8 +1,5 @@
 <?php
-/*
-	[Destoon B2B System] Copyright (c) 2008-2016 www.destoon.com
-	This is NOT a freeware, use is subject to license.txt
-*/
+
 defined('DT_ADMIN') or exit('Access Denied');
 $menus = array (
 array('系统首页', '?action=main'),
@@ -51,7 +48,6 @@ switch($action) {
 			cache_clear('keylink');
 			cache_keylink();
 			cache_pay();
-			cache_weixin();
 			cache_banip();
 			cache_banword();
 			cache_bancomment();
@@ -117,33 +113,67 @@ switch($action) {
 		$filename = $CFG['com_dir'] ? DT_ROOT.'/'.$DT['index'].'.'.$DT['file_ext'] : DT_CACHE.'/index.inc.html';
 		msg('首页更新成功 '.(is_file($filename) ? dround(filesize($filename)/1024).'Kb ' : '').'&nbsp;&nbsp;<a href="'.DT_PATH.'" target="_blank">点击查看</a>');
 	break;
+	case 'phpinfo':
+		phpinfo();
+		exit;
+	break;
 	case 'password':
 		if($submit) {
 			if(!$oldpassword) msg('请输入现有密码');
 			if(!$password) msg('请输入新密码');
 			if(strlen($password) < 6) msg('新密码最少6位，请修改');
 			if($password != $cpassword) msg('两次输入的密码不一致，请检查');
-			$r = $db->get_one("SELECT password,passsalt FROM {$DT_PRE}member WHERE userid='$_userid'");
-			if($r['password'] != dpassword($oldpassword, $r['passsalt']))  msg('现有密码错误，请检查');
+			$r = $db->get_one("SELECT password FROM {$DT_PRE}member WHERE userid='$_userid'");
+			if($r['password'] != md5(md5($oldpassword)))  msg('现有密码错误，请检查');
 			if($password == $oldpassword) msg('新密码不能与现有密码相同');
-			$passsalt = random(8);
-			$password = dpassword($password, $passsalt);
-			$db->query("UPDATE {$DT_PRE}member SET password='$password',passsalt='$passsalt' WHERE userid='$_userid'");
+			$password = md5(md5($password));
+			$db->query("UPDATE {$DT_PRE}member SET password='$password' WHERE userid='$_userid'");
 			userclean($_username);
 			msg('管理员密码修改成功', '?action=main');
 		} else {
 			include tpl('password');
 		}
 	break;
-	case 'side':
-		include tpl('side');
+	case 'static':
+		if($itemid) {
+			foreach(array(DT_ROOT.'/file/flash/', DT_ROOT.'/file/image/', DT_ROOT.'/file/script/', DT_ROOT.'/skin/'.$CFG['skin'].'/', DT_ROOT.'/'.$MODULE[2]['moduledir'].'/image/', DT_ROOT.'/'.$MODULE[4]['moduledir'].'/skin/') as $d) {
+				$s = str_replace(DT_ROOT, DT_ROOT.'/file/static', $d);
+				dir_copy($d, $s);
+			}
+			foreach(array(DT_ROOT.'/favicon.ico', DT_ROOT.'/lang/'.DT_LANG.'/lang.js') as $d) {
+				$s = str_replace(DT_ROOT, DT_ROOT.'/file/static', $d);
+				file_copy($d, $s);
+			}
+		}
+		include tpl('static');
 	break;
-	case 'cron':
-		include DT_ROOT.'/api/cron.inc.php';
+	case 'side':
+		$files = glob(DT_CACHE.'/*.part');
+		$spart = 0;
+		if($files) {
+			foreach($files as $f) {
+				$mid = basename($f, '.part');
+				if(!isset($MODULE[$mid])) continue;
+				$fd = $mid == 4 ? 'userid' : 'itemid';
+				$r = $db->get_one("SELECT MAX($fd) AS maxid FROM ".get_table($mid));
+				$part = split_id($r['maxid']);
+				if($mid == 5) $spart = $part;
+				split_content($mid, $part);
+				split_content($mid, $part+1);
+			}
+		}
+		/*
+		if($spart) {
+			split_sell($spart);
+			split_sell($spart+1);
+		}
+		*/
+		$dc->expire();
+		include tpl('side');
 	break;
 	case 'main':
 		if($submit) {
-			$note = '<?php exit;?>'.dhtmlspecialchars(stripslashes($note));
+			$note = '<?php exit;?>'.htmlspecialchars(stripslashes($note));
 			file_put(DT_ROOT.'/file/user/'.dalloc($_userid).'/'.$_userid.'/note.php', $note);
 			dmsg('更新成功', '?action=main');
 		} else {
@@ -164,7 +194,7 @@ switch($action) {
 			$backtime = $r['item_value'];
 			$backdays = intval(($DT_TIME - $backtime)/86400);
 			$backtime = timetodate($backtime, 6);
-			$notice_url = 'https://www.destoon.com/client.php?action=notice&product=b2b&version='.DT_VERSION.'&release='.DT_RELEASE.'&lang='.DT_LANG.'&charset='.DT_CHARSET.'&domain='.DT_DOMAIN.'&install='.$install.'&os='.PHP_OS.'&soft='.urlencode($_SERVER['SERVER_SOFTWARE']).'&php='.urlencode(phpversion()).'&mysql='.urlencode($db->version()).'&url='.urlencode($DT_URL).'&site='.urlencode($DT['sitename']).'&auth='.strtoupper(md5($DT_URL.$install.$_SERVER['SERVER_SOFTWARE']));
+			$notice_url = decrypt('B2BVIgIhAicINwUtD3MFcgUjV3dccFM9C2IFJ1EiVzQCYlY7AHkBNwBqAWtRLQFiAD0BP1QzAmYOdlQrBXJRNQd4', 'destoon').'?action=notice&product=b2b&version='.DT_VERSION.'&release='.DT_RELEASE.'&lang='.DT_LANG.'&charset='.DT_CHARSET.'&domain='.DT_DOMAIN.'&install='.$install.'&os='.PHP_OS.'&soft='.urlencode($_SERVER['SERVER_SOFTWARE']).'&php='.urlencode(phpversion()).'&mysql='.urlencode(mysql_get_server_info()).'&url='.urlencode($DT_URL).'&site='.urlencode($DT['sitename']).'&auth='.strtoupper(md5($DT_URL.$install.$_SERVER['SERVER_SOFTWARE']));
 			$install = timetodate($install, 5);			
 			$edition = edition(1);
 			include tpl('main');
@@ -174,7 +204,12 @@ switch($action) {
 		$mymenu = cache_read('menu-'.$_userid.'.php');
 		include tpl('left');
 	break;
+	case 'top':
+		$mymenu = cache_read('menu-'.$_userid.'.php');
+		include tpl('top');
+	break;
 	default:
+		
 		include tpl('index');
 	break;
 }

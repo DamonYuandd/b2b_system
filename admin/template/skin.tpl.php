@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -56,5 +56,5 @@ show_menu($menus);
 <?php }?>
 </table>
 <?php }?>
-<script type="text/javascript">Menuon(2);</script>
+<script type="text/javascript">Menuon(1);</script>
 <?php include tpl('footer');?>

@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -116,6 +116,7 @@ show_menu($menus);
 <td colspan="3" class="f_gray">
 - PHP不支持MSSQL和Access的 ntext,nvarchar..类型，请在导入前修改为text,varchar..类型<br/>
 - 值处理填写数字或者字符串代表字段的默认值，如果需要函数处理，请将参数设置为* <br/>
+- 例 md5(*) 表示对源字段md5加密 md5(md5(*)) 表示加密2次<br/>
 - 例 strtotime(*) 表示将2010-01-01日期格式转换为Unix时间戳<br/>
 - 例 date('Y-m-d', *) 表示将Unix时间戳转换为类似2010-01-01日期格式<br/>
 - 值处理支持变量或变量组合或变量+函数组合，源数据保存在 $F 数组，对应转换结果保存在 $T 数组<br/>

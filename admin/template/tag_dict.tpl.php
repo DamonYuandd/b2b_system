@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 //foreach($fields as $k=>$v) { echo "'".$v['Field']."',"; }
 ?>

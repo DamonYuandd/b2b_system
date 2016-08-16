@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 $menus = array (
     array('基本设置'),
@@ -9,7 +9,6 @@ $menus = array (
     array('图片处理'),
     array('邮件发送'),
     array('页面细节'),
-    array('云服务'),
 );
 show_menu($menus);
 ?>
@@ -120,22 +119,6 @@ tips('位于./template/目录,一个目录即为一套模板');
 </td> 
 </tr>
 <tr>
-<td class="tl">网页编辑器</td>
-<td>
-<?php
-$select = '';
-$dirs = list_dir($MODULE[2]['moduledir'].'/editor');
-foreach($dirs as $v) {
-	$selected = ($CFG['editor'] && $v['dir'] == $CFG['editor']) ? 'selected' : '';
-	$select .= "<option value='".$v['dir']."' ".$selected.">".$v['name']."</option>";
-}
-$select = '<select name="config[editor]">'.$select.'</select>';
-echo $select;
-tips('位于./'.$MODULE[2]['moduledir'].'/editor/目录,一个目录即为一套模板');
-?>
-</td> 
-</tr>
-<tr>
 <td class="tl">VIP会员名称</td>
 <td><input name="config[com_vip]" type="text" value="<?php echo $com_vip;?>" size="10"/></td>
 </tr>
@@ -146,10 +129,6 @@ tips('位于./'.$MODULE[2]['moduledir'].'/editor/目录,一个目录即为一套
 <tr>
 <td class="tl">真实货币单位</td>
 <td><input name="setting[money_unit]" type="text" value="<?php echo $money_unit;?>" size="10"/></td>
-</tr>
-<tr>
-<td class="tl">真实货币符号</td>
-<td><input name="setting[money_sign]" type="text" value="<?php echo $money_sign;?>" size="10"/></td>
 </tr>
 <tr>
 <td class="tl">虚拟积分名称</td>
@@ -198,6 +177,46 @@ tips('位于./'.$MODULE[2]['moduledir'].'/editor/目录,一个目录即为一套
 <input type="radio" name="setting[im_skype]" value="0"  <?php if(!$im_skype){ ?>checked <?php } ?>/> 关闭
 </td>
 </tr>
+<tr>
+<td class="tl">手机短信</td>
+<td>
+<input type="radio" name="setting[sms]" value="1"  <?php if($sms){ ?>checked <?php } ?> onclick="Ds('dsms');"/> 开启&nbsp;&nbsp;
+<input type="radio" name="setting[sms]" value="0"  <?php if(!$sms){ ?>checked <?php } ?> onclick="Dh('dsms');"/> 关闭&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="<?php echo DT_SKIN;?>image/mobile.gif" align="absmiddle"/> <a href="?file=cloud&action=sms" target="_blank" class="t">[申请帐号]</a>
+</td>
+</tr>
+<tbody id="dsms" style="display:<?php if(!$sms) echo 'none';?>">
+<?php if($sms && $sms_uid && $sms_key) { ?>
+<tr>
+<td class="tl">短信余额</td>
+<td><span class="f_red"><script type="text/javascript" src="http://www.destoon.com/sms.php?uid=<?php echo $sms_uid;?>&key=<?php echo $sms_key;?>"></script></span> 条 <a href="?file=cloud&action=sms" target="_blank" class="t">[在线充值]</a></td> 
+</tr>
+<?php } ?>
+<tr>
+<td class="tl">短信接口帐号</td>
+<td><input name="setting[sms_uid]" type="text" value="<?php echo $sms_uid;?>" size="30"/></td> 
+</tr>
+<tr>
+<td class="tl">短信接口密钥</td>
+<td><input name="setting[sms_key]" type="text" id="sms_key" size="30" value="<?php echo $sms_key;?>" onfocus="if(this.value.indexOf('**')!=-1)this.value='';"/></td>
+</tr>
+<tr>
+<td class="tl">短信内容签名</td>
+<td><input name="setting[sms_sign]" type="text" value="<?php echo $sms_sign;?>" size="30"/> <?php tips('将显示在短信内容结尾，以便会员识别，请尽量简短，正确的格式为【签名】，例如 【某某网】。包含签名的短信会被运营商认为是更正规的短信，从而进入更快的发送通道');?></td> 
+</tr>
+<tr>
+<td class="tl">短信单价</td>
+<td><input name="setting[sms_fee]" type="text" value="<?php echo $sms_fee;?>" size="5"/> 元/条 <?php tips('此项针对会员收费');?></td> 
+</tr>
+<tr>
+<td class="tl">短信长度</td>
+<td><input name="setting[sms_len]" type="text" value="<?php echo $sms_len;?>" size="5"/> 字/条</td> 
+</tr>
+<tr>
+<td class="tl">成功标识</td>
+<td><input name="setting[sms_ok]" type="text" value="<?php echo $sms_ok;?>" size="10"/> <?php tips('短信发送成功标识字符，系统根据此字符确定是否扣除会员短信余额');?></td> 
+</tr>
+</tbody>
 <?php include DT_ROOT.'/api/trade/setting.inc.php';?>
 </table>
 </div>
@@ -319,12 +338,6 @@ tips('位于./'.$MODULE[2]['moduledir'].'/editor/目录,一个目录即为一套
 </td>
 </tr>
 <tr>
-<td class="tl">内容页自动更新频率</td>
-<td>
-<input name="setting[task_item]" type="text" value="<?php echo $task_item;?>" size="5"/> 秒 <?php tips('仅对生成的静态网页有效');?>
-</td>
-</tr>
-<tr>
 <td class="tl">TAG(标签)缓存更新周期</td>
 <td><input type="text" name="config[tag_expires]" value="<?php echo $tag_expires;?>" size="5"/> 秒<?php tips('此项可明显减轻标签数据调用对服务器的压力');?></td>
 </tr>
@@ -343,7 +356,7 @@ tips('位于./'.$MODULE[2]['moduledir'].'/editor/目录,一个目录即为一套
 <tr>
 <td class="tl">数据缓存方式</td>
 <td>
-<select name="config[cache]" onchange="if(this.options[this.selectedIndex].innerHTML.indexOf('不')!=-1){alert('系统不支持 '+this.value);$('#ccf').val('<?php echo $cache;?>');}" id="ccf">
+<select name="config[cache]" onchange="if(this.options[this.selectedIndex].innerHTML.indexOf('不')!=-1){alert('系统不支持 '+this.value);select_op('ccf', '<?php echo $cache;?>')}" id="ccf">
 <option value="file"<?php echo $cache == 'file' ? ' selected' : '';?>>文件 (支持)</option>
 <option value="eaccelerator"<?php echo $cache == 'eaccelerator' ? ' selected' : '';?>>eAccelerator (<?php echo function_exists('eaccelerator_get') ? '支持' : '不支持'?>)</option>
 <option value="memcache"<?php echo $cache == 'memcache' ? ' selected' : '';?>>Memcache (<?php echo class_exists('Memcache') ? '支持' : '不支持'?>)</option>
@@ -354,9 +367,26 @@ tips('位于./'.$MODULE[2]['moduledir'].'/editor/目录,一个目录即为一套
 <option value="apc"<?php echo $cache == 'apc' ? ' selected' : '';?>>apc (<?php echo function_exists('apc_fetch') ? '支持' : '不支持'?>)</option>
 </select>
 <?php tips('除了文件缓存，其他缓存方式需要服务器端支持，具体请查看phpinfo信息。<br/>请在确认服务器环境支持的情况下开启，否则可能导致未知的错误<br/>如果需要开启Memcache缓存，请先配置file/config/memcache.inc.php连接参数');?>&nbsp;&nbsp;
-<a href="?action=cacheclear" target="_blank" class="t">[清空缓存]</a>&nbsp;&nbsp;
-<a href="javascript:Diframe('?file=<?php echo $file;?>&action=cache', 0, 0 , 1);" class="t">[缓存测试]</a>
+<a href="?action=cacheclear" target="_blank" class="t">[清空缓存]</a>
 </td>
+</tr>
+<tr>
+<td class="tl">数据库/连接方式</td>
+<td>
+<select name="config[database]">
+<option value="mysql"<?php echo $database == 'mysql' ? ' selected' : '';?>>mysql</option>
+<option value="mysqli"<?php echo $database == 'mysqli' ? ' selected' : '';?>>mysqli</option>
+<option value="mysqlrw"<?php echo $database == 'mysqlrw' ? ' selected' : '';?>>mysqlrw</option>
+<option value="mysqlirw"<?php echo $database == 'mysqlirw' ? ' selected' : '';?>>mysqlirw</option>
+</select>
+<?php tips('mysqli是PHP对mysql新特性的一个扩展支持，如果已加载此扩展，请选择mysqli，具体请查看phpinfo信息<br/>mysqlrw/mysqlirw指多台mysql服务器实现读写分离，开启之前需要配置file/config/mysqlrw.inc.php只读数据库连接参数');?>
+</td>
+</tr>
+<tr>
+<td class="tl">去除模板换行标记</td>
+<td>
+<input type="radio" name="config[template_trim]" value="1" <?php if($template_trim){ ?>checked <?php } ?>/> 开启&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="config[template_trim]" value="0" <?php if(!$template_trim){ ?>checked <?php } ?>/> 关闭 <?php tips('去除换行等多余标记，在一定程度上可以压缩网页体积<br/>开启此项可能导致自定义的js(例如广告代码)等错误，需要注意排查js的注释及结尾的分号');?></td>
 </tr>
 <tr>
 <td class="tl">模板缓存自动更新</td>
@@ -455,13 +485,9 @@ tips('位于./'.$MODULE[2]['moduledir'].'/editor/目录,一个目录即为一套
 <td><input type="text" size="3" name="setting[schcate_limit]" value="<?php echo $schcate_limit;?>"/> 条<?php tips('填0为禁用分类搜索');?></td>
 </tr>
 <tr>
-<td class="tl">信息内容长度限制</td>
-<td><input type="text" size="5" name="setting[max_len]" value="<?php echo $max_len;?>"/> 字符<?php tips('GBK一个汉字为2个字符，UTF-8一个汉字为3个字符<br/>填0为不限，建议设置，以免内容过长');?></td>
-</tr>
-<tr>
 <td class="tl">静态文件分离部署地址</td>
 <td><input name="config[static]" type="text" value="<?php echo $static;?>" size="40"/>&nbsp;&nbsp;
-<a href="javascript:Dwidget('?file=<?php echo $file;?>&action=static', '静态文件分离部署', 486, 200);" class="t">[使用说明]</a></td>
+<a href="javascript:Dwidget('?action=static', '静态文件分离部署', 486, 200);" class="t">[使用说明]</a></td>
 </tr>
 <tr>
 <td class="tl">远程FTP文件上传</td>
@@ -505,13 +531,6 @@ tips('位于./'.$MODULE[2]['moduledir'].'/editor/目录,一个目录即为一套
 <input type="radio" name="setting[ftp_pasv]" value="0"  <?php if(!$ftp_pasv){ ?>checked <?php } ?>/> 否<?php tips('一般情况下非被动模式即可，如果存在上传失败问题，可尝试打开此设置');?>
 </td>
 </tr>
-<tr>
-<td class="tl">保留源文件</td>
-<td>
-<input type="radio" name="setting[ftp_save]" value="1"  <?php if($ftp_save){ ?>checked <?php } ?> id="ftp_del"/> 是&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="setting[ftp_save]" value="0"  <?php if(!$ftp_save){ ?>checked <?php } ?>/> 否<?php tips('如果选择是，上传到本服务器上的文件在上传到FTP服务器后，不自动删除，相当于在本服务器多了一份备份，文件保存于file/upload目录');?>
-</td>
-</tr>
 <tr> 
 <td class="tl">远程存储目录</td>
 <td><input name="setting[ftp_path]" id="ftp_path" type="text" size="60" value="<?php echo $ftp_path;?>"/><?php tips('例如 /wwwroot/img/ 或者 /httpdocs/img/<br/>具体以实际情况为准');?></td>
@@ -544,15 +563,15 @@ function TestFTP() {
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <td class="tl">允许登录后台的地区</td>
-<td><input name="setting[admin_area]" type="text" value="<?php echo $admin_area;?>" size="60"/><?php tips('设置工作人员常用的登录地区，多个地区用|分隔<br/>例如“北京|上海|广州”，非常用地区的IP将无法登录后台');?></td>
+<td><input name="setting[admin_area]" type="text" value="<?php echo $admin_area;?>" size="60"/><?php tips('设置工作人员常用的登录地区，多个地区用|分割<br/>例如“北京|上海|广州”，非常用地区的IP将无法登录后台');?></td>
 </tr>
 <tr>
 <td class="tl">允许登录后台的IP</td>
-<td><input name="setting[admin_ip]" type="text" value="<?php echo $admin_ip;?>" size="60"/><?php tips('请谨慎设置，以免发生不可登录后台的情况<br/>IP段用*代替数字，例如192.168.*.*<br/>多个IP地址或者IP段用|分隔，例如192.168.1.2|10.0.*.*');?></td>
+<td><input name="setting[admin_ip]" type="text" value="<?php echo $admin_ip;?>" size="60"/><?php tips('请谨慎设置，以免发生不可登录后台的情况<br/>IP段用*代替数字，例如192.168.*.*<br/>多个IP地址或者IP段用|分割，例如192.168.1.2|10.0.*.*');?></td>
 </tr>
 <tr>
 <td class="tl">允许登录后台的时段</td>
-<td><input name="setting[admin_hour]" type="text" value="<?php echo $admin_hour;?>" size="60"/><?php tips('留空表示不限制，建议设置为工作人员下班时间。多个时间段请用|分隔，单时间段用-分隔，时间请使用24小时制<br/>例如：8:30-18:00 表示时间段上午8:30至下午18:00<br/>22:30-2:05|5:00-13:15表示晚上22:30至次日凌晨2:05和凌晨5:00至下午13:15两个时间段<br/>网站创始人帐号不受此限制');?></td>
+<td><input name="setting[admin_hour]" type="text" value="<?php echo $admin_hour;?>" size="60"/><?php tips('留空表示不限制，建议设置为工作人员下班时间。多个时间段请用|分割，单时间段用-分割，时间请使用24小时制<br/>例如：8:30-18:00 表示时间段上午8:30至下午18:00<br/>22:30-2:05|5:00-13:15表示晚上22:30至次日凌晨2:05和凌晨5:00至下午13:15两个时间段<br/>网站创始人帐号不受此限制');?></td>
 </tr>
 <tr>
 <td class="tl">允许登录后台的日期</td>
@@ -605,7 +624,7 @@ function TestFTP() {
 <td>
 <input type="radio" name="setting[admin_online]" value="1"  <?php if($admin_online){ ?>checked <?php } ?>/> 开启&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="radio" name="setting[admin_online]" value="0"  <?php if(!$admin_online){ ?>checked <?php } ?>/> 关闭&nbsp;&nbsp;
-<a href="javascript:Dwidget('?moduleid=2&file=online&action=admin', '后台在线记录');" class="t">[点击查看]</a>
+<a href="?moduleid=2&file=online&action=admin" class="t">[点击查看]</a>
 </td>
 </tr>
 <tr>
@@ -667,12 +686,26 @@ function TestFTP() {
 </td>
 </tr>
 <tr>
+<td class="tl">网站安全密钥</td>
+<td><input name="config[authkey]" id="authkey" type="text" value="<?php echo $authkey;?>" size="30"/> <a href="javascript:Dd('authkey').value=RandStr();void(0);" class="t">[随机]</a> <?php tips('可用英文大小写字母、数字的组合，不可使用特殊符号，建议定期修改');?></td>
+</tr>
+
+<tr>
 <td class="tl">验证数据来源</td>
 <td>
 <input type="radio" name="setting[check_referer]" value="1"  <?php if($check_referer){ ?>checked <?php } ?>/> 开启&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="radio" name="setting[check_referer]" value="0"  <?php if(!$check_referer){ ?>checked <?php } ?>/> 关闭
 </td>
 </tr>
+
+<tr>
+<td class="tl">JS外部数据调用</td>
+<td>
+<input type="radio" name="setting[jstag]" value="1"  <?php if($jstag){ ?>checked <?php } ?>/> 开启&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="setting[jstag]" value="0"  <?php if(!$jstag){ ?>checked <?php } ?>/> 关闭
+</td>
+</tr>
+
 <tr>
 <td class="tl">信任域名</td>
 <td><input name="setting[safe_domain]" type="text" value="<?php echo $safe_domain;?>" size="60"/><?php tips('不填写则默认为当前域名<br/>多个域名请用|分开 例如destoon.com|destoon.cn');?></td>
@@ -804,14 +837,6 @@ function TestFTP() {
 </td>
 </tr>
 <tr>
-<td class="tl">GIF图片保留动画</td>
-<td>
-<input type="radio" name="setting[gif_ani]" value="1"  <?php if($gif_ani==1){ ?>checked <?php } ?> /> 开启&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="setting[gif_ani]" value="0"  <?php if($gif_ani==0){ ?>checked <?php } ?> /> 关闭
-<?php tips('开启之后，系统对有动画效果的GIF图片不添加水印或缩略');?>
-</td>
-</tr>
-<tr>
 <td class="tl">产品大图加公司名水印</td>
 <td>
 <input type="radio" name="setting[water_com]" value="1"  <?php if($water_com==1){ ?>checked <?php } ?> /> 开启&nbsp;&nbsp;&nbsp;&nbsp;
@@ -863,8 +888,7 @@ function TestFTP() {
 <input type="radio" name="setting[mail_type]" value="close" <?php if($mail_type=="close"){ ?>checked <?php } ?> id="mailtype_close"/> <label for="mailtype_close">关闭邮件发送</label><br/>
 <input type="radio" name="setting[mail_type]" value="smtp" <?php if($mail_type=="smtp"){ ?>checked <?php } ?> onclick="Ds('dsmtp');Ds('demail');Dd('l_rn').checked=true;" id="mailtype_smtp"/> <label for="mailtype_smtp">通过SMTP SOCKET 连接 SMTP 服务器发送(支持ESMTP验证)</label><br/>
 <input type="radio" name="setting[mail_type]" value="mail"  <?php if($mail_type=="mail"){ ?>checked <?php } ?> onclick="Dh('dsmtp');Dh('demail');Dd('l_n').checked=true;" id="mailtype_mail"/> <label for="mailtype_mail">通过PHP mail 函数发送(通常为Unix/Linux 主机)</label><br/>
-<input type="radio" name="setting[mail_type]" value="psmtp"  <?php if($mail_type=="psmtp"){ ?>checked <?php } ?> onclick="Ds('dsmtp');Dh('demail');Dd('l_rn').checked=true;" id="mailtype_psmtp"/> <label for="mailtype_psmtp">通过PHP mail 函数SMTP发送(通常为WIN主机)</label><br/>
-<input type="radio" name="setting[mail_type]" value="sc"  <?php if($mail_type=="sc"){ ?>checked <?php } ?> onclick="Dh('dsmtp');Ds('demail');Dd('l_n').checked=true;" id="mailtype_sc"/> <label for="mailtype_sc">通过 <a href="<?php echo DT_PATH;?>api/redirect.php?url=http://sendcloud.sohu.com/" target="_blank" class="t">SendCloud</a> 发送<?php tips('SendCloud邮件发送可以保证更高的送达率，详情可以进入官方网站了解<br/>邮箱帐号请填写申请到的API_USER，邮箱密码请填写申请到的API_KEY');?></label>
+<input type="radio" name="setting[mail_type]" value="psmtp"  <?php if($mail_type=="psmtp"){ ?>checked <?php } ?> onclick="Ds('dsmtp');Dh('demail');Dd('l_rn').checked=true;" id="mailtype_psmtp"/> <label for="mailtype_psmtp">通过PHP mail 函数SMTP发送(通常为WIN主机)</label>
 </td>
 </tr>
 <tr>
@@ -902,9 +926,9 @@ function TestFTP() {
 </tbody>
 <tr> 
 <td class="tl">邮件签名</td>
-<td><textarea name="setting[mail_sign]" id="mail_sign" cols="60" rows="4"><?php echo $mail_sign;?></textarea><br/>支持HTML语法 <a href="###" class="t" onclick="Dalert(Dd('mail_sign').value, 500);">[预览签名]</a></td>
+<td><textarea name="setting[mail_sign]" id="mail_sign" cols="60" rows="4"><?php echo $mail_sign;?></textarea><?php tips('支持HTML语法');?></td>
 </tr>
-<tr>
+<tr> 
 <td class="tl">发件人邮箱</td>
 <td><input name="setting[mail_sender]" id="mail_sender" type="text" size="40" value="<?php echo $mail_sender;?>"/><?php tips('系统发送的信件将以此邮箱名义发送');?></td>
 </tr>
@@ -926,11 +950,10 @@ function TestFTP() {
 <tr> 
 <td class="tl">自动转发未读站内信</td>
 <td>
-<input type="radio" name="setting[message_email]" value="1"  <?php if($message_email) echo 'checked';?> onclick="Ds('dmessage');"/> 开启&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="setting[message_email]" value="0"  <?php if(!$message_email) echo 'checked';?> onclick="Dh('dmessage');"/> 关闭
+<input type="radio" name="setting[message_email]" value="1"  <?php if($message_email) echo 'checked';?>/> 开启&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="setting[message_email]" value="0"  <?php if(!$message_email) echo 'checked';?>/> 关闭
 </td>
 </tr>
-<tbody id="dmessage" style="display:<?php if(!$message_email) echo 'none';?>">
 <tr> 
 <td class="tl">自动转发会员组</td>
 <td><?php echo group_checkbox('setting[message_group][]', $message_group, '1,2,3,4');?></td>
@@ -953,24 +976,18 @@ foreach($NAME as $k=>$v) {
 ?>
 </td>
 </tr>
-<tr> 
-<td class="tl">同时推送给微信</td>
-<td>
-<input type="radio" name="setting[message_weixin]" value="1"  <?php if($message_weixin) echo 'checked';?>/> 开启&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="setting[message_weixin]" value="0"  <?php if(!$message_weixin) echo 'checked';?>/> 关闭<?php tips('仅在开启了微信公众号，且会员绑定了微信，且会员在48小时内打开过公众号才能推送成功');?>
-</td>
-</tr>
-</tbody>
 </table>
 </div>
 
 <div id="Tabs6" style="display:none">
 <div class="tt">页面细节</div>
 <table cellpadding="2" cellspacing="1" class="tb">
+
 <tr>
 <td class="tl">行业分类大类</td>
 <td><input type="text" name="setting[page_bigcat]" value="<?php echo $page_bigcat;?>" size="60"/><?php tips('例如填写工业品|消费品|原材料|商业服务，然后把供应的一级分类级别设置为1即可归入工业品，设置为2归入消费品，设置为3归入原材料，设置为4归入商业服务，依次类推');?></td>
 </tr>
+
 <tr>
 <td class="tl">首页显示行业类别</td>
 <td><input type="radio" name="setting[page_catalog]" value="1"  <?php if($page_catalog){ ?>checked <?php } ?>/> 是&nbsp;&nbsp;&nbsp;&nbsp;
@@ -1048,15 +1065,6 @@ foreach($NAME as $k=>$v) {
 <td><input type="text" name="setting[page_video]" value="<?php echo $page_video;?>" size="5"/></td>
 </tr>
 
-<tr>
-<td class="tl">首页商圈帖子数量</td>
-<td><input type="text" name="setting[page_post]" value="<?php echo $page_post;?>" size="5"/></td>
-</tr>
-
-<tr>
-<td class="tl">首页推荐商圈数量</td>
-<td><input type="text" name="setting[page_club]" value="<?php echo $page_club;?>" size="5"/></td>
-</tr>
 
 <tr>
 <td class="tl">首页行业知道数量</td>
@@ -1076,7 +1084,7 @@ foreach($NAME as $k=>$v) {
 <tr>
 <td class="tl">首页招聘求职数量</td>
 <td><input type="text" name="setting[page_job]" value="<?php echo $page_job;?>" size="5"/></td>
-</tr>
+</tr
 <tr>
 <td class="tl">首页资料下载数量</td>
 <td><input type="text" name="setting[page_down]" value="<?php echo $page_down;?>" size="5"/></td>
@@ -1088,68 +1096,6 @@ foreach($NAME as $k=>$v) {
 <tr>
 <td class="tl">首页文字链接数量</td>
 <td><input type="text" name="setting[page_text]" value="<?php echo $page_text;?>" size="5"/></td>
-</tr>
-</table>
-</div>
-
-<div id="Tabs7" style="display:none">
-<div class="tt">云服务</div>
-<table cellpadding="2" cellspacing="1" class="tb">
-<tr>
-<td class="tl">服务帐号</td>
-<td><input name="config[cloud_uid]" type="text" id="cloud_uid" value="<?php echo $cloud_uid;?>" size="30"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="?file=cloud&action=key" target="_blank" class="t">[申请帐号]</a></td> 
-</tr>
-<tr>
-<td class="tl">服务密钥</td>
-<td><input name="config[cloud_key]" type="text" id="cloud_key" value="<?php echo $cloud_key;?>" size="30" onfocus="if(this.value.indexOf('**')!=-1)this.value='';"/></td>
-</tr>
-</table>
-<div class="tt">手机短信</div>
-<table cellpadding="2" cellspacing="1" class="tb">
-<tr>
-<td class="tl">手机短信</td>
-<td>
-<input type="radio" name="setting[sms]" value="1"  <?php if($sms){ ?>checked <?php } ?> onclick="Ds('dsms');"/> 开启&nbsp;&nbsp;
-<input type="radio" name="setting[sms]" value="0"  <?php if(!$sms){ ?>checked <?php } ?> onclick="Dh('dsms');"/> 关闭
-</td>
-</tr>
-<tbody id="dsms" style="display:<?php if(!$sms) echo 'none';?>">
-<?php if($sms && DT_CLOUD_UID && DT_CLOUD_KEY) { ?>
-<tr>
-<td class="tl">短信余额</td>
-<td><span class="f_red" id="sms_balance"></span> 条&nbsp;&nbsp;<a href="?file=cloud&action=sms" target="_blank" class="t">[在线充值]</a></td> 
-</tr>
-<?php } ?>
-<tr>
-<td class="tl">短信单价</td>
-<td><input name="setting[sms_fee]" type="text" value="<?php echo $sms_fee;?>" size="5"/> <?php echo $DT['money_unit'];?>/条 <?php tips('此项针对会员收费');?></td> 
-</tr>
-<tr>
-<td class="tl">每日上限</td>
-<td><input name="setting[sms_max]" type="text" value="<?php echo $sms_max;?>" size="5"/> 条 <?php tips('特指会员注册、找回密码、手机验证等需要发送验证码场景，同一手机号码或会员每日最大发送数量，填0为不限制，建议填5左右的数字，以免恶意发送');?></td> 
-</tr>
-<tr style="display:none;">
-<td class="tl">短信长度</td>
-<td><input name="setting[sms_len]" type="text" value="<?php echo $sms_len;?>" size="5"/> 字/条</td> 
-</tr>
-<tr style="display:none;">
-<td class="tl">成功标识</td>
-<td><input name="setting[sms_ok]" type="text" value="<?php echo $sms_ok;?>" size="10"/> <?php tips('短信发送成功标识字符，系统根据此字符确定是否扣除会员短信余额');?></td> 
-</tr>
-<tr>
-<td class="tl">短信内容签名</td>
-<td><input name="setting[sms_sign]" type="text" value="<?php echo $sms_sign;?>" size="30"/> <?php tips('将显示在短信内容结尾，以便会员识别，请尽量简短，正确的格式为【签名】，例如 【某某网】。包含签名的短信会被运营商认为是更正规的短信，从而进入更快的发送通道');?></td> 
-</tr>
-</tbody>
-</table>
-<div class="tt">快递追踪</div>
-<table cellpadding="2" cellspacing="1" class="tb">
-<tr>
-<td class="tl">快递追踪</td>
-<td>
-<input type="radio" name="setting[cloud_express]" value="1"  <?php if($cloud_express){ ?>checked <?php } ?>/> 开启&nbsp;&nbsp;
-<input type="radio" name="setting[cloud_express]" value="0"  <?php if(!$cloud_express){ ?>checked <?php } ?>/> 关闭
-</td>
 </tr>
 </table>
 </div>
@@ -1171,7 +1117,6 @@ function TestMail() {
 	if(Dd('mailtype_mail').checked) mail_type = 'mail';
 	if(Dd('mailtype_smtp').checked) mail_type = 'smtp';
 	if(Dd('mailtype_psmtp').checked) mail_type = 'psmtp';
-	if(Dd('mailtype_sc').checked) mail_type = 'sc';
 	var mail_delimiter = Dd('l_rn').checked ? 1 : (Dd('l_n').checked ? 2 : 3);
 	var smtp_auth = Dd('smtp_auth').checked ? 1 : 0;
 	url += '&mail_type='+mail_type+'&mail_delimiter='+mail_delimiter+'&smtp_host='+Dd('smtp_host').value+'&smtp_auth='+smtp_auth+'&smtp_user='+Dd('smtp_user').value+'&smtp_pass='+Dd('smtp_pass').value+'&smtp_port='+Dd('smtp_port').value+'&mail_sender='+Dd('mail_sender').value+'&testemail='+Dd('testemail').value+'&mail_name='+Dd('mail_name').value;
@@ -1202,5 +1147,4 @@ window.onload=function() {
 	if(all) {all = 0; TabAll();}
 }
 </script>
-<script type="text/javascript" src="https://www.destoon.com/sms.php?action=get&uid=<?php echo DT_CLOUD_UID;?>&key=<?php echo md5(DT_CLOUD_KEY.'|'.DT_CLOUD_UID);?>"></script>
 <?php include tpl('footer');?>

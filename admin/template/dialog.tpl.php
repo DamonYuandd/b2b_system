@@ -1,5 +1,5 @@
 <?php 
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 ?>
 <html>
 <head>

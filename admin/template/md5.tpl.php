@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -10,32 +10,32 @@ show_menu($menus);
 <?php if($lists) { ?>
 <tr>
 <th>文件</th>
-<th width="150">大小</th>
-<th width="150">修改时间</th>
+<th>大小</th>
+<th>修改时间</th>
 </tr>
 	<?php foreach($lists as $f) { ?>
 	<tr align="center">
-	<td align="left" class="f_fd">&nbsp;<?php echo $f;?></td>
+	<td align="left">&nbsp;<img src="admin/image/notice.gif" alt="" align="absmiddle"/> <a href="<?php echo $f;?>" target="_blank" class="f_fd"> <?php echo $f;?></a></td>
 	<td class="px11"><?php echo dround(filesize(DT_ROOT.'/'.$f)/1024);?> Kb</td>
 	<td class="px11"><?php echo timetodate(filemtime(DT_ROOT.'/'.$f), 6);?></td>
 	</tr>
 	<?php } ?>
 	<tr>
-	<td colspan="3" height="30" class="f_blue">&nbsp; - 以上文件曾被修改或创建，请下载手动检查文件内容是否安全&nbsp;&nbsp;&nbsp;&nbsp;<a href="?file=<?php echo $file;?>" class="t">[重新校验]</a></td>
+	<td colspan="3" height="30" class="f_blue">&nbsp;&nbsp;&nbsp;&nbsp;- 以上文件曾被修改或创建，请下载手动检查文件内容是否安全</td>
 	</tr>
 <?php } else { ?>
 <tr>
-<td class="f_green" height="40">&nbsp; - 没有文件被修改或创建&nbsp;&nbsp;&nbsp;&nbsp;<a href="?file=<?php echo $file;?>" class="t">[重新校验]</a></td>
+<td class="f_green" height="40">&nbsp;- 没有文件被修改或创建&nbsp;&nbsp;<a href="?file=<?php echo $file;?>" class="t">[重新校验]</a></td>
 </tr>
 <?php } ?>
 </table>
 
 <?php } else { ?>
-<form method="post" id="dform">
+<form method="post">
 <div class="tt">文件校验</div>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl">&nbsp;选择目录</td>
+<td width="80">&nbsp;选择目录</td>
 <td>
 <table cellpadding="2" cellspacing="2" width="600">
 <?php foreach($dirs as $k=>$d) { ?>
@@ -44,19 +44,14 @@ show_menu($menus);
 <?php if($k%4==3) {?></tr><?php } ?>
 <?php } ?>
 </table>
-<div>&nbsp;
-<a href="javascript:" onclick="checkall(Dd('dform'), 1);" class="t">反选</a>&nbsp;&nbsp;
-<a href="javascript:" onclick="checkall(Dd('dform'), 2);" class="t">全选</a>&nbsp;&nbsp;
-<a href="javascript:" onclick="checkall(Dd('dform'), 3);" class="t">全不选</a>&nbsp;&nbsp;
-</div>
 </td>
 </tr>
 <tr>
-<td class="tl">&nbsp;文件类型</td>
+<td>&nbsp;文件类型</td>
 <td>&nbsp;<input type="text" size="40" name="fileext" value="php|js|htm" class="f_fd"/></td>
 </tr>
 <tr>
-<td class="tl">&nbsp;镜像文件</td>
+<td>&nbsp;镜像文件</td>
 <td>&nbsp;<select name="mirror" id="mirror">
 <option value="">系统默认</option>
 <?php 
@@ -73,13 +68,13 @@ show_menu($menus);
 </tr>
 </table>
 </form>
-<form method="post" action="?" id="dmd5">
+<form method="post" action="?">
 <input type="hidden" name="file" value="<?php echo $file;?>"/>
 <input type="hidden" name="action" value="add"/>
 <div class="tt">创建镜像</div>
 <table cellpadding="6" cellspacing="1" class="tb">
 <tr>
-<td class="tl">&nbsp;选择目录</td>
+<td width="80">&nbsp;选择目录</td>
 <td>
 <table cellpadding="2" cellspacing="2" width="600">
 <?php foreach($dirs as $k=>$d) { ?>
@@ -88,15 +83,10 @@ show_menu($menus);
 <?php if($k%4==3) {?></tr><?php } ?>
 <?php } ?>
 </table>
-<div>&nbsp;
-<a href="javascript:" onclick="checkall(Dd('dmd5'), 1);" class="t">反选</a>&nbsp;&nbsp;
-<a href="javascript:" onclick="checkall(Dd('dmd5'), 2);" class="t">全选</a>&nbsp;&nbsp;
-<a href="javascript:" onclick="checkall(Dd('dmd5'), 3);" class="t">全不选</a>&nbsp;&nbsp;
-</div>
 </td>
 </tr>
 <tr>
-<td class="tl">&nbsp;文件类型</td>
+<td>&nbsp;文件类型</td>
 <td>&nbsp;<input type="text" size="40" name="fileext" value="php|js|htm" class="f_fd"/></td>
 </tr>
 <tr>
@@ -106,5 +96,5 @@ show_menu($menus);
 </table>
 </form>
 <?php } ?>
-<script type="text/javascript">Menuon(2);</script>
+<script type="text/javascript">Menuon(1);</script>
 <?php include tpl('footer');?>

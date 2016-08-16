@@ -1,13 +1,12 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=<?php echo DT_CHARSET;?>"/>
-<title>管理中心 - <?php echo $DT['sitename']; ?> - Powered By DESTOON B2B V<?php echo DT_VERSION; ?> R<?php echo DT_RELEASE;?></title>
+<title>管理中心</title>
 <meta name="robots" content="noindex,nofollow"/>
-<meta name="generator" content="DESTOON B2B - www.destoon.com"/>
 <meta http-equiv="x-ua-compatible" content="IE=8"/>
 <link rel="stylesheet" href="admin/image/style.css" type="text/css"/>
 <?php if(!DT_DEBUG) { ?><script type="text/javascript">window.onerror= function(){return true;}</script><?php } ?>
@@ -51,7 +50,7 @@ if($_admin == 2) {
 	<?php
 		foreach($mymenu as $menu) {
 	?>
-	<dd onclick="c(this);"><a href="<?php echo substr($menu['url'], 0, 1) == '?' ? $menu['url'] : DT_PATH.'api/redirect.php?url='.$menu['url'].'" target="_blank';?>"><?php echo set_style($menu['title'], $menu['style']);?></a></dd>
+	<dd onclick="c(this);"><a href="<?php echo $menu['url'];?>"><?php echo set_style($menu['title'], $menu['style']);?></a></dd>
 	<?php
 		}
 	?>
@@ -87,8 +86,8 @@ if($_admin == 2) {
 <div style="display:none;">
 	<div id="m_1">
 	<?php if($_founder) { ?>
-	<dl> 
-	<dt onclick="s(this)" onmouseover="this.className='dt_on';" onmouseout="this.className='';">系统设置</dt> 
+	<dl>
+	<dt onclick="s(this)" onmouseover="this.className='dt_on';" onmouseout="this.className='';">系统设置</dt>
 	<?php
 		foreach($menu_system as $m) {
 			echo '<dd onclick="c(this);"><a href="'.$m[1].'">'.$m[0].'</a></dd>';
@@ -96,7 +95,7 @@ if($_admin == 2) {
 	?>
 	</dl>
 	<?php } ?>
-	<dl> 
+	<dl>
 	<dt onclick="s(this)" onmouseover="this.className='dt_on';" onmouseout="this.className='';">更新数据</dt>
 	<dd onclick="c(this);"><a href="?action=html">生成首页</a></dd>
 	<?php if($_founder) { ?>
@@ -105,7 +104,7 @@ if($_admin == 2) {
 	<dd onclick="c(this);"><a href="?file=html" onclick="return confirm('确定要开始更新全站页面吗？此操作比较耗费服务器资源和时间 ');">更新全站</a></dd>
 	<?php } ?>
 	</dl>
-	<dl> 
+	<dl>
 	<dt onclick="s(this)" onmouseover="this.className='dt_on';" onmouseout="this.className='';">系统工具</dt>
 	<?php
 		foreach($menu as $m) {
@@ -115,14 +114,7 @@ if($_admin == 2) {
 	</dl>
 	</div>
 	<div id="m_2">
-	<dl>
-	<dt onclick="s(this)" onmouseover="this.className='dt_on';" onmouseout="this.className='';">使用帮助</dt>
-	<?php
-		foreach($menu_help as $m) {
-			echo '<dd onclick="c(this);" style="display:none;"><a href="'.$m[1].'">'.$m[0].'</a></dd>';
-		}
-	?>
-	</dl>
+	
 	<dl>
 	<dt onclick="s(this)" onmouseover="this.className='dt_on';" onmouseout="this.className='';">我的面板</dt>
 	<dd onclick="c(this);"><a href="?action=main">系统首页</a></dd>
@@ -130,7 +122,7 @@ if($_admin == 2) {
 	<?php
 		foreach($mymenu as $menu) {
 	?>
-	<dd onclick="c(this);"><a href="<?php echo substr($menu['url'], 0, 1) == '?' ? $menu['url'] : DT_PATH.'api/redirect.php?url='.$menu['url'].'" target="_blank';?>"><?php echo set_style($menu['title'], $menu['style']);?></a></dd>
+	<dd onclick="c(this);"><a href="<?php echo $menu['url'];?>"><?php echo set_style($menu['title'], $menu['style']);?></a></dd>
 	<?php
 		}
 	?>
@@ -167,7 +159,7 @@ if($_admin == 2) {
 		}
 	}
 	?>
-	</div>	
+	</div>
 	<div id="m_4">
 	<?php
 		$menuinc = DT_ROOT.'/module/'.$MODULE[2]['module'].'/admin/menu.inc.php';
@@ -195,7 +187,7 @@ if($_admin == 2) {
 			echo '</dl>';
 		}
 	?>
-	<dl id="dl_pay"> 
+	<dl id="dl_pay">
 	<dt id="dt_pay" onclick="s(this);h(Dd('dt_oth'));h(Dd('dt_4'));" onmouseover="this.className='dt_on';" onmouseout="this.className='';">财务管理</dt>
 	<?php
 		foreach($menu_finance as $m) {
@@ -203,8 +195,8 @@ if($_admin == 2) {
 		}
 	?>
 	</dl>
-	<dl id="dl_oth"> 
-	<dt id="dt_oth" onclick="s(this);h(Dd('dt_pay'));h(Dd('dt_4'));" onmouseover="this.className='dt_on';" onmouseout="this.className='';">会员相关</dt> 
+	<dl id="dl_oth">
+	<dt id="dt_oth" onclick="s(this);h(Dd('dt_pay'));h(Dd('dt_4'));" onmouseover="this.className='dt_on';" onmouseout="this.className='';">会员相关</dt>
 	<?php
 		foreach($menu_relate as $m) {
 			echo '<dd onclick="c(this);" style="display:none;"><a href="'.$m[1].'">'.$m[0].'</a></dd>';
@@ -230,7 +222,7 @@ function show(ID) {
 		Dd('b_'+i).title = names[i];
 	}
 }
-show(2);
+show(<?php echo  $_GET['bb'] ? $_GET['bb'] : 2;?>);
 </script>
 <?php } ?>
 <script type="text/javascript">

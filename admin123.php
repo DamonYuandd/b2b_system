@@ -1,8 +1,5 @@
 <?php
-/*
-	[Destoon B2B System] Copyright (c) 2008-2015 www.destoon.com
-	This is NOT a freeware, use is subject to license.txt
-*/
+
 @set_time_limit(0);
 define('DT_ADMIN', true);
 define('DT_MEMBER', true);
@@ -43,6 +40,7 @@ if($file != 'login') {
 		msg('警告！您无权进行此操作 Error(00)');
 	}
 }
+
 if($DT['admin_log'] && $action != 'import') admin_log();
 if($DT['admin_online']) admin_online();
 if(isset($reason) && is_array($itemid)) admin_notice();
@@ -54,9 +52,11 @@ if($psize > 0 && $psize != $pagesize) {
 }
 
 if($module == 'destoon') {
+
 	(include DT_ROOT.'/admin/'.$file.'.inc.php') or msg();
 	
 } else {
+	
 	include DT_ROOT.'/module/'.$module.'/common.inc.php';
 	(include MD_ROOT.'/admin/'.$file.'.inc.php') or msg();
 }

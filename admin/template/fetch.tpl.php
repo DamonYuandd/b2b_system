@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -35,7 +35,7 @@ show_menu($menus);
 <td><input name="itemid[]" type="checkbox" value="<?php echo $v['itemid'];?>"/></td>
 <td><?php echo $v['domain'];?></td>
 <td><?php echo $v['encode'];?></td>
-<td><a href="<?php echo DT_PATH;?>api/redirect.php?url=http://<?php echo $v['domain'];?>" target="_blank"><?php echo $v['sitename'];?></a></td>
+<td><a href="<?php echo $MODULE[3]['linkurl'];?>redirect.php?url=http://<?php echo $v['domain'];?>" target="_blank"><?php echo $v['sitename'];?></a></td>
 <td class="px11" title="<?php echo $v['editor'];?>"><?php echo $v['edittime'];?></td>
 <td><a href="?file=<?php echo $file;?>&action=edit&itemid=<?php echo $v['itemid'];?>"><img src="admin/image/edit.png" width="16" height="16" title="修改" alt=""/></a>&nbsp;
 <a href="?file=<?php echo $file;?>&action=delete&itemid=<?php echo $v['itemid'];?>" onclick="return _delete();"><img src="admin/image/delete.png" width="16" height="16" title="删除" alt=""/></a></td>

@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -35,9 +35,8 @@ foreach($ROBOT as $k=>$v) {
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <th width="25"><input type="checkbox" onclick="checkall(this.form);"/></th>
-<th width="25"></th>
-<th>网址</th>
-<th>来源</th>
+<th width="80">搜索引擎</th>
+<th>URL</th>
 <th>IP</th>
 <th>地区</th>
 <th>会员名</th>
@@ -54,9 +53,7 @@ foreach($ROBOT as $k=>$v) {
 &nbsp;
 <?php } ?>
 </td>
-<td title="<?php echo $v['url'];?>"><input type="text" size="30" value="<?php echo $v['url'];?>"/> <a href="<?php echo $v['url'];?>" target="_blank"><img src="admin/image/link.gif" width="16" height="16" title="点击打开网址" alt="" align="absmiddle"/></a></td>
-<td title="<?php echo $v['refer'];?>"><input type="text" size="30" value="<?php echo $v['refer'];?>"/> <a href="<?php echo $v['refer'] ? $v['refer'] : '###';?>"<?php echo $v['refer'] ? ' target="_blank"' : '';?>><img src="admin/image/link.gif" width="16" height="16" title="点击打开网址" alt="" align="absmiddle"/></a></td>
-
+<td align="left" title="<?php echo $v['url'];?>">&nbsp;<a href="<?php echo $v['url'];?>" target="_blank"><?php echo $v['durl'];?></a></td>
 <td><a href="javascript:_ip('<?php echo $v['ip'];?>');"><?php echo $v['ip'];?></a></td>
 <td><?php echo ip2area($v['ip']);?></td>
 <td><a href="javascript:_user('<?php echo $v['username'];?>');"><?php echo $v['username'];?></a></td>

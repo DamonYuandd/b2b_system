@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -28,7 +28,7 @@ show_menu($menus);
 <th>上级ID</th>
 <th>地区名</th>
 <th width="80">子地区</th>
-<th width="80">操作</th>
+<th width="120">操作</th>
 </tr>
 <?php foreach($DAREA as $k=>$v) {?>
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">

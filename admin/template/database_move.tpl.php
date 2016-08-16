@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -89,7 +89,7 @@ foreach($MODULE as $m) {
 <input type="text" name="condition" value="" size="80" id="condition"/>
 <br/>
 &nbsp;- 如果转移单条信息，则直接填写信息ID，例如 <span class="f_blue">123</span><br/>
-&nbsp;- 如果转移多条信息，则填用,分隔信息ID，例如 <span class="f_blue">123,124,125</span> (结尾和开头不需要,)<br/>
+&nbsp;- 如果转移多条信息，则填用,分割信息ID，例如 <span class="f_blue">123,124,125</span> (结尾和开头不需要,)<br/>
 &nbsp;- 可直接写SQL调用条件，必须以and开头<br/>
 &nbsp;&nbsp;例如 <span class="f_blue">and catid=123</span> 表示调用分类ID为123的信息<br/>
 &nbsp;&nbsp;例如 <span class="f_blue">and itemid>0</span> 表示调用源模块所有信息<br/>

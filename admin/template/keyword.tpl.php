@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -13,8 +13,6 @@ var _del = 0;
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <td>&nbsp;
-<?php echo $fields_select;?>&nbsp;
-<input type="text" size="30" name="kw" value="<?php echo $kw;?>" title="关键词"/>&nbsp;
 <select name="mid">
 <option value="0">模块</option>
 <?php 
@@ -24,6 +22,7 @@ foreach($MODULE as $v) {
 } 
 ?>
 </select>&nbsp;
+<input type="text" size="30" name="kw" value="<?php echo $kw;?>" title="关键词"/>&nbsp;
 <?php echo $order_select;?>
 &nbsp;
 <input type="text" name="psize" value="<?php echo $pagesize;?>" size="2" class="t_c" title="条/页"/>
@@ -52,7 +51,7 @@ foreach($MODULE as $v) {
 <th>状态</th>
 </tr>
 <?php foreach($lists as $k=>$v) { ?>
-<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center" title="更新时间：<?php echo timetodate($v['updatetime'], 6);?>">
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
 <td><input name="post[<?php echo $v['itemid'];?>][delete]" type="checkbox" value="1" onclick="if(this.checked){_del++;}else{_del--;}"/></td>
 <td><a href="?file=<?php echo $file;?>&mid=<?php echo $v['moduleid'];?>&status=<?php echo $status;?>"><?php echo $MODULE[$v['moduleid']]['name'];?></a></td>
 <td><input name="post[<?php echo $v['itemid'];?>][word]" type="text" size="15" value="<?php echo $v['word'];?>"/></td>
@@ -126,7 +125,7 @@ foreach($MODULE as $v) {
 <tr>
 <td class="f_gray">
 - 设置相关词可以使提示搜索或相关搜索更智能 例如关键词‘IBM’可设置‘IBM,笔记本’则搜索IBM和笔记本均会提示IBM相关搜索<br/>
-- 多个相关词请用英文,分隔，为了系统检索效率，建议控制在200字内
+- 多个相关词请用英文,分割，为了系统检索效率，建议控制在200字内
 </td>
 </tr>
 </table>

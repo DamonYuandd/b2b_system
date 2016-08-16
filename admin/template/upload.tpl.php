@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 ?>
 <div class="tt">分表[<?php echo $id;?>]记录搜索</div>
@@ -48,19 +48,19 @@ include tpl('header');
 <?php foreach($lists as $k=>$v) {?>
 <tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
 <td><input name="itemid[]" type="checkbox" value="<?php echo $v['pid'];?>"/></td>
-<td><a href="<?php echo $v['fileurl'];?>" target="_blank"><img src="<?php echo DT_PATH.'file/ext/'.$v['ext'].'.gif';?>"/></a></td>
+<td><img src="<?php echo DT_PATH.'file/ext/'.$v['ext'].'.gif';?>"/></td>
 <td align="left" title="<?php echo $v['fileurl'];?>">
 <?php if($thumb && $v['image']) { ?>
-<a href="javascript:_preview('<?php echo $v['fileurl'];?>');"><img src="<?php echo $v['fileurl'];?>" width="80" style="margin:5px;" onerror="$.get('?file=<?php echo $file;?>&id=<?php echo $id;?>&action=delete&itemid=<?php echo $v['pid'];?>&ajax=1');"/></a>
+<a href="javascript:_preview('<?php echo $v['fileurl'];?>');"><img src="<?php echo $v['fileurl'];?>" width="80" style="margin:5px;"/></a>
 <?php } else { ?>
-&nbsp;<?php if($v['image']) { ?><a href="javascript:_preview('<?php echo $v['fileurl'];?>');"><?php } else if($v['video']) { ?><a href="javascript:_play('<?php echo $v['fileurl'];?>');"><?php } else { ?><a href="<?php echo $v['fileurl'];?>" target="_blank"><?php } ?><?php echo basename($v['fileurl']);?></a>
+&nbsp;<a href="<?php echo $v['fileurl'];?>" target="_blank"><?php echo basename($v['fileurl']);?></a><?php if($v['image']) { ?>&nbsp;<a href="javascript:_preview('<?php echo $v['fileurl'];?>');"><img src="admin/image/img.gif" width="10" height="10" title="点击预览" alt=""/><?php } ?>
 <?php } ?>
 </td>
 <td><?php echo $v['size'];?></td>
 <td><?php echo $v['width'] ? $v['width'] : '';?></td>
 <td><?php echo $v['height'] ? $v['height'] : '';?></td>
 <td><a href="?file=<?php echo $file;?>&mid=<?php echo $v['moduleid'];?>&id=<?php echo $id;?>"><?php echo $MODULE[$v['moduleid']]['name'];?></a></td>
-<td><a href="<?php echo DT_PATH;?>api/redirect.php?mid=<?php echo $v['moduleid'];?>&itemid=<?php echo $v['itemid'];?>" target="_blank"><?php echo $v['itemid'];?></a></td>
+<td><a href="<?php echo $MODULE[3]['linkurl'];?>redirect.php?mid=<?php echo $v['moduleid'];?>&itemid=<?php echo $v['itemid'];?>" target="_blank"><?php echo $v['itemid'];?></a></td>
 <td><a href="?file=<?php echo $file;?>&upfrom=<?php echo $v['upfrom'];?>&id=<?php echo $id;?>"><?php echo $v['upfrom'];?></a></td>
 <td><a href="javascript:_user('<?php echo $v['username'];?>');"><?php echo $v['username'];?></a></td>
 <td class="px11"><?php echo $v['addtime'];?></td>
@@ -68,17 +68,9 @@ include tpl('header');
 <?php }?>
 </table>
 <div class="btns">
-<input title="删除记录和对应文件" type="submit" value="彻底删除" class="btn" onclick="if(confirm('确定要删除选中记录吗？系统同时会删除对应文件，此操作将不可撤销')){this.form.action='?file=<?php echo $file;?>&id=<?php echo $id;?>&action=delete'}else{return false;}"/>&nbsp;&nbsp;
 <input title="仅删除记录" type="submit" value="删除记录" class="btn" onclick="if(confirm('确定要删除选中记录吗？此操作将不可撤销')){this.form.action='?file=<?php echo $file;?>&id=<?php echo $id;?>&action=delete_record'}else{return false;}"/>&nbsp;&nbsp;
-<?php if(!$lists && $kw) {?>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="f_red">未找到记录</span>
-<?php }?>
+<input title="删除记录和对应文件" type="submit" value="彻底删除" class="btn" onclick="if(confirm('确定要删除选中记录吗？系统同时会删除对应文件，此操作将不可撤销')){this.form.action='?file=<?php echo $file;?>&id=<?php echo $id;?>&action=delete'}else{return false;}"/>
 </div>
 </form>
 <div class="pages"><?php echo $pages;?></div>
-<script type="text/javascript">
-function _play(url) {
-	Dwidget('?file=<?php echo $file;?>&id=<?php echo $id;?>&action=play&video='+url, '视频播放', 480, 360, 'no');
-}
-</script>
 <?php include tpl('footer');?>

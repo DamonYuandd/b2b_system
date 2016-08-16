@@ -1,29 +1,19 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
 <div class="tt">注意事项</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
-<td>&nbsp;&nbsp;&nbsp;- 如果进行了<span class="f_red">修改</span>或<span class="f_red">删除</span>分类操作，为了保证操作速度，系统不自动修复结构。请在<span class="f_red">管理完成</span>或<span class="f_red">操作失败</span>时，点更新缓存以修复分类结构至最新。</td>
+<td>&nbsp;&nbsp;&nbsp;1、如果进行了<span class="f_red">修改</span>或<span class="f_red">删除</span>分类操作，为了保证操作速度，系统不自动修复结构。请在<span class="f_red">管理完成</span>或<span class="f_red">操作失败</span>时，点更新缓存以修复分类结构至最新。</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;- <span class="f_red">删除分类</span>会将分类下的信息移至回收站，分类本身可以修改名称和上级分类，没有特殊情况不建议直接删除分类。</td>
+<td>&nbsp;&nbsp;&nbsp;2、<span class="f_red">删除分类</span>会将分类下的信息移至回收站，分类本身可以修改名称和上级分类，没有特殊情况不建议直接删除分类。</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;- 修改上级ID可以快速修改分类的上级分类，改变分类结构。</td>
+<td>&nbsp;&nbsp;&nbsp;3、修改上级ID可以快速修改分类的上级分类，改变分类结构。</td>
 </tr>
-<?php if($mid == 9) { ?>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;- 对于<?php echo $MODULE[9]['name'];?>模块，一级分类为行业，二级分类为职位。</td>
-</tr>
-<?php } ?>
-<?php if($mid == 18) { ?>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;- 对于<?php echo $MODULE[18]['name'];?>模块，建议只添加一级分类。</td>
-</tr>
-<?php } ?>
 </table>
 
 <form action="?">

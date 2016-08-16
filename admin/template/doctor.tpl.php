@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -24,40 +24,6 @@ show_menu($menus);
 <td class="t2"><span>admin.php</span></td>
 <td class="t3">
 如果管理帐号泄漏，后台容易遭受攻击，为了系统安全，请修改根目录admin.php的文件名
-</td>
-</tr>
-<?php } ?>
-</tr>
-<?php
-	if(is_dir(DT_ROOT.'/5.0')) {
-?>
-<tr>
-<td class="t1">升级备份目录</td>
-<td class="t2"><span>5.0</span></td>
-<td class="t3">
-如果已经升级成功，建议将备份目录删除或备份至非站点目录
-</td>
-</tr>
-<?php } ?>
-<?php
-	if(is_dir(DT_ROOT.'/upgrade')) {
-?>
-<tr>
-<td class="t1">升级目录</td>
-<td class="t2"><span>upgrade</span></td>
-<td class="t3">
-如果已经升级成功，建议将升级目录删除
-</td>
-</tr>
-<?php } ?>
-<?php
-	if(is_dir(DT_ROOT.'/install')) {
-?>
-<tr>
-<td class="t1">安装目录</td>
-<td class="t2"><span>install</span></td>
-<td class="t3">
-如果已经安装成功，建议将安装目录删除
 </td>
 </tr>
 <?php } ?>
@@ -112,18 +78,6 @@ file目录及所有子目录和子文件都必须设置可写，否则会出现�
 </td>
 </tr>
 <?php } ?>
-
-<?php
-	$dc->set('destoon', 'b2b', 3600);
-	$D = $dc->get('destoon') == 'b2b' ? 1 : 0;
-?>
-<tr>
-<td class="t1">系统缓存测试</td>
-<td class="t2"><?php echo $D ? '成功' : '<span>失败</span>';?></td>
-<td class="t3">
-当前缓存类型为<?php echo $CFG['cache'];?>，<?php echo $D ? '缓存运行正常' : ($CFG['cache'] == 'file' ? '请检查file目录是否可写' : '请<a href="?file=setting&tab=2" target="_blank" class="t">立即更换</a>可用的缓存类型');?>
-</td>
-</tr>
 
 <?php
 	$D = ini_get('allow_url_fopen');

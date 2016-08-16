@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -35,9 +35,10 @@ IP地址： <input type="text" name="ip" size="30"/> &nbsp; <input type="submit"
 </tr>
 <?php }?>
 </table>
+</div>
 <div class="btns">
 <input type="submit" value="删除选定" class="btn" onclick="if(confirm('确定要删除选中IP吗？')){this.form.action='?file=<?php echo $file;?>&action=unban'}else{return false;}"/>
 </div>
 </form>
-<script type="text/javascript">Menuon(1);</script>
+<script type="text/javascript">Menuon(2);</script>
 <?php include tpl('footer');?>

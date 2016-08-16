@@ -1,5 +1,5 @@
 <?php
-defined('DT_ADMIN') or exit('Access Denied');
+defined('IN_DESTOON') or exit('Access Denied');
 include tpl('header');
 show_menu($menus);
 ?>
@@ -11,7 +11,7 @@ show_menu($menus);
 <tr>
 <th width="40">排序</th>
 <th>ID</th>
-<th>名称</th>
+<th>属性名称</th>
 <th>必填</th>
 <th>搜索</th>
 <th>添加方式</th>
@@ -26,7 +26,7 @@ show_menu($menus);
 <td><?php echo $v['required'] ? '<span class="f_red">是</span>' : '否';?></td>
 <td><?php echo $v['search'] ? '<span class="f_red">是</span>' : '否';?></td>
 <td><?php echo $TYPE[$v['type']];?></td>
-<td><input type="text" style="width:300px;" value="<?php echo $v['value'];?>"/></td>
+<td><?php echo $v['value'];?></td>
 <td>
 <a href="?file=<?php echo $file;?>&action=edit&catid=<?php echo $v['catid'];?>&oid=<?php echo $v['oid'];?>"><img src="admin/image/edit.png" width="16" height="16" title="修改" alt=""/></a>&nbsp;
 <a href="?file=<?php echo $file;?>&action=delete&catid=<?php echo $v['catid'];?>&oid=<?php echo $v['oid'];?>" onclick="return _delete();"><img src="admin/image/delete.png" width="16" height="16" title="删除" alt=""/></a>
