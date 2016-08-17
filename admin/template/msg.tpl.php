@@ -6,7 +6,7 @@ defined('IN_DESTOON') or exit('Access Denied');
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=<?php echo DT_CHARSET; ?>" />
 <meta name="robots" content="noindex,nofollow"/>
-<title>提示信息 - Powered By Destoon <?php echo DT_VERSION; ?></title>
+<title>提示信息</title>
 <link rel="stylesheet" href="admin/image/msg.css" type="text/css" />
 <script type="text/javascript" src="<?php echo DT_STATIC;?>file/script/config.js"></script>
 <script type="text/javascript">try {document.execCommand("BackgroundImageCache", false, true);} catch(e) {}</script>

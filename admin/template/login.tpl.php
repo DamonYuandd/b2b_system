@@ -6,7 +6,7 @@ $edition = edition(1);
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=<?php echo DT_CHARSET; ?>" />
 <meta name="robots" content="noindex,nofollow"/>
-<title>管理员登录 - Powered By JSSDW.COM <?php echo $edition;?></title>
+<title>管理员登录</title>
 <meta name="generator" content="smallbat"/>
 <link href="admin/image/login.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript" src="admin/image/jquery.js"></script>

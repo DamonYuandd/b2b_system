@@ -382,12 +382,8 @@ tips('位于./template/目录,一个目录即为一套模板');
 <?php tips('mysqli是PHP对mysql新特性的一个扩展支持，如果已加载此扩展，请选择mysqli，具体请查看phpinfo信息<br/>mysqlrw/mysqlirw指多台mysql服务器实现读写分离，开启之前需要配置file/config/mysqlrw.inc.php只读数据库连接参数');?>
 </td>
 </tr>
-<tr>
-<td class="tl">去除模板换行标记</td>
-<td>
-<input type="radio" name="config[template_trim]" value="1" <?php if($template_trim){ ?>checked <?php } ?>/> 开启&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="config[template_trim]" value="0" <?php if(!$template_trim){ ?>checked <?php } ?>/> 关闭 <?php tips('去除换行等多余标记，在一定程度上可以压缩网页体积<br/>开启此项可能导致自定义的js(例如广告代码)等错误，需要注意排查js的注释及结尾的分号');?></td>
-</tr>
+
+
 <tr>
 <td class="tl">模板缓存自动更新</td>
 <td>
@@ -698,13 +694,6 @@ function TestFTP() {
 </td>
 </tr>
 
-<tr>
-<td class="tl">JS外部数据调用</td>
-<td>
-<input type="radio" name="setting[jstag]" value="1"  <?php if($jstag){ ?>checked <?php } ?>/> 开启&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="setting[jstag]" value="0"  <?php if(!$jstag){ ?>checked <?php } ?>/> 关闭
-</td>
-</tr>
 
 <tr>
 <td class="tl">信任域名</td>

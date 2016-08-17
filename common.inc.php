@@ -104,7 +104,7 @@ if(!$CACHE) {
 $DT = $CACHE['dt'];
 $MODULE = $CACHE['module'];
 $EXT = cache_read('module-3.php');
-define('DT_MAX_LEN', $DT['max_len']);
+define('DT_MAX_LEN', isset($DT['max_len'])?$DT['max_len']:10);
 define('RE_WRITE', $DT['rewrite']);
 $lazy = $DT['lazy'] ? 1 : 0;
 if(!IN_ADMIN && ($DT['close'] || $DT['defend_cc'] || $DT['defend_reload'] || $DT['defend_proxy'])) include DT_ROOT.'/include/defend.inc.php';

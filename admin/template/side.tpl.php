@@ -5,7 +5,7 @@ defined('IN_DESTOON') or exit('Access Denied');
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=<?php echo DT_CHARSET;?>"/>
-<title>管理中心 - <?php echo $DT['sitename']; ?> - Powered By Destoon B2B V<?php echo DT_VERSION; ?> R<?php echo DT_RELEASE;?></title>
+<title>管理中心</title>
 <meta name="robots" content="noindex,nofollow"/>
 <meta name="generator" content="DESTOON B2B - www.destoon.com"/>
 <meta http-equiv="x-ua-compatible" content="IE=8"/>
