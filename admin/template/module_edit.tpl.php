@@ -43,7 +43,7 @@ show_menu($menus);
 </tr>
 <tr>
 <td class="tl"><span class="f_hid">*</span> 绑定域名</td>
-<td><input name="post[domain]" type="text" id="domain" size="30"  value="<?php echo $domain;?>"/><?php tips('例如http://sell.destoon.com/,以 / 结尾<br/>如果不绑定请勿填写');?></td>
+<td><input name="post[domain]" type="text" id="domain" size="30"  value="<?php echo $domain;?>"/><?php tips('例如http://sell.xxxx.com/,以 / 结尾<br/>如果不绑定请勿填写');?></td>
 </tr>
 <?php } ?>
 </table>

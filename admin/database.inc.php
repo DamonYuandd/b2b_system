@@ -1,8 +1,5 @@
 <?php
-/*
-	[Destoon B2B System] Copyright (c) 2008-2015 www.destoon.com
-	This is NOT a freeware, use is subject to license.txt
-*/
+
 defined('DT_ADMIN') or exit('Access Denied');
 require DT_ROOT.'/include/sql.func.php';
 $menus = array (
@@ -441,7 +438,7 @@ switch($action) {
 				$startfrom = 0;
 			}
 			if(trim($sqldump)) {
-				$sqldump = "# Destoon V".DT_VERSION." R".DT_RELEASE." http://www.destoon.com\n# ".timetodate($DT_TIME, 6)."\n# --------------------------------------------------------\n\n\n".$sqldump;
+				$sqldump = "# Destoon V".DT_VERSION." R".DT_RELEASE." http://www.xxxx.com\n# ".timetodate($DT_TIME, 6)."\n# --------------------------------------------------------\n\n\n".$sqldump;
 				$tableid = $i;
 				$filename = $random.'/'.$fileid.'.sql';
 				file_put($D.$filename, $sqldump);

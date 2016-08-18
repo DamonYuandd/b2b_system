@@ -1,8 +1,5 @@
 <?php
-/*
-	[Destoon B2B System] Copyright (c) 2008-2015 www.destoon.com
-	This is NOT a freeware, use is subject to license.txt
-*/
+
 defined('DT_ADMIN') or exit('Access Denied');
 if(!isset($CFG['edittpl']) || !$CFG['edittpl']) msg('系统禁止了在线修改模板，请FTP修改根目录config.inc.php<br/>$CFG[\'edittpl\'] = \'0\'; 修改为 $CFG[\'edittpl\'] = \'1\';');
 $menus = array (

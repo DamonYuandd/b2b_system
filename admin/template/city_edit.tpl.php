@@ -19,7 +19,7 @@ show_menu($menus);
 </tr>
 <tr>
 <td class="tl"><span class="f_hid">*</span> 绑定域名</td>
-<td><input name="post[domain]" type="text" size="40" value="<?php echo $domain;?>"/><?php tips('例如http://xian.destoon.com/,以 / 结尾<br/>同时在服务器端绑定此域名至网站根目录，如果不绑定请勿填写');?></td>
+<td><input name="post[domain]" type="text" size="40" value="<?php echo $domain;?>"/><?php tips('例如http://www.xxxx.com/,以 / 结尾<br/>同时在服务器端绑定此域名至网站根目录，如果不绑定请勿填写');?></td>
 </tr>
 <tr>
 <td class="tl"><span class="f_hid">*</span> IP地址名称</td>

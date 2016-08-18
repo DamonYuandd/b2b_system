@@ -24,7 +24,7 @@ show_menu($menus);
 </tr>
 <tr>
 <td class="tl">网站地址</td>
-<td><input name="config[url]" type="text" value="<?php echo $url;?>" size="40"/><?php tips('请添写完整URL地址,例如http://www.destoon.com/<br/>注意以 / 结尾');?></td>
+<td><input name="config[url]" type="text" value="<?php echo $url;?>" size="40"/><?php tips('请添写完整URL地址,例如http://www.xxxx.com/<br/>注意以 / 结尾');?></td>
 </tr>
 <tr>
 <td class="tl">网站LOGO</td>
@@ -189,7 +189,7 @@ tips('位于./template/目录,一个目录即为一套模板');
 <?php if($sms && $sms_uid && $sms_key) { ?>
 <tr>
 <td class="tl">短信余额</td>
-<td><span class="f_red"><script type="text/javascript" src="http://www.destoon.com/sms.php?uid=<?php echo $sms_uid;?>&key=<?php echo $sms_key;?>"></script></span> 条 <a href="?file=cloud&action=sms" target="_blank" class="t">[在线充值]</a></td> 
+<td><span class="f_red"><script type="text/javascript" src="http://www.xxx.com/sms.php?uid=<?php echo $sms_uid;?>&key=<?php echo $sms_key;?>"></script></span> 条 <a href="?file=cloud&action=sms" target="_blank" class="t">[在线充值]</a></td> 
 </tr>
 <?php } ?>
 <tr>
@@ -274,7 +274,7 @@ tips('位于./template/目录,一个目录即为一套模板');
 </tr>
 <tr>
 <td class="tl">公司主页绑定二级域名</td>
-<td><input name="config[com_domain]" type="text" value="<?php echo $com_domain;?>" size="30"/> <?php tips('如果填写 .destoon.com 同时需要将域名泛解析 *.destoon.com 指向服务器IP，并且在服务器端绑定泛域名至 网站根目录 或者 网站根目录/company 目录，生成的主页形式为username.destoon.com<br/>如果填写 i.destoon.com 同时需要将域名泛解析 i.destoon.com 指向服务器IP，并且在服务器端绑定域名至网站根目录/company 目录，生成的主页形式为i.destoon.com/username/(注：此方式必须支持伪静态)');?></td>
+<td><input name="config[com_domain]" type="text" value="<?php echo $com_domain;?>" size="30"/> <?php tips('如果填写 .xxx.com 同时需要将域名泛解析 *.xxxx.com 指向服务器IP，并且在服务器端绑定泛域名至 网站根目录 或者 网站根目录/company 目录，生成的主页形式为username.destoon.com<br/>如果填写 i.destoon.com 同时需要将域名泛解析 i.destoon.com 指向服务器IP，并且在服务器端绑定域名至网站根目录/company 目录，生成的主页形式为i.destoon.com/username/(注：此方式必须支持伪静态)');?></td>
 </tr>
 <tr>
 <td class="tl">泛解析绑定目录</td>
@@ -290,7 +290,7 @@ tips('位于./template/目录,一个目录即为一套模板');
 <td class="tl">公司二级域名加www</td>
 <td>
 <input type="radio" name="setting[com_www]" value="1"  <?php if($com_www){ ?>checked <?php } ?>/> 开启&nbsp;&nbsp;
-<input type="radio" name="setting[com_www]" value="0"  <?php if(!$com_www){ ?>checked <?php } ?>/> 关闭 <?php tips('例如二级域名为sell.destoon.com<br/>添加www后为 www.sell.destoon.com');?>
+<input type="radio" name="setting[com_www]" value="0"  <?php if(!$com_www){ ?>checked <?php } ?>/> 关闭 <?php tips('例如二级域名为sell.xxx.com<br/>添加www后为 www.sell.xxx.com');?>
 </td>
 </tr>
 <tr>
@@ -533,7 +533,7 @@ tips('位于./template/目录,一个目录即为一套模板');
 </tr>
 <tr>
 <td class="tl">远程访问URL</td>
-<td><input name="setting[remote_url]" type="text" value="<?php echo $remote_url;?>" size="60"/><?php tips('例如 http://static.destoon.com/，注意以 / 结尾');?></td>
+<td><input name="setting[remote_url]" type="text" value="<?php echo $remote_url;?>" size="60"/><?php tips('例如 http://static.xxxx.com/，注意以 / 结尾');?></td>
 </tr>
 <tr> 
 <td class="tl">测试FTP连接</td>
@@ -697,7 +697,7 @@ function TestFTP() {
 
 <tr>
 <td class="tl">信任域名</td>
-<td><input name="setting[safe_domain]" type="text" value="<?php echo $safe_domain;?>" size="60"/><?php tips('不填写则默认为当前域名<br/>多个域名请用|分开 例如destoon.com|destoon.cn');?></td>
+<td><input name="setting[safe_domain]" type="text" value="<?php echo $safe_domain;?>" size="60"/><?php tips('不填写则默认为当前域名<br/>多个域名请用|分开 xxxx.com|xxx.cn');?></td>
 </tr>
 <tr>
 <td class="tl">系统负载系数</td>
@@ -717,7 +717,7 @@ function TestFTP() {
 </tr>
 <tr>
 <td class="tl">Cookie作用域</td>
-<td><input name="config[cookie_domain]" type="text" value="<?php echo $cookie_domain;?>" size="20"/><?php tips('例如要保证顶级域名destoon.com所有二级域名均可正常登录注销，则填写.destoon.com(注意顶级域名前加.)');?></td>
+<td><input name="config[cookie_domain]" type="text" value="<?php echo $cookie_domain;?>" size="20"/><?php tips('例如要保证顶级域名xxxx.com所有二级域名均可正常登录注销，则填写.xxxxx.com(注意顶级域名前加.)');?></td>
 </tr>
 <tr>
 <td class="tl">用户注册文件名</td>

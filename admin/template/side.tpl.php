@@ -7,7 +7,7 @@ defined('IN_DESTOON') or exit('Access Denied');
 <meta http-equiv="Content-Type" content="text/html;charset=<?php echo DT_CHARSET;?>"/>
 <title>管理中心</title>
 <meta name="robots" content="noindex,nofollow"/>
-<meta name="generator" content="DESTOON B2B - www.destoon.com"/>
+<meta name="generator"/>
 <meta http-equiv="x-ua-compatible" content="IE=8"/>
 <link rel="stylesheet" href="admin/image/style.css" type="text/css"/>
 <?php if(!DT_DEBUG) { ?><script type="text/javascript">window.onerror= function(){return true;}</script><?php } ?>

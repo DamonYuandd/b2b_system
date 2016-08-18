@@ -14,7 +14,7 @@ show_menu($menus);
 <td class="tl"><span class="f_red">*</span> 采编域名</td>
 <td><input name="domain" type="text" id="domain" size="50" value="<?php echo $domain;?>"/>
 <span id="ddomain" class="f_red"></span><br/>
-不带http及目录，例如 bbs.destoon.com
+
 </td>
 </tr>
 <tr>

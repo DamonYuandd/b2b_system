@@ -185,8 +185,7 @@ show_menu($menus);
 <table cellpadding="2" cellspacing="1" class="tb" style="line-height:200%;">
 <tr>
 <td class="tl"><span class="f_hid">*</span> 参阅</td>
-<td><a href="http://help.destoon.com/faq/tag.php?tc=client" target="_blank" class="t">http://help.destoon.com/faq/tag.php</a><br/>
-</td>
+
 </table>
 </div>
 <script type="text/javascript">

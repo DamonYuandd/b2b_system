@@ -6,7 +6,7 @@ show_menu($menus);
 <form method="post" action="?" id="dform">
 <input type="hidden" name="file" value="<?php echo $file;?>"/>
 <input type="hidden" name="backup" value="1"/>
-<div class="tt">DESTOON系统表[共<?php echo $dtotalsize;?>M,<?php echo count($dtables);?>个表]</div>
+<div class="tt">系统表[共<?php echo $dtotalsize;?>M,<?php echo count($dtables);?>个表]</div>
 <table cellpadding="2" cellspacing="1" class="tb">
 <tr>
 <th width="25"><input type="checkbox" onclick="checkall(this.form);"/></th>
@@ -82,7 +82,7 @@ show_menu($menus);
 <div class="btns">
 <input type="submit" name="submit" value="开始备份" class="btn"/>&nbsp;
 <input type="submit" value="重建注释" class="btn" onclick="if(confirm('确定要重建表注释吗？')){this.form.action='?file=<?php echo $file;?>&action=comments';}else{return false;}"/>&nbsp;
-<input type="submit" value="删除表" class="btn" onclick="if(confirm('警告！确定要删除中表吗？此操作将不可恢复\n\n为了系统安全，系统仅删除非Destoon系统表')){this.form.action='?file=<?php echo $file;?>&action=drop';}else{return false;}"/>
+<input type="submit" value="删除表" class="btn" onclick="if(confirm('警告！确定要删除中表吗？此操作将不可恢复\n\n为了系统安全，系统仅删除系统表')){this.form.action='?file=<?php echo $file;?>&action=drop';}else{return false;}"/>
 </div>
 </form>
 <br/>

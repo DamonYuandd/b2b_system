@@ -1,8 +1,5 @@
 <?php
-/*
-	[Destoon B2B System] Copyright (c) 2008-2015 www.destoon.com
-	This is NOT a freeware, use is subject to license.txt
-*/
+
 defined('DT_ADMIN') or exit('Access Denied');
 $release = isset($release) ? intval($release) : 0;
 $release or msg();
@@ -11,7 +8,8 @@ switch($action) {
 	case 'download':
 		$PHP_URL = @get_cfg_var("allow_url_fopen");
 		if(!$PHP_URL) msg('当前服务器不支持URL打开文件，请修改php.ini中allow_url_fopen = on');
-		$url = 'http://www.destoon.com/update.php?product=b2b&release='.$release.'&charset='.DT_CHARSET.'&version='.DT_VERSION;
+		//$url = 'http://www.destoon.com/update.php?product=b2b&release='.$release.'&charset='.DT_CHARSET.'&version='.DT_VERSION;
+        $url = 'http://baidu.com';
 		$code = @file_get_contents($url);
 		if($code) {
 			if(substr($code, 0, 8) == 'StatusOk') {

@@ -63,7 +63,7 @@ var _del = 0;
 <td width="60" align="center"><span class="f_red">*</span> 内容</td>
 <td>
 <textarea name="content" style="width:500px;height:100px;"><?php echo $content;?></textarea><br/>
-一行一个，关键词和链接用|分割，例如：Destoon B2B|http://www.destoon.com
+一行一个，关键词和链接用|分割，例如：B2B|http://www.xxxx.com
 </td>
 </tr>
 <tr>
